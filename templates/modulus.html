@@ -12,7 +12,7 @@
     body {
       font-family: 'Segoe UI', sans-serif;
       min-height: 100vh;
-      background: linear-gradient(180deg, #bae6fd 0%, #fef9c3 100%);
+      background: linear-gradient(180deg, #7cbaa3 0%, #fef9c3 100%);
       color: #111827;
       padding: 30px;
     }
@@ -25,6 +25,7 @@
     .container {
       display: flex;
       gap: 20px;
+      flex-wrap: wrap;
     }
     .card {
       background: #fff;
@@ -33,6 +34,7 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.05);
       border: 2px solid black;
       flex: 1;
+      min-width: 300px;
     }
     input[type="text"] {
       width: 90%;
@@ -80,6 +82,43 @@
     .exit-link:hover {
       background-color: #111827;
     }
+
+    /* Modal styles for image enlargement */
+    .plot-thumbnail {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      cursor: zoom-in;
+      transition: transform 0.2s;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.8);
+    }
+    .modal-content {
+      margin: 5% auto;
+      display: block;
+      max-width: 90%;
+      border-radius: 12px;
+      box-shadow: 0 0 30px #000;
+      animation: zoom 0.3s ease;
+    }
+    @keyframes zoom {
+      from {transform: scale(0.5);}
+      to {transform: scale(1);}
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px; right: 20px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -101,14 +140,30 @@
         <p><strong>Argument θ:</strong> {{ argument }}°</p>
       {% endif %}
     </div>
+
     <div class="card">
       <h3>📈 Visual Representation</h3>
-      {% if modulus %}
-        {{ plot_html|safe }}
+      {% if plot_html %}
+        <!-- Thumbnail -->
+        <img src="data:image/png;base64,{{ plot_html }}" class="plot-thumbnail" id="openModal" alt="Complex Plot"/>
+
+        <!-- Modal -->
+        <div id="imageModal" class="modal" onclick="this.style.display='none'">
+          <span class="modal-close" onclick="document.getElementById('imageModal').style.display='none'">&times;</span>
+          <img class="modal-content" id="enlargedImage" src="data:image/png;base64,{{ plot_html }}">
+        </div>
+
+        <script>
+          document.getElementById("openModal").onclick = function(event) {
+            event.stopPropagation();
+            document.getElementById("imageModal").style.display = "block";
+          };
+        </script>
       {% else %}
         <p style="color: gray;">Submit values to see graph here.</p>
       {% endif %}
     </div>
+
     <div class="card">
       <h3>📘 Learn</h3>
       <p class="result-text">
@@ -120,6 +175,7 @@
       </p>
     </div>
   </div>
+
   <a href="/home" class="exit-link">Exit</a>
 </body>
 </html>
