@@ -4,7 +4,7 @@ Welcome to **Complexly Learner**, a web-based interactive tool to explore and vi
 
 ## 🚀 Live Demo
 
-🌐 [Click here to try it live!](https://your-render-url.onrender.com)
+🌐 [Click here to try it live!]([https://your-render-url.onrender.com](https://complexly-learner.onrender.com/))
 
 ## 📌 Why I Built This
 
@@ -34,10 +34,6 @@ This project helped me:
 - Google Sheets API
 - Matplotlib, NumPy
 - Hosted on **Render**
-
-## 📸 Screenshot
-
-![Screenshot](static/index.jpg)
 
 ## 📁 Running Locally
 
