@@ -11,6 +11,20 @@ from modules.polar_converter import polar_converter_handler
 from modules.operations import perform_complex_operation
 from modules.argand_plotter import generate_argand_plot
 from modules.quiz import handle_quiz_route
+import os
+import json
+from google.oauth2 import service_account
+from dotenv import load_dotenv
+
+load_dotenv()  # Load values from .env
+
+creds_path = os.getenv("GOOGLE_CREDS_FILE")
+if not creds_path:
+    print("❌ GOOGLE_CREDS_FILE not found in environment.")
+else:
+    creds = service_account.Credentials.from_service_account_file(creds_path)
+
+
 
 # ---------------- FLASK APP SETUP ---------------- #
 app = Flask(__name__)
