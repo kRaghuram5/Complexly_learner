@@ -1,4 +1,5 @@
 from flask import request, session, redirect, render_template
+import os
 import random, cmath, gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
@@ -8,7 +9,14 @@ from oauth2client.service_account import ServiceAccountCredentials
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 
 # Load credentials from the service account JSON file
-creds = ServiceAccountCredentials.from_json_keyfile_name("service_account.json", scope)
+
+
+scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+
+# Render stores secrets at this path
+json_key_path = os.getenv("GOOGLE_CREDS_PATH", "service_account.json")
+creds = ServiceAccountCredentials.from_json_keyfile_name(json_key_path, scope)
+
 
 # Authorize the client using the credentials
 client = gspread.authorize(creds)
