@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Roots of Unity Visualizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #bae6fd 0%, #fef9c3 100%);
+      color: #111827;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 800;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background-color: #ffffffcc;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      border: 2px solid black;
+      padding: 20px;
+      height: 100%;
+    }
+
+    h3, h4 {
+      font-weight: 800;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    .form-control, .btn-primary {
+      border-radius: 12px;
+    }
+
+    .btn-primary {
+      background-color: #facc15;
+      color: black;
+      border: 2px solid black;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      background-color: #fde047;
+    }
+
+    img {
+      max-width: 100%;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    /* Layout */
+    .main-layout {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .left-panel,
+    .center-panel,
+    .right-panel {
+      flex: 1 1 30%;
+    }
+
+    .exit-link {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 13px;
+      background-color: #1f2937;
+      color: white;
+      padding: 8px 14px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+      z-index: 999;
+    }
+
+    .exit-link:hover {
+      background-color: #111827;
+    }
+
+    @media screen and (max-width: 1000px) {
+      .main-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .left-panel,
+      .center-panel,
+      .right-panel {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Roots of Unity Visualizer</h1>
+
+  <div class="main-layout">
+    <!-- Left Panel - Input Form -->
+    <div class="left-panel">
+      <div class="card">
+        <h4 class="text-center mb-3">⚙️ Input</h4>
+        <form method="post">
+          <label for="n">Enter n:</label>
+          <input type="number" class="form-control mb-3" name="n" id="n" min="1" value="{{ n if n else 1 }}">
+          <button type="submit" class="btn btn-primary w-100">Visualize</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Center Panel - Graph -->
+    <div class="center-panel">
+      <div class="card text-center">
+        {% if plot_url %}
+          <h4>{{ n }}-th Roots of Unity</h4>
+          <img src="data:image/png;base64,{{ plot_url }}" alt="Roots of Unity Plot">
+        {% else %}
+          <p class="text-muted">Submit a value to see the plot.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Right Panel - Explanation -->
+    <div class="right-panel">
+      <div class="card">
+        <h4>📘 Why Roots of Unity?</h4>
+        <p>Roots of Unity are complex numbers that, when raised to the power n, give 1. They lie symmetrically on the unit circle and help understand rotational symmetry, trigonometry, and polynomial roots.</p>
+
+        <h5>📊 What the graph shows:</h5>
+        <p>The n points represent the solutions to zⁿ = 1. Each is evenly spaced by 360°/n around a circle centered at the origin.</p>
+
+        <h5>🔍 Where it's useful:</h5>
+        <ul>
+          <li>Solving equations like zⁿ = 1</li>
+          <li>Signal processing and Fourier analysis</li>
+          <li>Understanding symmetry and periodicity</li>
+        </ul>
+
+        <h5>🧭 How to interpret:</h5>
+        <p>The circle has radius 1. Each blue dot is a root, and their order (0 to n-1) shows rotation angle (2πk/n). Together they form a regular polygon.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exit Link -->
+  <a href="/home" class="exit-link">Exit</a>
+
+</body>
+</html>

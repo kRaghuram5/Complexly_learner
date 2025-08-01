@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Complex Number Visualizer - Login</title>
+
+  <!-- Indie Flower for heading -->
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Times New Roman', serif;
+      height: 100vh;
+      background-image: url("/static/background.png");
+      background-size: cover;
+      background-color: rgba(95, 73, 73, 0.4);
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 60px; /* pushes content downward */
+    }
+
+    .heading {
+  font-family: 'Indie Flower', cursive;
+  font-size: 55px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #225fcf; /* Dark blue */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+    .container {
+  background: rgba(255, 255, 255, 0.25); /* translucent white */
+  backdrop-filter: blur(10px);          /* glass effect */
+  -webkit-backdrop-filter: blur(10px);  /* Safari support */
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.3);
+  padding: 50px 40px 70px;
+  width: 420px;
+  text-align: center;
+  color: #222;
+  font-family: 'Times New Roman', serif;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+    .container h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .container p {
+      font-size: 14px;
+      margin-bottom: 25px;
+      color: #444;
+    }
+    select {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: 'Times New Roman', serif;
+  color: #999; /* placeholder color when nothing selected */
+  box-sizing: border-box;
+}
+
+/* Once user selects a valid option, change select text to black */
+select:valid {
+  color: black;
+}
+
+/* Inside the dropdown — options are always black */
+select option {
+  color: black;
+}
+
+/* Keep placeholder-style color for just the default option shown before selection */
+select option[disabled][selected] {
+  color: #999;
+}
+
+
+
+
+
+    input[type="text"] {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      font-size: 16px;
+      font-family: 'Times New Roman', serif;
+    }
+
+    input[type="text"]:focus {
+      border-color: #3b49ff;
+      outline: none;
+    }
+
+    .button-container {
+      margin-top: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #3b49ff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: 'Times New Roman', serif;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #2f3bda;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heading">Complex Number Visualizer</div>
+
+  <div class="container">
+    <h2>Welcome!</h2>
+    <p>Start your journey by entering your name and class</p>
+    <form method="post" action="/intro">
+      <input type="text" name="name" placeholder="Enter your name" required>
+      
+<select name="class" id="class" required>
+  <option value="" disabled selected hidden>Select Grade</option>
+  <option value="11">Grade 11</option>
+  <option value="12">Grade 12</option>
+</select>
+
+      <div class="button-container">
+        <button type="submit">Let’s Go</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>

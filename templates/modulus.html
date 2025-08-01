@@ -1,0 +1,125 @@
+<!-- Updated 'modulus.html' styled inline like "Super Hello" (fixed blue bar issue) -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Modulus & Argument Explorer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #bae6fd 0%, #fef9c3 100%);
+      color: #111827;
+      padding: 30px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      border: 2px solid black;
+      flex: 1;
+    }
+    input[type="text"] {
+      width: 90%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1.5px solid #888;
+      border-radius: 10px;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #facc15;
+      border: 2px solid black;
+      color: black;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #fde047;
+    }
+    hr {
+      margin-top: 30px;
+    }
+    .result-text {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .exit-link {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 13px;
+      background-color: #1f2937;
+      color: white;
+      padding: 8px 14px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+      z-index: 999;
+    }
+    .exit-link:hover {
+      background-color: #111827;
+    }
+  </style>
+</head>
+<body>
+  <h2>Modulus and Argument of Complex Number</h2>
+  <div class="container">
+    <div class="card">
+      <h3>🔢 Enter Complex Number</h3>
+      <form method="POST">
+        <label>Real part (a):</label><br>
+        <input type="text" name="real" value="{{ a }}"><br>
+        <label>Imaginary part (b):</label><br>
+        <input type="text" name="imag" value="{{ b }}"><br>
+        <button type="submit">Explore</button>
+      </form>
+      {% if modulus %}
+        <hr>
+        <h4>🧮 Results</h4>
+        <p><strong>Modulus |z|:</strong> {{ modulus }}</p>
+        <p><strong>Argument θ:</strong> {{ argument }}°</p>
+      {% endif %}
+    </div>
+    <div class="card">
+      <h3>📈 Visual Representation</h3>
+      {% if modulus %}
+        {{ plot_html|safe }}
+      {% else %}
+        <p style="color: gray;">Submit values to see graph here.</p>
+      {% endif %}
+    </div>
+    <div class="card">
+      <h3>📘 Learn</h3>
+      <p class="result-text">
+        <strong>Modulus</strong> is the distance of a complex number from the origin, calculated as:<br>
+        <code>|z| = √(a² + b²)</code><br><br>
+        <strong>Argument</strong> is the angle (θ) the complex number makes with the positive real axis:<br>
+        <code>θ = atan2(b, a)</code><br><br>
+        In the graph, you're seeing the vector (a, b) as an arrow from origin (0, 0) to the point (a, b).
+      </p>
+    </div>
+  </div>
+  <a href="/home" class="exit-link">Exit</a>
+</body>
+</html>

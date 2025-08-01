@@ -1,0 +1,129 @@
+<!-- Updated 'demovrie.html' styled inline like "Super Hello" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>De Moivre’s Theorem Visualizer</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(180deg, #bae6fd 0%, #fef9c3 100%);
+      color: #111827;
+      display: flex;
+      flex-direction: column;
+    }
+    h2 {
+      text-align: center;
+      margin: 40px 0 30px;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+    .layout {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 30px;
+      flex-grow: 1;
+      padding: 0 40px 40px;
+      box-sizing: border-box;
+    }
+    .form-container,
+    .graph,
+    .explanation {
+      background-color: #fff;
+      padding: 20px;
+      border: 2px solid black;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+    .form-container {
+      width: 20%;
+    }
+    .graph {
+      width: 40%;
+      text-align: center;
+    }
+    .explanation {
+      width: 35%;
+    }
+    form label {
+      font-weight: bold;
+    }
+    input {
+      margin-top: 5px;
+      margin-bottom: 15px;
+      padding: 8px;
+      width: 100%;
+      border-radius: 10px;
+      border: 1.5px solid #888;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 16px;
+      background-color: #facc15;
+      color: black;
+      font-weight: 600;
+      border: 2px solid black;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #fde047;
+    }
+    .explanation h3, .graph h3 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .exit-link {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 13px;
+      background-color: #1f2937;
+      color: white;
+      padding: 8px 14px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+      z-index: 999;
+    }
+    .exit-link:hover {
+      background-color: #111827;
+    }
+  </style>
+</head>
+<body>
+  <h2>De Moivre’s Theorem: zⁿ = [r(cosθ + i·sinθ)]ⁿ</h2>
+  <div class="layout">
+    <div class="form-container">
+      <form method="post" action="/demoivre">
+        <label>Magnitude (r):</label><br>
+        <input type="number" name="r" step="0.1" required value="{{ request.form.r or '' }}"><br>
+        <label>Angle (θ in degrees):</label><br>
+        <input type="number" name="theta" step="1" required value="{{ request.form.theta or '' }}"><br>
+        <label>Power (n):</label><br>
+        <input type="number" name="n" min="1" required value="{{ request.form.n or '' }}"><br>
+        <button type="submit">Visualize</button>
+      </form>
+    </div>
+    {% if plot_data %}
+    <div class="graph">
+      <h3>{{ n }}-th Power of Complex Number</h3>
+      <img src="data:image/png;base64,{{ plot_data }}" alt="De Moivre Plot" width="100%">
+    </div>
+    <div class="explanation">
+      <h3>Explanation</h3>
+      {{ explanation | safe }}
+    </div>
+    {% endif %}
+  </div>
+  <a href="/home" class="exit-link">Exit</a>
+</body>
+</html>

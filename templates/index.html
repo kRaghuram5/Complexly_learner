@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Complex Number Visualizer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eaf2fb; /* Pale blue background */
+      margin: 0;
+      padding: 50px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 42px;
+      color: #001f4d; /* Navy Blue */
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 960px;
+      margin: 0 auto;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .box {
+      padding: 30px;
+      border-radius: 20px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    .box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    }
+
+    .box:nth-child(1) { background-color: #83a7e0; }
+    .box:nth-child(2) { background-color: #7cbaa3; }
+    .box:nth-child(3) { background-color: #c09853; }
+    .box:nth-child(4) { background-color: #df6969; }
+    .box:nth-child(5) { background-color: #6b53a5; }
+    .box:nth-child(6) { background-color: #bf5a8c; }
+
+    .quiz-button {
+      position: fixed;
+      top: 50%;
+      right: 50px;
+      transform: translateY(-50%);
+      background-color: #111827;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Times New Roman', Times, serif;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .quiz-button:hover {
+      background-color: #000000;
+    }
+
+    .thought {
+      position: fixed;
+      bottom: 45px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18px;
+      color: #2f2f2f;
+      font-style: italic;
+      font-family: 'Times New Roman', Times, serif;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .exit-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #1f2937;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transition: background 0.3s ease;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .exit-button:hover {
+      background-color: #111827;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .quiz-button {
+        position: static;
+        display: inline-block;
+        margin-top: 30px;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <script>
+    let showExitPrompt = true;
+
+    window.onload = function () {
+        history.replaceState(null, null, location.href);
+        history.pushState(null, null, location.href);
+    };
+
+    window.addEventListener("popstate", function () {
+        if (showExitPrompt) {
+            const confirmed = confirm("Are you sure you want to exit?");
+            if (!confirmed) {
+                history.pushState(null, null, location.href);
+            } else {
+                showExitPrompt = false;
+                window.location.replace("/");
+            }
+        }
+    });
+
+    function handleExit() {
+        const confirmed = confirm("Are you sure you want to exit?");
+        if (confirmed) {
+            window.location.replace("/");
+        }
+    }
+  </script>
+</head>
+<body>
+
+  <h1>Complex Number Visualizer</h1>
+
+  <div class="container">
+  <a href="/argand" class="box">Argand Plotter</a>
+  <a href="/operations" class="box">Complex Operations</a>
+  <a href="/modulus" class="box">Modulus & Argument</a>
+  <a href="/polar" class="box">Polar ⇄ Cartesian</a>
+  <a href="/demoivre" class="box">De Moivre’s Theorem</a>
+  <a href="/roots" class="box">Roots of Unity</a>
+</div>
+
+
+  <a href="/quiz" class="quiz-button">Take a Quiz</a>
+
+  <div class="thought">
+    “Complex numbers aren't just numbers — they’re the bridge between geometry and algebra.”
+  </div>
+
+  <button class="exit-button" onclick="handleExit()">Exit</button>
+
+</body>
+</html>

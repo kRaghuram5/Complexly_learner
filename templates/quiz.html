@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complex Number Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        .quiz-box, .tracker-box {
+            margin: 20px;
+            border-radius: 15px;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .quiz-box {
+            width: 75%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tracker-box {
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .tracker-box h3 {
+            margin-bottom: 20px;
+        }
+
+        .tracker-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            justify-items: center;
+        }
+
+        .tracker-item {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            background-color: #f44336;
+            color: white;
+        }
+
+        .tracker-item.answered {
+            background-color: #4CAF50;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4CAF50;
+        }
+
+        .question-number {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+        }
+
+        /* Exit Link Styling */
+        .exit-link {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 14px;
+            background-color: #1f2937;
+            color: white;
+            padding: 8px 14px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .exit-link:hover {
+            background-color: #111827;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Quiz Section -->
+        <div class="quiz-box">
+            <form method="POST">
+                <div class="question-number">
+                    Question {{ index + 1 }} of {{ total }}
+                </div>
+                <h2>{{ question }}</h2>
+                <input type="text" name="answer" placeholder="Enter answer (e.g., 2+3j or 2+3i)" value="{{ answer }}">
+                <input type="hidden" name="correct_answer" value="{{ correct_answer }}">
+
+                <div class="buttons">
+                    {% if index > 0 %}
+                    <button type="submit" name="action" value="prev">Previous</button>
+                    {% endif %}
+                    {% if index < total - 1 %}
+                    <button type="submit" name="action" value="next">Next</button>
+                    {% endif %}
+                    {% if index == total - 1 and not submitted %}
+                    <button type="submit" name="action" value="submit">Submit</button>
+                    {% endif %}
+                </div>
+            </form>
+
+            {% if submitted %}
+            <div class="results">
+                <h3>Results</h3>
+                <p>Correct Answers: {{ correct }}</p>
+                <p>Incorrect Answers: {{ incorrect }}</p>
+                <form method="post">
+                    <button type="submit" name="action" value="reset">Start New Quiz</button>
+                </form>
+                <!-- Exit link after quiz is done -->
+                <a href="/home" class="exit-link">Exit</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Tracker Section -->
+        <div class="tracker-box">
+            <h3>Progress</h3>
+            <div class="tracker-grid">
+                {% for i in range(total) %}
+                    <div class="tracker-item {% if answers[i] %}answered{% endif %}">{{ i + 1 }}</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

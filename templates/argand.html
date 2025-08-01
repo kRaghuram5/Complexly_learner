@@ -1,0 +1,206 @@
+<!-- Starting with updated 'argand.html' in Super Hello style -->
+<!-- Styles are inline as requested -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Argand Plane Plotter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #bae6fd 0%, #fef9c3 100%);
+      color: #111827;
+      padding: 30px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+    .container {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      border: 2px solid black;
+    }
+    h3, h4 {
+      font-weight: 800;
+      color: #111;
+    }
+    label, p, li, select, input, .form-check-label {
+      color: #333;
+    }
+    .form-label {
+      font-weight: 600;
+    }
+    .btn-primary {
+      background-color: #facc15;
+      color: black;
+      border: 2px solid black;
+      font-weight: 600;
+    }
+    .btn-primary:hover {
+      background-color: #fde047;
+    }
+    select, input {
+      border-radius: 10px !important;
+      border: 1.5px solid #888 !important;
+    }
+    .alert {
+      border-radius: 12px;
+      font-size: 14px;
+    }
+    .bg-light {
+      background: linear-gradient(180deg, #bae6fd 0%, #fef9c3 100%);
+    }
+    .text-muted {
+      color: #6b7280 !important;
+    }
+    .vh-100-center {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+<h2>Argand Plotter</h2>
+<div class="container vh-100-center">
+  <div class="row w-100 g-4">
+    <div class="col-lg-4">
+      <div class="card p-4">
+        <h3 class="mb-3 text-center">Plot a Complex Number</h3>
+        <form method="POST">
+          <div class="mb-3">
+            <label for="real" class="form-label">Real Part (a):</label>
+            <input type="number" class="form-control" name="real" id="real" value="{{ form_data.a }}" required>
+          </div>
+          <div class="mb-3">
+            <label for="imag" class="form-label">Imaginary Part (b):</label>
+            <input type="number" class="form-control" name="imag" id="imag" value="{{ form_data.b }}" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Options:</label><br>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="show_conj" {% if form_data.show_conj %}checked{% endif %}>
+              <label class="form-check-label">Show Conjugate</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="show_modulus" {% if form_data.show_modulus %}checked{% endif %}>
+              <label class="form-check-label">Show Modulus</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="show_arg" {% if form_data.show_arg %}checked{% endif %}>
+              <label class="form-check-label">Show Argument</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Try Example:</label>
+            <select class="form-select" onchange="fillExample(this.value)">
+              <option selected disabled>Select</option>
+              <option value="3,4">3 + 4i</option>
+              <option value="-2,2">-2 + 2i</option>
+              <option value="1,-1">1 - i</option>
+              <option value="0,5">0 + 5i</option>
+            </select>
+          </div>
+          <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary px-5">Plot</button>
+          </div>
+        </form>
+        {% if result %}
+        <div class="mt-4">
+          {% if result.error %}
+            <div class="alert alert-danger">{{ result.error }}</div>
+          {% else %}
+            <div class="alert alert-info">
+              <strong>z = {{ result.real }} + {{ result.imag }}i</strong><br>
+              |z| = {{ result.modulus }}<br>
+              arg(z) = {{ result.argument }}°
+            </div>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card p-4">
+        <h4 class="mb-3 text-center">Argand Plot</h4>
+        {% if plot_url %}
+          <a href="#" data-bs-toggle="modal" data-bs-target="#plotModal">
+            <img src="data:image/png;base64,{{ plot_url }}" alt="Argand Diagram" class="img-fluid" style="cursor: zoom-in;" />
+          </a>
+        {% else %}
+          <p class="text-muted text-center">Submit values to see the plot.</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card p-4">
+        <h4 class="text-center mb-3 text-center">Learn</h4>
+        <ul>
+          <li><strong>z = a + bi:</strong> a: Real, b: Imaginary</li>
+          <li><strong>Modulus:</strong> |z| = √(a² + b²)</li>
+          <li><strong>Argument:</strong> Angle between z and the real axis</li>
+          <li><strong>Conjugate:</strong> z̅ = a − bi</li>
+          <li><strong>Plot:</strong> x-axis = real, y-axis = imaginary</li>
+        </ul>
+        <small class="text-muted">Master these to fully understand complex vectors.</small>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function fillExample(val) {
+    const [a, b] = val.split(',');
+    document.getElementById('real').value = a;
+    document.getElementById('imag').value = b;
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<div class="modal fade" id="plotModal" tabindex="-1" aria-labelledby="plotModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content rounded-4 shadow-lg">
+      <div class="modal-header">
+        <h5 class="modal-title" id="plotModalLabel">Full View of Argand Diagram</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        {% if plot_url %}
+          <img src="data:image/png;base64,{{ plot_url }}" alt="Full Plot" class="img-fluid" />
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<a href="/home" class="exit-link">Exit</a>
+<style>
+  .exit-link {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 13px;
+    background-color: #1f2937;
+    color: white;
+    padding: 8px 14px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+    z-index: 999;
+  }
+  .exit-link:hover {
+    background-color: #111827;
+  }
+</style>
+</body>
+</html>
