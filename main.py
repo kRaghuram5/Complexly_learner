@@ -8,7 +8,7 @@ import json
 import random
 import time
 
-# --- Import module handlers (unchanged) ---
+# --- Import module handlers ---
 from modules.roots_of_unity import get_plot_image
 from modules.modulus_argument import compute_mod_arg, create_complex_plot
 from modules.de_moivre import visualize_de_moivre
@@ -85,14 +85,14 @@ def login_page():
                 session['user'] = {"name": user["Name"], "class": user["Class"], "gmail": gmail}
                 log_login(gmail, user["Name"], user["Class"], "login")
                 flash("Login successful!", "success")
-                return redirect(url_for('root_intro'))
+                return redirect(url_for('root_intro'))  # Go back to index after login
             else:
                 flash("Invalid credentials. Incorrect password.", "danger")
         else:
             flash("Invalid credentials. User not found.", "danger")
         return redirect(url_for('login_page'))
 
-    return render_template('main.html')
+    return render_template('main.html')  # Login form page
 
 @app.route('/logout')
 def logout():
@@ -117,11 +117,11 @@ def signup():
         login_sheet.append_row([gmail, name, class_, password_hash, timestamp])
         session['user'] = {"name": name, "class": class_, "gmail": gmail}
         flash("Signup successful! Welcome!", "success")
-        return redirect(url_for('main_page'))
+        return redirect(url_for('root_intro'))  # Go back to index
 
-    return render_template('newlogin.html')
+    return render_template('newlogin.html')  # Signup form
 
-@app.route('/main')
+@app.route('/main', methods=['GET', 'POST'])
 def main_page():
     if 'user' not in session:
         flash("Please log in first.", "warning")
@@ -149,7 +149,6 @@ def forgot_password():
             return redirect(url_for('forgot_password'))
 
     return render_template('forgot_password.html')
-
 # ---------------- TOPIC ROUTES ---------------- #
 @app.route('/home/')
 def home_dashboard():
@@ -239,8 +238,7 @@ def argand():
 
     return render_template('argand.html', plot_url=plot_url, result=result_data, form_data=form_data, user=session.get('user', {}))
 
-# ---------------- QUIZ ROUTES (UPDATED) ---------------- #
-# ---------------- QUIZ ROUTES (UPDATED WITH LOGIN FIX) ---------------- #
+# ---------------- QUIZ ROUTES ---------------- #
 @app.route('/quiz-select', methods=['GET'])
 def quiz_select():
     if 'user' not in session:
@@ -289,7 +287,7 @@ def start_quiz():
         return redirect(url_for("quiz"))
     except Exception as e:
         flash(f"Error loading quiz: {e}", "danger")
-        return redirect(url_for("quiz_select"))
+        return redirect(url_for('quiz_select'))
 
 @app.route("/quiz", methods=["GET", "POST"])
 def quiz():
@@ -314,7 +312,6 @@ def quiz_result():
         flash("Please log in to view results.", "warning")
         return redirect(url_for('login_page'))
     return render_results_page()
-
 
 # ---------------- RUN ---------------- #
 if __name__ == '__main__':
