@@ -1,177 +1,500 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Complex Number Visualizer</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Complex Explorer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #eaf2fb; /* Pale blue background */
-      margin: 0;
-      padding: 50px 20px;
-      text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  background-color: #1a1a2e;
+  color: #d1d1d1;
+  margin: 0;
+}
+* {
+  font-family: "Times New Roman", Times, serif !important;
+}
+
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 15px;
+    }
+
+    .topbar-primary {
+      background-color: #222;
+      color: white;
+    }
+
+    .topbar-secondary {
+      background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, rgba(26, 26, 46, 1) 70%);
+      color: #fff;
+      border-bottom: 1px solid #2a2a44;
+    }
+
+    .topbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .topbar a:hover {
+      text-decoration: underline;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: nowrap;
+    }
+
+    .intro-section {
+      background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, rgba(26, 26, 46, 1) 70%);
+      color: #fff;
+      padding: 4rem 1rem;
+      border-bottom: 0 solid #2a2a44;
+    }
+
+    .intro-section h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    .intro-section p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .intro-section ul {
+      padding-left: 1.5rem;
+    }
+
+    .intro-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .content-container {
+      max-width: 1100px;
+      margin: 3rem auto 4rem auto;
+      padding-top: 0%;
+      padding-bottom: 2%;
+      padding-left: 8%;
+      padding-right: 8%;
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+    }
+
+    .left-column {
       position: relative;
+      left: -40px;
     }
 
-    h1 {
-      font-size: 42px;
-      color: #001f4d; /* Navy Blue */
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-      margin-bottom: 40px;
+    .right-column {
+      flex: 1 1 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      right: 20px;
     }
 
-    .container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      max-width: 960px;
-      margin: 0 auto;
-      font-family: 'Times New Roman', Times, serif;
+    .content-section pre {
+      background: none !important;
+      border: none !important;
+      padding: 0 !important;
+      color: #d1d1d1;
+      font-family: Consolas, monospace;
+      font-size: 0.95rem;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      line-height: 3;
     }
 
-    .box {
-      padding: 30px;
-      border-radius: 20px;
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
+    .content-section ul {
+      padding-left: 1.25rem;
+      list-style-type: disc;
+      color: #d1d1d1;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .study-list li a {
+      color: #007bff;
       text-decoration: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      font-weight: 500;
+      transition: color 0.2s ease;
     }
 
-    .box:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    .study-list li a:hover {
+      color: #4da6ff;
+      text-decoration: underline;
     }
 
-    .box:nth-child(1) { background-color: #83a7e0; }
-    .box:nth-child(2) { background-color: #7cbaa3; }
-    .box:nth-child(3) { background-color: #c09853; }
-    .box:nth-child(4) { background-color: #df6969; }
-    .box:nth-child(5) { background-color: #6b53a5; }
-    .box:nth-child(6) { background-color: #bf5a8c; }
-
-    .quiz-button {
-      position: fixed;
-      top: 50%;
-      right: 50px;
-      transform: translateY(-50%);
-      background-color: #111827;
+    .btn-warning {
+      background-color: #007bff;
+      border-color: #007bff;
       color: white;
-      padding: 14px 20px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: bold;
-      font-family: 'Times New Roman', Times, serif;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    .quiz-button:hover {
-      background-color: #000000;
+    .btn-warning:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
     }
 
-    .thought {
-      position: fixed;
-      bottom: 45px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 18px;
-      color: #2f2f2f;
-      font-style: italic;
-      font-family: 'Times New Roman', Times, serif;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    .btn-outline-light {
+      border-color: #6c757d;
+      color: #6c757d;
     }
 
-    .exit-button {
+    .btn-outline-light:hover {
+      background-color: #6c757d;
+      color: white;
+    }
+
+    @media(max-width: 992px) {
+      .content-container {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .right-column {
+        gap: 1.5rem;
+      }
+    }
+
+    /* Removed vertical stacking of navbar items on small screens */
+    @media(max-width: 768px) {
+      .topbar .topbar-right {
+        flex-direction: row;
+        gap: 10px;
+        margin-top: 0;
+        width: auto;
+        align-items: center;
+      }
+    }
+
+    .cheatsheet-block ul li {
+      margin-bottom: 8px;
+    }
+
+    .cheatsheet-block pre {
+  font-size: 1rem;  /* adjust size as needed */
+  line-height: 2;    /* keeps it readable */
+}
+.cheatsheet-block {
+  font-size: 1rem;
+}
+
+    @media (min-width: 992px) {
+      .cheatsheet-block {
+        position: relative;
+        left: -40px;
+      }
+
+      .study-column {
+        position: relative;
+        left: 40px;
+      }
+    }
+
+    /* Smooth scrolling for anchor links */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ----------------------------
+       Floating circular Back-to-Top
+       ---------------------------- */
+    #backToTop {
       position: fixed;
       bottom: 20px;
-      right: 20px;
-      background-color: #1f2937;
+      left: 50%;
+      /* we'll keep translateX in transform so it's perfectly centered */
+      transform: translateX(-50%) translateY(12px);
+      z-index: 1000;
+
+      /* small circular size */
+      width: 48px;
+      height: 48px;
+      padding: 0;                 /* important: remove extra padding that makes it oval */
+      border-radius: 50%;
+
+      /* center the arrow inside */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background-color: #007bff;
       color: white;
       border: none;
-      padding: 10px 18px;
-      border-radius: 8px;
-      font-size: 14px;
+      outline: none;
+      font-size: 20px;
+      line-height: 1;
       cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-      transition: background 0.3s ease;
-      font-family: 'Times New Roman', Times, serif;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+
+      /* hidden by default via opacity/visibility for smooth animation */
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
     }
 
-    .exit-button:hover {
-      background-color: #111827;
+    #backToTop.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
     }
 
-    @media (max-width: 768px) {
-      .container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-      }
-      .quiz-button {
-        position: static;
-        display: inline-block;
-        margin-top: 30px;
-        transform: none;
-      }
+    #backToTop:hover {
+      background-color: #0056b3;
+      transform: translateX(-50%) translateY(0) scale(1.06);
     }
+    .down-arrow {
+  display: inline-block;
+  font-size: 2rem;
+  color: white;
+  text-decoration: none;
+  animation: bounce 1.2s infinite;
+}
 
-    @media (max-width: 500px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
-    }
+.down-arrow:hover {
+  color: #ffd700; /* gold on hover */
+}
+
+/* Simple bounce animation */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(6px); }
+  60% { transform: translateY(3px); }
+}
+
+
   </style>
-  <script>
-    let showExitPrompt = true;
-
-    window.onload = function () {
-        history.replaceState(null, null, location.href);
-        history.pushState(null, null, location.href);
-    };
-
-    window.addEventListener("popstate", function () {
-        if (showExitPrompt) {
-            const confirmed = confirm("Are you sure you want to exit?");
-            if (!confirmed) {
-                history.pushState(null, null, location.href);
-            } else {
-                showExitPrompt = false;
-                window.location.replace("/");
-            }
-        }
-    });
-
-    function handleExit() {
-        const confirmed = confirm("Are you sure you want to exit?");
-        if (confirmed) {
-            window.location.replace("/");
-        }
-    }
-  </script>
 </head>
-<body>
+<body id="top">
 
-  <h1>Complex Number Visualizer</h1>
+<!-- Primary Navbar -->
+<nav class="topbar topbar-primary">
+  <div>
+    <a href="{{ url_for('root_intro') }}" style="font-weight:700">Complex Explorer</a>
+  </div>
+  <div class="topbar-right">
+    {% if session.user %}
+      <span>Hello, {{ session.user.name }}</span>
+      <a href="{{ url_for('logout') }}" class="btn btn-sm btn-outline-light">Logout</a>
+    {% else %}
+      <a href="{{ url_for('login_page') }}" class="btn btn-sm btn-outline-light">Sign In</a>
+    {% endif %}
+  </div>
+</nav>
 
-  <div class="container">
-  <a href="/argand" class="box">Argand Plotter</a>
-  <a href="/operations" class="box">Complex Operations</a>
-  <a href="/modulus" class="box">Modulus & Argument</a>
-  <a href="/polar" class="box">Polar ⇄ Cartesian</a>
-  <a href="/demoivre" class="box">De Moivre’s Theorem</a>
-  <a href="/roots" class="box">Roots of Unity</a>
+<!-- Secondary Navbar -->
+<nav class="topbar topbar-secondary">
+  <div class="d-flex justify-content-end align-items-center w-100 gap-3 flex-wrap">
+    <span class="fw-light">Take quizzes to test your understanding.</span>
+    
+    {% if session.user %}
+      <!-- If logged in, go to quiz -->
+      <a href="{{ url_for('quiz_select') }}" class="btn btn-warning btn-sm fw-semibold">Start Quiz</a>
+    {% else %}
+      <!-- If NOT logged in, trigger modal -->
+      <a href="#" class="btn btn-warning btn-sm fw-semibold" data-bs-toggle="modal" data-bs-target="#signinModal">
+        Start Quiz
+      </a>
+    {% endif %}
+  </div>
+</nav>
+
+<!-- Sign In Required Modal -->
+<div class="modal fade" id="signinModal" tabindex="-1" aria-labelledby="signinModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signinModalLabel">Sign In Required</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Please <strong>sign in</strong> to attend the quiz.
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="{{ url_for('login_page') }}" class="btn btn-primary">Sign In</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 
-  <a href="/quiz" class="quiz-button">Take a Quiz</a>
+<!-- Intro Section -->
+ <section class="intro-section">
+        <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+            <h1 class="mb-0">The Complex Numbers</h1>
+        </div>
+        <p>Have you ever wondered why mathematicians invented a whole new kind of number?</p>
+        <p>It all starts with equations. In earlier classes, you solved linear equations (straightforward) and quadratic equations (a bit trickier). Most had real number solutions — until one day, a strange case appeared.</p>
+        <p>Consider the quadratic equation <strong>ax² + bx + c = 0</strong>. The nature of its solutions depends on the discriminant <strong>D = b² – 4ac</strong>.</p>
+        <ul>
+            <li>If D > 0, there are two real roots.</li>
+            <li>If D = 0, there’s one real root.</li>
+            <li>If D < 0, there are no real roots.</li>
+        </ul>
+        <p>Let’s take an example: <strong>x² + 1 = 0</strong>.<br>
+        Here, a = 1, b = 0, c = 1, so D = 0² – 4(1)(1) = –4, which is less than zero.<br>
+        Solving gives x² = –1 — a dead end in the real number system, because no real number squared gives a negative result.</p>
+        <p>So mathematicians asked: What if we create a new number whose square is –1?<br>
+        They called it <strong>i</strong>, where <strong>i² = –1</strong>.</p>
+        <p>With this, numbers like a + ib became possible — a combination of a real part (a) and an imaginary part (b).<br>
+        Examples: 2 + 3i, –1 + √3 i, 4 – (1/11) i.</p>
+        <p>This simple invention unlocked solutions for every quadratic equation — and gave rise to a powerful number system that appears in engineering, physics, and even digital technology.</p>
+        <p><strong>Welcome to the world of complex numbers</strong> — born from the question: How do we solve the unsolvable?</p>
+        <div class="text-center mt-4">
+  <a href="#Further" class="down-arrow">
+    ↓
+  </a>
+</div>
+    </section>
 
-  <div class="thought">
-    “Complex numbers aren't just numbers — they’re the bridge between geometry and algebra.”
-  </div>
 
-  <button class="exit-button" onclick="handleExit()">Exit</button>
+    <div class="container content-container">
+    <div class="row g-4" id="Further">
+        <!-- Study Further (moves to top on mobile) -->
+        <div class="col-lg-4 order-1 order-lg-2 study-column">
+            <div class="content-section">
+                <h5>Study Further</h5>
+                {% set modules = [
+                    {'name':'Argand Plotter','link':'argand'},
+                    {'name':'Complex Operations','link':'operations'},
+                    {'name':'Modulus & Argument','link':'modulus_argument'},
+                    {'name':'Polar ⇄ Cartesian','link':'polar'},
+                    {'name':'De Moivre’s Theorem','link':'demoivre'},
+                    {'name':'Roots of Unity','link':'roots'}
+                ] %}
+                <ul class="study-list">
+                    <li><a href="#key-properties">Key Properties</a></li>
+                    <li><a href="#uses-complex">Uses of Complex Numbers</a></li>
+                    {% for m in modules %}
+                        <li><a href="{{ url_for(m.link) }}">{{ m.name }}</a></li>
+                    {% endfor %}
+                </ul>
+              </div>
+        </div>
+
+        <div class="col-lg-8 order-2 order-lg-1">
+    <div class="cheatsheet-block">
+        <section class="mb-4">
+            <h2>Quick Formula Sheet</h2>
+            <pre>
+
+1. Standard Form:
+   z = a + ib
+   Real part: Re(z) = a      Imaginary part: Im(z) = b
+2. Equality:
+   a + ib = c + id  =>  [a = c] and [b = d]
+3. Addition & Subtraction:
+   z1 ± z2 = (a ± c) + i(b ± d)
+4. Multiplication:
+   z1 * z2 = (ac - bd) + i(ad + bc)
+5. Division:
+   (a + ib) / (c + id) = [(ac + bd) + i(bc - ad)] / (c² + d²)
+6. Conjugate:
+   z̄ = a - ib
+   z * z̄ = a² + b²
+7. Modulus & Argument:
+   r = |z| = √(a² + b²)
+   θ = arg(z) = tan⁻¹(b / a)   [adjust for quadrant]
+8. Polar (Trigonometric) Form:
+   z = r(cosθ + i sinθ)
+   Euler's form: z = r e^(iθ)
+9. Conversion:
+   Rectangular → Polar: r = √(a² + b²), θ = arg(z)
+   Polar → Rectangular: a = r cosθ, b = r sinθ
+10. Multiplication in Polar Form:
+    r1(cosθ1 + i sinθ1) × r2(cosθ2 + i sinθ2) =
+    r1 r2 [cos(θ1 + θ2) + i sin(θ1 + θ2)]
+11. Division in Polar Form:
+    (r1 / r2) [cos(θ1 - θ2) + i sin(θ1 - θ2)]
+12. Powers (De Moivre’s Theorem):
+    zⁿ = rⁿ [cos(nθ) + i sin(nθ)]
+13. Roots of Complex Numbers:
+    z_k = r^(1/n)[cos((θ + 2kπ)/n) + i sin((θ + 2kπ)/n)],k=0,1,...,n-1
+14. Inverse (Reciprocal):
+    z⁻¹ = z̄ / |z|² = a/(a²+b²) - i b/(a²+b²)
+15. Special Powers of i:
+    i⁰ = 1, i¹ = i, i² = -1, i³ = -i, i⁴ = 1 (repeat every 4)
+                </pre>
+        </section>
+
+        <section class="mb-4" id="key-properties">
+            <h2>Key Properties</h2>
+            <ul>
+                    <li><strong>Closure:</strong> The sum or product of two complex numbers is also a complex number.</li>
+                    <li><strong>Commutative Property:</strong> u + v = v + u, uv = vu.</li>
+                    <li><strong>Associative Property:</strong> (u + v) + w = u + (v + w), (uv)w = u(vw).</li>
+                    <li><strong>Distributive Property:</strong> u(v + w) = uv + uw.</li>
+                    <li><strong>Identities:</strong> Additive (0) and multiplicative (1) identities exist for all complex numbers.</li>
+                    <li><strong>Additive Inverse:</strong> For any z, there exists −z such that z + (−z) = 0.</li>
+                    <li><strong>Multiplicative Inverse:</strong> For z ≠ 0, z⁻¹ = (a − ib)/(a² + b²).</li>
+                    <li><strong>Powers of i:</strong> i² = −1, i³ = −i, i⁴ = 1 (repeats every 4 powers).</li>
+                    <li><strong>Modulus:</strong> |z| = √(a² + b²) — distance from origin in Argand plane.</li>
+                    <li><strong>Conjugate:</strong> z = a + ib ⇒ ȳ = a − ib; used in division and |z|² = zȳ.</li>
+                    <li><strong>Quadratic Roots:</strong> Solve negative discriminants using i.</li>
+                </ul>
+        </section>
+
+        <section class="mb-4" id="uses-complex">
+            <h2>Uses of Complex Numbers</h2>
+            <ul>
+                    <li><strong>Engineering & Electronics:</strong> AC circuits, control systems, signal processing.</li>
+                    <li><strong>Physics:</strong> Quantum mechanics, wave theory, fluid dynamics.</li>
+                    <li><strong>Computer Science:</strong> Image processing, simulations, graphics.</li>
+                    <li><strong>Music & Audio:</strong> Waveform analysis, sound synthesis.</li>
+                </ul>
+        </section>
+    </div>
+</div>
+
+
+    <!-- Back to Top Button (placed before the scripts so it's in the DOM) -->
+    <button id="backToTop" title="Go to top" aria-label="Back to top">↑</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // subtle floating radial background movement (keeps working)
+        const introSection = document.querySelector('.intro-section');
+        let currentX = 0.5;
+        let currentY = 0.5;
+        const easeFactor = 0.1;
+        document.addEventListener('mousemove', function(e) {
+            const targetX = e.clientX / window.innerWidth;
+            const targetY = e.clientY / window.innerHeight;
+            currentX += (targetX - currentX) * easeFactor;
+            currentY += (targetY - currentY) * easeFactor;
+            introSection.style.background = `radial-gradient(circle at ${currentX * 100}% ${currentY * 100}%, rgba(255, 215, 0, 0.1) 0%, rgba(26, 26, 46, 1) 70%)`;
+        });
+
+        // Back-to-top logic (button exists above, so safe to query)
+        const backToTopBtn = document.getElementById("backToTop");
+        if (backToTopBtn) {
+          window.addEventListener("scroll", () => {
+            if (window.scrollY > 200) {
+              backToTopBtn.classList.add("show");
+            } else {
+              backToTopBtn.classList.remove("show");
+            }
+          });
+
+          backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        }
+    </script>
 
 </body>
 </html>

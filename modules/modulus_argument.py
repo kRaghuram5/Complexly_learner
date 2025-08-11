@@ -1,37 +1,54 @@
 import math
 import cmath
-import plotly.graph_objs as go
+import matplotlib.pyplot as plt
+import numpy as np
+import io
+import base64
 
-# Function to create a 2D plot of the complex number z = a + bi
 def create_complex_plot(a, b):
-    fig = go.Figure()
+    z = complex(a, b)
+    modulus = abs(z)
 
-    # Add a vector from origin (0,0) to the point (a,b)
-    fig.add_trace(go.Scatter(
-        x=[0, a],  # Real axis: from 0 to a
-        y=[0, b],  # Imaginary axis: from 0 to b
-        mode='lines+markers+text',  # Show line, points, and label
-        name="Complex Vector",
-        text=[None, f"{a}+{b}i"],  # Only label the end point
-        marker=dict(size=10),  # Marker size for points
-        line=dict(width=4)  # Line thickness
-    ))
+    fig, ax = plt.subplots()
+    ax.set_title(f'Vector Representation of z = {a} + {b}i')
+    ax.axhline(0, color='gray', linewidth=0.5)
+    ax.axvline(0, color='gray', linewidth=0.5)
+    ax.grid(True, linestyle='--', linewidth=0.5)
 
-    # Configure the layout of the plot
-    fig.update_layout(
-        title="Vector Representation of z = a + bi",  # Plot title
-        xaxis=dict(title='Real', range=[-10, 10]),  # X-axis config
-        yaxis=dict(title='Imaginary', range=[-10, 10]),  # Y-axis config
-        width=500,
-        height=500
-    )
+    # Plot vector z = a + bi
+    ax.plot([0, a], [0, b], color='blue', linewidth=2, label='z')
+    ax.scatter([a], [b], color='blue')
+    ax.text(a, b, f'z = {a:.1f} + {b:.1f}i', fontsize=9, ha='left', va='bottom', color='blue')
 
-    # Return the plot as an embeddable HTML string
-    return fig.to_html()
+    # Optional: Right triangle legs (same as before, purely for clarity)
+    ax.plot([0, a], [0, 0], color='green', linestyle='--', label='Real Part')
+    ax.plot([a, a], [0, b], color='purple', linestyle='--', label='Imaginary Part')
 
-# Function to compute modulus and argument (angle in degrees) of z = a + bi
+    # Dynamic axes range
+    x_values = [0, a]
+    y_values = [0, b]
+    x_margin = max(1, 0.2 * (max(map(abs, x_values)) + 1))
+    y_margin = max(1, 0.2 * (max(map(abs, y_values)) + 1))
+    ax.set_xlim(min(x_values) - x_margin, max(x_values) + x_margin)
+    ax.set_ylim(min(y_values) - y_margin, max(y_values) + y_margin)
+
+    ax.set_xlabel('Real')
+    ax.set_ylabel('Imaginary')
+    ax.legend(loc='upper left', fontsize=8)
+
+    # Convert to base64 image
+    buf = io.BytesIO()
+    plt.tight_layout()
+    plt.savefig(buf, format='png')
+    buf.seek(0)
+    image_base64 = base64.b64encode(buf.getvalue()).decode('utf-8')
+    buf.close()
+    plt.close()
+
+    return image_base64
+
 def compute_mod_arg(a, b):
-    z = complex(a, b)  # Create complex number
-    modulus = abs(z)  # Modulus = sqrt(a^2 + b^2)
-    argument = math.degrees(cmath.phase(z))  # Argument in degrees
-    return modulus, argument
+    z = complex(a, b)
+    modulus = abs(z)
+    argument = math.degrees(cmath.phase(z))
+    return modulus,argument

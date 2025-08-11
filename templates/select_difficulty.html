@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Difficulty</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1a1a2e;
+            color: #d1d1d1;
+            overflow: hidden;
+        }
+
+        .intro-section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, rgba(26, 26, 46, 1) 70%);
+            z-index: 0;
+            transition: background-position 0.3s ease;
+        }
+
+        .container {
+            background: rgba(42, 42, 68, 0.4);
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 2rem;
+            width: 400px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        h2 {
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-difficulty {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1rem;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-difficulty:hover {
+            background-color: #0056b3;
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="intro-section"></div>
+
+    <div class="container">
+        <h2>Select Difficulty Level</h2>
+        <form method="POST" action="/start_quiz">
+            <button name="difficulty" value="PU" class="btn btn-difficulty">Level-1</button>
+            <button name="difficulty" value="CET" class="btn btn-difficulty">Level-2</button>
+            <button name="difficulty" value="JEE" class="btn btn-difficulty">Level-3</button>
+        </form>
+    </div>
+
+    <script>
+        const introSection = document.querySelector('.intro-section');
+        let currentX = 0.5;
+        let currentY = 0.5;
+        const easeFactor = 0.1;
+
+        document.addEventListener('mousemove', function(e) {
+            const targetX = e.clientX / window.innerWidth;
+            const targetY = e.clientY / window.innerHeight;
+
+            currentX += (targetX - currentX) * easeFactor;
+            currentY += (targetY - currentY) * easeFactor;
+
+            introSection.style.background = `radial-gradient(circle at ${currentX * 100}% ${currentY * 100}%, rgba(255, 215, 0, 0.1) 0%, rgba(26, 26, 46, 1) 70%)`;
+        });
+    </script>
+
+</body>
+</html>

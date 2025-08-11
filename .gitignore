@@ -209,3 +209,4 @@ __marimo__/
 instance/
 .webassets-cache
 service_account.json
+.env

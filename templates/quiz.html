@@ -3,181 +3,266 @@
 <head>
     <meta charset="UTF-8">
     <title>Complex Number Quiz</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            display: flex;
-            height: 100vh;
-            background-color: #f2f2f2;
         }
 
-        .container {
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
             display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1a1a2e;
+            color: #d1d1d1;
+            overflow: hidden;
+        }
+
+        .background-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, rgba(26, 26, 46, 1) 70%);
+            z-index: 0;
+            transition: background-position 0.3s ease;
+        }
+
+        .quiz-container {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            gap: 2rem;
+            z-index: 10;
         }
 
         .quiz-box, .tracker-box {
-            margin: 20px;
-            border-radius: 15px;
-            background-color: white;
-            padding: 30px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: rgba(42, 42, 68, 0.4);
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 2rem;
         }
 
         .quiz-box {
-            width: 75%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            flex: 3;
+            position: relative;
         }
 
         .tracker-box {
-            width: 25%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex: 1;
+            text-align: center;
         }
 
         h2 {
-            margin-top: 0;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
 
-        .tracker-box h3 {
-            margin-bottom: 20px;
+        .question-number {
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 12px;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+        }
+
+        .buttons button {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            color: #fff;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .buttons button:hover {
+            background-color: #0056b3;
         }
 
         .tracker-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 10px;
-            justify-items: center;
         }
 
         .tracker-item {
-            width: 40px;
-            height: 40px;
+            background-color: #dc3545;
+            color: white;
+            font-weight: bold;
             border-radius: 10px;
+            height: 40px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-weight: bold;
-            background-color: #f44336;
-            color: white;
-        }
-
-        .tracker-item.answered {
-            background-color: #4CAF50;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            font-size: 16px;
-        }
-
-        .buttons {
-            margin-top: 20px;
-        }
-
-        button {
-            padding: 10px 20px;
-            margin-right: 10px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
             cursor: pointer;
         }
 
-        button:hover {
-            background-color: #4CAF50;
-        }
-
-        .question-number {
-            font-weight: bold;
-            margin-bottom: 10px;
+        .tracker-item.answered {
+            background-color: #28a745;
         }
 
         .results {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 10px;
+            margin-top: 2rem;
         }
 
-        /* Exit Link Styling */
-        .exit-link {
+        .btn-secondary, .exit-link {
+            margin-top: 10px;
             display: inline-block;
-            margin-top: 15px;
-            font-size: 14px;
-            background-color: #1f2937;
+            padding: 10px 20px;
+            background-color: #343a40;
             color: white;
-            padding: 8px 14px;
+            border-radius: 8px;
             text-decoration: none;
-            border-radius: 6px;
             font-weight: 500;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            transition: background-color 0.3s ease;
         }
 
-        .exit-link:hover {
-            background-color: #111827;
+        .btn-secondary:hover, .exit-link:hover {
+            background-color: #1c1f23;
+        }
+
+        #timer {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-weight: bold;
+            color: #e74c3c;
+            font-size: 1.2em;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Quiz Section -->
-        <div class="quiz-box">
-            <form method="POST">
-                <div class="question-number">
-                    Question {{ index + 1 }} of {{ total }}
-                </div>
-                <h2>{{ question }}</h2>
-                <input type="text" name="answer" placeholder="Enter answer (e.g., 2+3j or 2+3i)" value="{{ answer }}">
-                <input type="hidden" name="correct_answer" value="{{ correct_answer }}">
+<div class="background-layer"></div>
 
-                <div class="buttons">
-                    {% if index > 0 %}
-                    <button type="submit" name="action" value="prev">Previous</button>
-                    {% endif %}
-                    {% if index < total - 1 %}
-                    <button type="submit" name="action" value="next">Next</button>
-                    {% endif %}
-                    {% if index == total - 1 and not submitted %}
-                    <button type="submit" name="action" value="submit">Submit</button>
-                    {% endif %}
-                </div>
+<div class="quiz-container">
+    <div class="quiz-box">
+        {% if not submitted %}
+        <div id="timer"></div>
+        <script>
+            let secondsLeft = {{ time_remaining|default(0)|int }};
+            function pad(num) { return num < 10 ? '0' + num : num; }
+            function updateTimer() {
+                if (secondsLeft <= 0) {
+                    document.getElementById('timer').innerHTML = "Time's up!";
+                    let form = document.getElementById('quiz-main-form');
+                    if (form && !document.getElementById('submitTimerAuto')) {
+                        let input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = 'action';
+                        input.value = 'submit';
+                        input.id = 'submitTimerAuto';
+                        form.appendChild(input);
+                        form.submit();
+                    }
+                    return;
+                }
+                let min = Math.floor(secondsLeft / 60);
+                let sec = secondsLeft % 60;
+                document.getElementById('timer').innerHTML = "Time left: " + pad(min) + ":" + pad(sec);
+                secondsLeft--;
+                setTimeout(updateTimer, 1000);
+            }
+            window.onload = updateTimer;
+        </script>
+        {% endif %}
+
+        <form method="POST" id="quiz-main-form">
+            <div class="question-number">Question {{ index + 1 }} of {{ total }}</div>
+            <h2>{{ question|default('') }}</h2>
+            <input type="text" name="answer" class="form-control" placeholder="Enter answer (e.g., 2+3j or 2+3i)" value="{{ answer|default('') }}">
+            <input type="hidden" name="correct_answer" value="{{ correct_answer|default('') }}">
+            <input type="hidden" name="jump_to_index" id="jump_to_index">
+            <input type="hidden" name="action" id="action" value="">
+
+            <div class="buttons">
+                {% if index > 0 %}
+                <button type="submit" onclick="setAction('prev')">Previous</button>
+                {% endif %}
+                {% if index < total - 1 %}
+                <button type="submit" onclick="setAction('next')">Next</button>
+                {% endif %}
+                {% if index == total - 1 and not submitted %}
+                <button type="submit" onclick="setAction('submit')">Submit</button>
+                {% endif %}
+            </div>
+        </form>
+
+        {% if submitted %}
+        <div class="results">
+            <h4 class="text-warning">Quiz Completed</h4>
+            <form action="/quiz-result" method="get" style="display:inline;">
+                <button type="submit" class="btn btn-primary">RESULT</button>
             </form>
-
-            {% if submitted %}
-            <div class="results">
-                <h3>Results</h3>
-                <p>Correct Answers: {{ correct }}</p>
-                <p>Incorrect Answers: {{ incorrect }}</p>
-                <form method="post">
-                    <button type="submit" name="action" value="reset">Start New Quiz</button>
-                </form>
-                <!-- Exit link after quiz is done -->
-                <a href="/home" class="exit-link">Exit</a>
-            </div>
-            {% endif %}
+            <form method="post" style="display:inline;">
+                <button type="submit" name="action" value="reset" class="btn btn-secondary">Start New Quiz</button>
+            </form>
+            <a href="/home" class="exit-link">Exit</a>
         </div>
+        {% endif %}
+    </div>
 
-        <!-- Tracker Section -->
-        <div class="tracker-box">
-            <h3>Progress</h3>
-            <div class="tracker-grid">
-                {% for i in range(total) %}
-                    <div class="tracker-item {% if answers[i] %}answered{% endif %}">{{ i + 1 }}</div>
-                {% endfor %}
+    <div class="tracker-box">
+        <h4 class="text-light mb-3">Progress</h4>
+        <div class="tracker-grid">
+            {% for i in range(total) %}
+            <div class="tracker-item {% if answers|default([])|length > i and answers[i] %}answered{% endif %}"
+                 onclick="jumpToQuestion({{ i }})">
+                {{ i + 1 }}
             </div>
+            {% endfor %}
         </div>
     </div>
+</div>
+
+<script>
+    function jumpToQuestion(index) {
+        document.getElementById("jump_to_index").value = index;
+        document.getElementById("action").value = "jump";
+        document.getElementById("quiz-main-form").submit();
+    }
+
+    function setAction(actionValue) {
+        document.getElementById("action").value = actionValue;
+    }
+
+    const bg = document.querySelector('.background-layer');
+    let currentX = 0.5, currentY = 0.5;
+    const easeFactor = 0.1;
+
+    document.addEventListener('mousemove', function (e) {
+        const targetX = e.clientX / window.innerWidth;
+        const targetY = e.clientY / window.innerHeight;
+        currentX += (targetX - currentX) * easeFactor;
+        currentY += (targetY - currentY) * easeFactor;
+        bg.style.background = `radial-gradient(circle at ${currentX * 100}% ${currentY * 100}%, rgba(255, 215, 0, 0.1) 0%, rgba(26, 26, 46, 1) 70%)`;
+    });
+</script>
 </body>
 </html>
