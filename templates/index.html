@@ -167,6 +167,19 @@
         gap: 1.5rem;
       }
     }
+.study-column .content-section {
+  background: rgba(255, 215, 0, 0.08); /* light gold tint */
+  border: 2px solid #ffd700; /* gold border */
+  border-radius: 10px;
+  padding: 1.2rem;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.3); /* glowing effect */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.study-column .content-section:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.45);
+}
 
     /* Removed vertical stacking of navbar items on small screens */
     @media(max-width: 768px) {
@@ -179,34 +192,48 @@
       }
     }
 
-    .cheatsheet-block ul li {
-      margin-bottom: 8px;
-    }
-
-    .cheatsheet-block pre {
-  font-size: 1rem;  /* adjust size as needed */
-  line-height: 2;    /* keeps it readable */
-}
+    /* Ensure formula sheet, key properties, and uses are fully left-aligned */
 .cheatsheet-block {
-  font-size: 1rem;
+  text-align: left;
+  position: relative;
+  left: 0; /* removes the -40px shift on large screens */
 }
 
-    @media (min-width: 992px) {
-      .cheatsheet-block {
+.cheatsheet-block pre {
+  text-align: left;
+  white-space: pre-wrap;  /* allows wrapping instead of overflowing */
+  margin-left: 0;         /* removes any unintended indent */
+}
+
+.cheatsheet-block ul {
+  padding-left: 1.2rem;   /* keep bullets spaced nicely */
+  margin-left: 0;
+  text-align: left;
+}
+
+/* Reduce side padding so content hugs left edge more */
+.content-container {
+  padding-left: 2%;
+  padding-right: 8%; /* keep right padding for readability */
+}
+
+@media (min-width: 992px) {
+  .study-column {
+    position: relative;
+    left: 40px; /* keep gold box offset */
+  }
+  .cheatsheet-block {
         position: relative;
         left: -40px;
       }
 
-      .study-column {
-        position: relative;
-        left: 40px;
-      }
-    }
+}
 
     /* Smooth scrolling for anchor links */
     html {
       scroll-behavior: smooth;
     }
+    
 
     /* ----------------------------
        Floating circular Back-to-Top
@@ -296,7 +323,7 @@
 
 <!-- Secondary Navbar -->
 <nav class="topbar topbar-secondary">
-  <div class="d-flex justify-content-end align-items-center w-100 gap-3 flex-wrap">
+  <div class="d-flex justify-content-end align-items-center w-100 gap-3 flex-wrap" id="quiz">
     <span class="fw-light">Take quizzes to test your understanding.</span>
     
     {% if session.user %}
@@ -366,7 +393,7 @@
         <!-- Study Further (moves to top on mobile) -->
         <div class="col-lg-4 order-1 order-lg-2 study-column">
             <div class="content-section">
-                <h5>Study Further</h5>
+                <h5>Complex Number Missions:</h5>
                 {% set modules = [
                     {'name':'Argand Plotter','link':'argand'},
                     {'name':'Complex Operations','link':'operations'},
@@ -376,11 +403,12 @@
                     {'name':'Roots of Unity','link':'roots'}
                 ] %}
                 <ul class="study-list">
-                    <li><a href="#key-properties">Key Properties</a></li>
-                    <li><a href="#uses-complex">Uses of Complex Numbers</a></li>
-                    {% for m in modules %}
+                  {% for m in modules %}
                         <li><a href="{{ url_for(m.link) }}">{{ m.name }}</a></li>
                     {% endfor %}
+                    <li><a href="#key-properties">Key Properties</a></li>
+                    <li><a href="#uses-complex">Uses of Complex Numbers</a></li>
+                    <li><a href="#quiz">Quiz</a></li>
                 </ul>
               </div>
         </div>
