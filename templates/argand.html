@@ -1,5 +1,4 @@
-<!-- Starting with updated 'argand.html' in Super Hello style -->
-<!-- Styles are inline as requested -->
+<!-- Argand Plane Plotter with Applications & Inferences -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,77 +7,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
+    :root {
+      --primary-color: #fde047;
+      --secondary-color: #facc15;
+      --dark-bg: #1a1a2e;
+      --text-color: #e0e0e0;
+      --card-bg: rgba(255, 255, 255, 0.98);
+      --heading-color: #0f3460;
+    }
+
     body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            background: radial-gradient( rgba(26, 26, 46, 1) 40%);
-            color: #fff;
-            padding: 1rem 2rem;
-            min-height: 400px;
-            border-bottom: 1px solid #2a2a44;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      margin: 0;
+      background-color: var(--dark-bg);
+      color: var(--text-color);
+      padding: 1.5rem;
     }
 
     h1 {
       text-align: center;
       font-weight: 800;
-      margin-bottom: 30px;
+      margin-bottom: 2rem;
+      color: var(--primary-color);
+      text-shadow: 0 0 15px rgba(253, 224, 71, 0.6);
     }
 
     .card {
-      background-color: #ffffffcc;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-      border: 2px solid black;
+      background-color: var(--card-bg);
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
       padding: 20px;
       height: 100%;
+      color: #111;
     }
 
-    h3, h4 {
-      font-weight: 800;
-    }
-
-    label {
-      font-weight: 600;
-    }
-
-    .form-control, .btn-primary {
-      border-radius: 12px;
-    }
+    h3, h4 { font-weight: 800; color: var(--heading-color); }
 
     .btn-primary {
-      background-color: #facc15;
+      background-color: var(--secondary-color);
       color: black;
       border: 2px solid black;
       font-weight: 600;
+      border-radius: 12px;
     }
-
     .btn-primary:hover {
-      background-color: #fde047;
+      background-color: var(--primary-color);
     }
 
-    img {
+    img.plot-image {
       max-width: 100%;
-      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
 
-    ul {
-      padding-left: 20px;
+    /* Applications Section */
+    .applications-section {
+      background-color: #0d0f24;
+      padding: 2rem;
+      border-radius: 15px;
+      margin-top: 3rem;
+    }
+    .app-card {
+      background-color: #14172d;
+      border-radius: 12px;
+      padding: 1.5rem;
+      height: 100%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .app-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+    }
+    .app-icon {
+      font-size: 2rem;
+      color: #ffd54f;
+      margin-bottom: 1rem;
+    }
+    .app-title {
+      color: #ffd54f;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .app-card p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.95rem;
+      line-height: 1.5;
     }
 
-    /* Layout */
-    .main-layout {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .left-panel,
-    .center-panel,
-    .right-panel {
-      flex: 1 1 30%;
-    }
-
+    /* Exit Link */
     .exit-link {
       position: fixed;
       bottom: 20px;
@@ -94,32 +111,21 @@
       transition: background-color 0.3s ease;
       z-index: 999;
     }
-
     .exit-link:hover {
       background-color: #111827;
-    }
-
-    @media screen and (max-width: 1000px) {
-      .main-layout {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .left-panel,
-      .center-panel,
-      .right-panel {
-        width: 100%;
-      }
     }
   </style>
 </head>
 <body>
-<h1>Argand Plotter</h1>
-<div class="container vh-100-center">
-  <div class="row w-100 g-4">
+
+<h1>Argand Plane Plotter</h1>
+
+<div class="container">
+  <div class="row g-4">
+    <!-- LEFT PANEL: Form -->
     <div class="col-lg-4">
-      <div class="card p-4">
-        <h3 class="mb-3 text-center">Plot a Complex Number</h3>
+      <div class="card">
+        <h3 class="text-center mb-3">Plot a Complex Number</h3>
         <form method="POST">
           <div class="mb-3">
             <label for="real" class="form-label">Real Part (a):</label>
@@ -144,20 +150,11 @@
               <label class="form-check-label">Show Argument</label>
             </div>
           </div>
-          <div class="mb-3">
-            <label class="form-label">Try Example:</label>
-            <select class="form-select" onchange="fillExample(this.value)">
-              <option selected disabled>Select</option>
-              <option value="3,4">3 + 4i</option>
-              <option value="-2,2">-2 + 2i</option>
-              <option value="1,-1">1 - i</option>
-              <option value="0,5">0 + 5i</option>
-            </select>
-          </div>
           <div class="text-center mt-3">
             <button type="submit" class="btn btn-primary px-5">Plot</button>
           </div>
         </form>
+
         {% if result %}
         <div class="mt-4">
           {% if result.error %}
@@ -173,47 +170,73 @@
         {% endif %}
       </div>
     </div>
+
+    <!-- CENTER PANEL: Plot -->
     <div class="col-lg-4">
-      <div class="card p-4">
-        <h4 class="mb-3 text-center">Argand Plot</h4>
+      <div class="card text-center">
+        <h4>Argand Plot</h4>
         {% if plot_url %}
           <a href="#" data-bs-toggle="modal" data-bs-target="#plotModal">
-            <img src="data:image/png;base64,{{ plot_url }}" alt="Argand Diagram" class="img-fluid" style="cursor: zoom-in;" />
+            <img src="data:image/png;base64,{{ plot_url }}" alt="Argand Diagram" class="plot-image" style="cursor: zoom-in;" />
           </a>
         {% else %}
-          <p class="text-muted text-center">Submit values to see the plot.</p>
+          <p class="text-muted">Submit values to see the plot.</p>
         {% endif %}
       </div>
     </div>
+
+    <!-- RIGHT PANEL: Understanding the Plot -->
     <div class="col-lg-4">
-      <div class="card p-4">
-        <h4 class="text-center mb-3 text-center">Learn</h4>
+      <div class="card">
+        <h4>📘 Understanding Your Point</h4>
+        <p><b>a</b> → real part = steps forward/backward (x-axis).</p>
+        <p><b>b</b> → imaginary part = steps sideways into new territory (y-axis).</p>
+        <p>Instead of living only on a line, complex numbers live on a <b>plane</b> — that’s the Argand plane, where each point has both direction and distance from the origin.</p>
         <ul>
-          <li><strong>z = a + bi:</strong> a: Real, b: Imaginary</li>
-          <li><strong>Modulus:</strong> |z| = √(a² + b²)</li>
-          <li><strong>Argument:</strong> Angle between z and the real axis</li>
-          <li><strong>Conjugate:</strong> z̅ = a − bi</li>
-          <li><strong>Plot:</strong> x-axis = real, y-axis = imaginary</li>
+          <li><b>Modulus</b> → distance from origin.</li>
+          <li><b>Argument</b> → direction from origin.</li>
+          <li><b>Conjugate</b> → reflection across real axis.</li>
         </ul>
-        <small class="text-muted">Master these to fully understand complex vectors.</small>
       </div>
     </div>
   </div>
 </div>
-<script>
-  function fillExample(val) {
-    const [a, b] = val.split(',');
-    document.getElementById('real').value = a;
-    document.getElementById('imag').value = b;
-  }
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- REAL-WORLD APPLICATIONS -->
+<section class="applications-section">
+  <h4 class="text-center mb-5" style="color: #e0e0e0;">🔍 Real-World Applications of Argand Plots</h4>
+  <div class="row g-4">
+    <div class="col-lg-4 col-md-6">
+      <div class="app-card text-center">
+        <div class="app-icon">🔌</div>
+        <h5 class="app-title">Electrical Engineering</h5>
+        <p>Used in AC circuit analysis, phasor diagrams, and impedance calculations for better power efficiency.</p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <div class="app-card text-center">
+        <div class="app-icon">🧭</div>
+        <h5 class="app-title">Navigation</h5>
+        <p>Complex numbers help plot directions & distances — perfect for ship and aircraft route planning.</p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <div class="app-card text-center">
+        <div class="app-icon">⚛</div>
+        <h5 class="app-title">Quantum Mechanics</h5>
+        <p>Wave functions are represented using complex numbers, with Argand diagrams aiding in visualization.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
 <div class="modal fade" id="plotModal" tabindex="-1" aria-labelledby="plotModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered">
     <div class="modal-content rounded-4 shadow-lg">
       <div class="modal-header">
         <h5 class="modal-title" id="plotModalLabel">Full View of Argand Diagram</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body text-center">
         {% if plot_url %}
@@ -223,26 +246,16 @@
     </div>
   </div>
 </div>
-<a href="/home" class="exit-link">Exit</a>
-<style>
-  .exit-link {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    font-size: 13px;
-    background-color: #1f2937;
-    color: white;
-    padding: 8px 14px;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 500;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    transition: background-color 0.3s ease;
-    z-index: 999;
+
+<a href="/" class="exit-link">Exit</a>
+
+<script>
+  function fillExample(val) {
+    const [a, b] = val.split(',');
+    document.getElementById('real').value = a;
+    document.getElementById('imag').value = b;
   }
-  .exit-link:hover {
-    background-color: #111827;
-  }
-</style>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

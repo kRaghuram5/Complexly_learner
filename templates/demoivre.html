@@ -1,84 +1,160 @@
-<!-- Updated 'demovrie.html' styled inline like "Super Hello" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>De Moivre’s Theorem Visualizer</title>
+  <title>De Moivre's Theorem Visualizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    html, body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      background: radial-gradient(rgba(26, 26, 46, 1) 40%);
-      color: black;
-      padding: 1rem 2rem;
-      min-height: 400px;
-      border-bottom: 1px solid #2a2a44;
+    :root {
+      --primary-color: #a78bfa; /* Light Purple */
+      --secondary-color: #7c3aed; /* Deeper Purple */
+      --accent-color: #3b82f6; /* Blue */
+      --dark-bg: #0d1117;
+      --card-bg: rgba(22, 27, 34, 0.7);
+      --card-border: rgba(255, 255, 255, 0.15);
+      --text-color: #c9d1d9;
+      --text-muted-color: #8b949e;
+      --heading-color: #f0f6fc;
     }
-    h2 {
+
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background-color: var(--dark-bg);
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0);
+      background-size: 30px 30px;
+      color: var(--text-color);
+      padding: 2rem;
+    }
+
+    .main-title {
       text-align: center;
-      margin: 40px 0 30px;
-      font-size: 2rem;
-      font-weight: 800;
-      color:white;
-    }
-    .layout {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 30px;
-      flex-grow: 1;
-      padding: 0 40px 40px;
-      box-sizing: border-box;
-    }
-    .form-container,
-    .graph,
-    .explanation {
-      background-color: #fff;
-      padding: 20px;
-      border: 2px solid black;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-    }
-    .form-container {
-      width: 20%;
-    }
-    .graph {
-      width: 40%;
-      text-align: center;
-    }
-    .explanation {
-      width: 35%;
-    }
-    form label {
-      font-weight: bold;
-    }
-    input {
-      margin-top: 5px;
-      margin-bottom: 15px;
-      padding: 8px;
-      width: 100%;
-      border-radius: 10px;
-      border: 1.5px solid #888;
-      box-sizing: border-box;
-    }
-    button {
-      padding: 10px 16px;
-      background-color: #facc15;
-      color: black;
-      font-weight: 600;
-      border: 2px solid black;
-      border-radius: 10px;
-      cursor: pointer;
-      width: 100%;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #fde047;
-    }
-    .explanation h3, .graph h3 {
-      margin-top: 0;
-      font-size: 1.2rem;
       font-weight: 700;
+      margin-bottom: 3rem;
+      color: var(--primary-color);
+      text-shadow: 0 0 15px rgba(167, 139, 250, 0.5);
+      font-size: 2.5rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 15px;
+      padding: 25px;
+      height: 100%;
+      color: var(--text-color);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+    
+    .card-header {
+        background: none;
+        border-bottom: 1px solid var(--card-border);
+        padding-left: 0;
+        padding-right: 0;
+        color: var(--heading-color);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn-primary {
+      background-color: var(--secondary-color);
+      border: none;
+      font-weight: 600;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-color);
+      color: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(124, 58, 237, 0.4);
+    }
+
+    img.plot-image {
+      max-width: 100%;
+      margin-top: 15px;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+    }
+
+    /* Tab Styling */
+    .nav-tabs {
+        border-bottom: 1px solid var(--card-border);
+    }
+    .nav-tabs .nav-link {
+        background: transparent;
+        border: none;
+        color: var(--text-muted-color);
+    }
+    .nav-tabs .nav-link.active {
+        background-color: rgba(59, 130, 246, 0.1);
+        color: var(--accent-color);
+        border-bottom: 2px solid var(--accent-color);
+    }
+    
+    .form-label {
+        color: var(--text-muted-color);
+        font-size: 0.9rem;
+    }
+    
+    .form-control {
+        background-color: rgba(13, 17, 23, 0.8);
+        border: 1px solid var(--card-border);
+        color: var(--text-color);
+    }
+    .form-control:focus {
+        background-color: #0d1117;
+        color: var(--text-color);
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 .25rem rgba(59, 130, 246, 0.25);
+    }
+    
+    .results-area {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background-color: rgba(13, 17, 23, 0.5);
+        border-radius: 8px;
+    }
+    .results-area h6 {
+        color: var(--accent-color);
+    }
+    .results-area p {
+        font-family: 'Fira Code', 'Courier New', monospace;
+        font-size: 0.95rem;
+        word-wrap: break-word;
+        margin-bottom: 0.5rem;
+    }
+
+    .explanation-card h4, .explanation-card h5 { font-weight: 600; color: var(--primary-color); margin-bottom: 0.75rem; }
+    .formula {
+        background: rgba(0,0,0,0.3);
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 3px solid var(--accent-color);
+        margin: 1rem 0;
+        font-size: 1.05rem;
+        overflow-x: auto;
+    }
+    .explanation-card ul li, .explanation-card ol li { margin-bottom: 0.5rem; }
+
+    .placeholder-text {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: var(--text-muted-color);
+    }
+
+    .application-card h6 {
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+
+    .application-card p {
+        color: var(--text-muted-color);
+        font-size: 0.95rem;
     }
     .exit-link {
       position: fixed;
@@ -99,32 +175,233 @@
       background-color: #111827;
     }
   </style>
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$']] } };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-  <h2>De Moivre’s Theorem: zⁿ = [r(cosθ + i·sinθ)]ⁿ</h2>
-  <div class="layout">
-    <div class="form-container">
-      <form method="post" action="/demoivre">
-        <label>Magnitude (r):</label><br>
-        <input type="number" name="r" step="0.1" required value="{{ request.form.r or '' }}"><br>
-        <label>Angle (θ in degrees):</label><br>
-        <input type="number" name="theta" step="1" required value="{{ request.form.theta or '' }}"><br>
-        <label>Power (n):</label><br>
-        <input type="number" name="n" min="1" required value="{{ request.form.n or '' }}"><br>
-        <button type="submit">Visualize</button>
-      </form>
+
+  <div class="container-fluid">
+    <h1 class="main-title">De Moivre's Theorem Visualizer</h1>
+
+    <div class="row g-4">
+      <div class="col-lg-3">
+        <div class="card">
+            <div class="card-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2.5.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m-5-4a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m1.5.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m-1.5 1.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zM4.5 2a1.5 1.5 0 0 0-1.5 1.5v11A1.5 1.5 0 0 0 4.5 16h7a1.5 1.5 0 0 0 1.5-1.5v-11A1.5 1.5 0 0 0 11.5 2z"/></svg>
+                Controls & Results
+            </div>
+            <div class="card-body">
+            <form method="post" action="/demoivre">
+                <input type="hidden" name="input_type" id="input_type" value="{{ input_type or 'polar' }}">
+                
+                <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link {% if input_type == 'polar' or not input_type %}active{% endif %}" id="nav-polar-tab" data-bs-toggle="tab" data-bs-target="#nav-polar" type="button" role="tab">Polar</button>
+                    <button class="nav-link {% if input_type == 'cartesian' %}active{% endif %}" id="nav-cartesian-tab" data-bs-toggle="tab" data-bs-target="#nav-cartesian" type="button" role="tab">Cartesian</button>
+                </div>
+                </nav>
+                <div class="tab-content pt-3" id="nav-tabContent">
+                <div class="tab-pane fade {% if input_type == 'polar' or not input_type %}show active{% endif %}" id="nav-polar" role="tabpanel">
+                    <div class="mb-3">
+                        <label for="r" class="form-label">Magnitude (r)</label>
+                        <input type="number" class="form-control" name="r" step="any" required value="{{ r or '1.0' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="theta" class="form-label">Angle (θ in degrees)</label>
+                        <input type="number" class="form-control" name="theta" step="any" required value="{{ theta_deg or '45' }}">
+                    </div>
+                </div>
+                <div class="tab-pane fade {% if input_type == 'cartesian' %}show active{% endif %}" id="nav-cartesian" role="tabpanel">
+                    <div class="mb-3">
+                        <label for="a" class="form-label">Real part (a)</label>
+                        <input type="number" class="form-control" name="a" step="any" required value="{{ a or '1.0' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="b" class="form-label">Imaginary part (b)</label>
+                        <input type="number" class="form-control" name="b" step="any" required value="{{ b or '1.0' }}">
+                    </div>
+                </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="n" class="form-label">Power (n)</label>
+                    <input type="number" class="form-control" name="n" min="1" required value="{{ n or '3' }}">
+                </div>
+                
+                <button type="submit" class="btn btn-primary w-100">Visualize</button>
+            </form>
+
+            {% if plot_data %}
+            <div class="results-area">
+                <h6>Calculation Complete</h6>
+                <p><strong>Polar:</strong> {{ polar_result }}</p>
+                <p><strong>Cartesian:</strong> {{ cartesian_result }}</p>
+            </div>
+            {% endif %}
+            </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="card text-center">
+            <div class="card-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M10 1.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h.5v.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-.5v-.5zM9.5 2H2v7.5h7.5zM1.5 3H1v.5a.5.5 0 0 0 .5.5H2v.5H1.5a.5.5 0 0 0-.5.5H1v.5h.5a.5.5 0 0 0 .5-.5H2v.5h-.5a.5.5 0 0 0-.5.5H1v.5h.5a.5.5 0 0 0 .5-.5H2v.5H1.5a.5.5 0 0 0-.5.5H1v.5h.5a.5.5 0 0 0 .5-.5h.5v-1A.5.5 0 0 0 1.5 9H1V3zm14 1.5V14h-.5a.5.5 0 0 0-.5.5v.5h-1a.5.5 0 0 0-.5.5v.5h-1a.5.5 0 0 0-.5.5v.5h-1a.5.5 0 0 0-.5.5v.5h-7a.5.5 0 0 0-.5.5H3v.5h.5a.5.5 0 0 0 .5-.5h.5v-1A.5.5 0 0 0 4 14H3v-1h.5a.5.5 0 0 0 .5-.5h.5v-1a.5.5 0 0 0-.5-.5H3v-1h.5a.5.5 0 0 0 .5-.5H4v-1h.5a.5.5 0 0 0 .5-.5h.5V9h.5a.5.5 0 0 0 .5.5h.5V9h.5a.5.5 0 0 0 .5.5H8v.5h.5a.5.5 0 0 0 .5.5H9v.5h.5a.5.5 0 0 0 .5.5h.5v.5h.5a.5.5 0 0 0 .5.5h.5v.5h.5a.5.5 0 0 0 .5.5H12v.5h.5a.5.5 0 0 0 .5.5h.5v.5h.5a.5.5 0 0 0 .5.5H14v.5h.5a.5.5 0 0 0 .5-.5V4.5z"/></svg>
+                Argand Plane Visualization
+            </div>
+            <div class="card-body d-flex align-items-center justify-content-center">
+            {% if plot_data %}
+                <img src="data:image/png;base64,{{ plot_data }}" alt="De Moivre Visualization" class="plot-image">
+            {% else %}
+                <div class="placeholder-text">
+                <h5>The stage is set...</h5>
+                <p>Enter your complex number and power on the left, then click "Visualize" to see the magic happen here.</p>
+                </div>
+            {% endif %}
+            </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card explanation-card">
+            <div class="card-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/><path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5"/></svg>
+                Theory & Explanation
+            </div>
+            <div class="card-body">
+            {% if plot_data %}
+                <h5>De Moivre's Theorem</h5>
+                <p>The theorem states that for a complex number $z = r(\cos\theta + i\sin\theta)$, raising it to the power $n$ gives:</p>
+                <div class="formula">$z^n = r^n(\cos(n\theta) + i\sin(n\theta))$</div>
+
+                <h5 class="mt-4">Visual Interpretation</h5>
+                <p>The plot shows each successive power as a new color-coded vector. You can see how the vector's length scales by $r^n$ and its angle rotates by $\theta$ at each step, spiraling outwards or inwards towards the final result.</p>
+            {% else %}
+                <h4>What is De Moivre's Theorem?</h4>
+                <p>De Moivre's Theorem connects complex numbers with trigonometry by describing how exponentiation affects a complex number's polar form.</p>
+                
+                <div class="formula">$[r(\cos\theta + i\sin\theta)]^n = r^n(\cos(n\theta) + i\sin(n\theta))$</div>
+                
+                <p>Where:</p>
+                <ul>
+                    <li><b>$z$</b> is a complex number</li>
+                    <li><b>$r$</b> is the magnitude (distance from origin)</li>
+                    <li><b>$\theta$</b> is the angle (argument)</li>
+                    <li><b>$n$</b> is the exponent</li>
+                </ul>
+                
+                <h5 class="mt-4">Geometric Interpretation</h5>
+                <p>Raising a complex number to a power $n$ has two clear geometric effects:</p>
+                <ol>
+                    <li><b>Scaling:</b> The vector's length (magnitude) is raised to the power of $n$. ($r \rightarrow r^n$)</li>
+                    <li><b>Rotation:</b> The vector's angle is multiplied by $n$. ($θ \rightarrow nθ$)</li>
+                </ol>
+            {% endif %}
+            </div>
+        </div>
+      </div>
     </div>
-    {% if plot_data %}
-    <div class="graph">
-      <h3>{{ n }}-th Power of Complex Number</h3>
-      <img src="data:image/png;base64,{{ plot_data }}" alt="De Moivre Plot" width="100%">
+
+    <div class="row mt-4">
+        <div class="col">
+            <div class="card application-card">
+                 <div class="card-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M4.5 5.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m-2-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5M14 2a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zM2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2z"/></svg>
+                    Applications
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h6>Finding Roots of Complex Numbers</h6>
+                            <p>A variation of the theorem is essential for finding the $n$-th roots of any complex number. It shows that there are exactly $n$ distinct roots, which form the vertices of a regular $n$-sided polygon on the complex plane. This is fundamental to solving polynomial equations.</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6>Deriving Trigonometric Identities</h6>
+                            <p>By expanding $(\cos\theta + i\sin\theta)^n$ using the Binomial Theorem and then equating the real and imaginary parts with the result from De Moivre's Theorem ($\cos(n\theta) + i\sin(n\theta)$), one can derive complex and useful identities for $\cos(n\theta)$ and $\sin(n\theta)$.</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6>Electrical Engineering</h6>
+                            <p>In AC circuit analysis, voltages and currents are represented as phasors (vectors in the complex plane). De Moivre's theorem is used to analyze the behavior of circuits with multiple components, simplifying calculations involving phase shifts and impedance.</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6>Fractals and Signal Processing</h6>
+                            <p>The theorem's principles are seen in the generation of fractals like the Mandelbrot set, which involves repeatedly raising complex numbers to a power. It also has connections to the Fast Fourier Transform (FFT), an algorithm vital for digital signal processing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <div class="row mt-4">
+        <div class="col">
+            <div class="card application-card">
+                 <div class="card-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M1 2.5a.5.5 0 0 1 .5-.5H3a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H1.5a.5.5 0 0 1-.5-.5zM3 2a1 1 0 0 0-1-1H1.5a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1H3a1 1 0 0 0 1-1zM13 14.5a.5.5 0 0 1-.5.5h-1.5a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 .5.5zM13 2a1 1 0 0 0-1-1h-1.5a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1H13a1 1 0 0 0 1-1zM8 6.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m0 3a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-3.5-.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/></svg>
+                    Worked Example: Two Methods, One Solution
+                </div>
+                <div class="card-body">
+                    <p>Let's calculate $(3+4i)^2$. Both standard algebra and De Moivre's Theorem should give the same answer.</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="mt-3">Method 1: Algebraic Expansion</h6>
+                            <p>Using the formula $(a+b)^2 = a^2 + 2ab + b^2$:</p>
+                            <div class="formula">
+                                $(3 + 4i)^2 = 3^2 + 2(3)(4i) + (4i)^2$ <br>
+                                $= 9 + 24i + 16i^2$ <br>
+                                $= 9 + 24i - 16 \quad (i^2 = -1)$ <br>
+                                $\mathbf{= -7 + 24i}$
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="mt-3">Method 2: De Moivre's Theorem</h6>
+                            <p>First, convert $3+4i$ to polar form, apply the theorem, then convert back.</p>
+                            <div class="formula">
+                                <b>1. To Polar:</b><br>
+                                $r = \sqrt{3^2 + 4^2} = 5$ <br>
+                                $\theta = \arctan(4/3) \approx 53.13°$ <br>
+                                <b>2. Apply Theorem:</b><br>
+                                $z^2 = 5^2(\cos(2 \cdot 53.13°) + i\sin(2 \cdot 53.13°))$ <br>
+                                $z^2 = 25(\cos(106.26°) + i\sin(106.26°))$ <br>
+                                <b>3. To Cartesian:</b><br>
+                                $a = 25 \cdot (-0.28) \approx -7$ <br>
+                                $b = 25 \cdot (0.96) \approx 24$ <br>
+                                $\mathbf{z^2 \approx -7 + 24i}$
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center mt-3">As you can see, both methods yield the same result! De Moivre's theorem is especially useful for higher powers (like $n=7$ or $n=10$) where algebraic expansion becomes extremely tedious.</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="explanation">
-      <h3>Explanation</h3>
-      {{ explanation | safe }}
-    </div>
-    {% endif %}
   </div>
-  <a href="/home" class="exit-link">Exit</a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Handles switching the input type for the form
+    const tabButtons = document.querySelectorAll('.nav-tabs .nav-link');
+    const inputTypeField = document.getElementById('input_type');
+    const polarInputs = document.querySelectorAll('#nav-polar input');
+    const cartesianInputs = document.querySelectorAll('#nav-cartesian input');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const isPolar = event.target.id === 'nav-polar-tab';
+            inputTypeField.value = isPolar ? 'polar' : 'cartesian';
+            
+            polarInputs.forEach(input => input.required = isPolar);
+            cartesianInputs.forEach(input => input.required = !isPolar);
+        });
+    });
+
+    // Ensure correct 'required' attributes are set on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const isInitiallyPolar = inputTypeField.value === 'polar';
+        polarInputs.forEach(input => input.required = isInitiallyPolar);
+        cartesianInputs.forEach(input => input.required = !isInitiallyPolar);
+    });
+  </script>
+  <a href="/" class="exit-link">Exit</a>
 </body>
 </html>

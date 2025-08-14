@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Complete Visual Guide to Complex Numbers</title>
+    <style>
+        body {
+            background: #fafafa;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .intro-section {
+            line-height: 1.6;
+            max-width: 950px;
+            margin: auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            font-size: 2.4em;
+            margin-bottom: 15px;
+        }
+        h2 {
+            margin-top: 30px;
+            border-bottom: 2px solid #c0392b;
+            padding-bottom: 5px;
+        }
+        strong {
+            color: #c0392b;
+        }
+        .highlight-box {
+            background: #f9f9f9;
+            border-left: 5px solid #c0392b;
+            padding: 10px 15px;
+            margin: 20px 0;
+        }
+        .math-box {
+            background: #eef6ff;
+            border: 1px solid #d0e6ff;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            white-space: pre-line;
+        }
+        .image-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+        .image-container img {
+            max-width: 80%;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        .note {
+            font-style: italic;
+            color: #555;
+        }
+        .exit-link {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 13px;
+      background-color: #1f2937;
+      color: white;
+      padding: 8px 14px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+      z-index: 999;
+    }
+    .exit-link:hover {
+      background-color: #111827;
+    }
+    </style>
+</head>
+<body>
+
+<section class="intro-section">
+    <h1>The Complete Visual Guide to Complex Numbers</h1>
+
+    <h2>Origins: Solving the Impossible</h2>
+    <p>
+        For centuries, numbers lived comfortably on the <strong>real number line</strong>.
+        But in the <strong>16th century</strong>, Italian mathematician <strong>Gerolamo Cardano</strong> stumbled upon a mystery while solving cubic equations:
+        certain solutions required taking the <em>square root of a negative number</em>.
+    </p>
+
+    <div class="highlight-box">
+        The equation <strong>x² + 1 = 0</strong> has no real solution because no real number squared equals <strong>–1</strong>.
+    </div>
+
+    <p>
+        Rather than discard the problem, mathematicians imagined a new number: <strong>i</strong>, the <em>imaginary unit</em>, defined by:
+    </p>
+    <div class="math-box">
+        i² = –1
+    </div>
+
+    <p>
+        Over time, pioneers like <strong>Leonhard Euler</strong> in the 18th century formalized this concept, leading to the
+        birth of <strong>complex numbers</strong> — a fusion of real and imaginary numbers.
+    </p>
+
+    <h2>Definition: What is a Complex Number?</h2>
+    <p>
+        A complex number has the form:
+    </p>
+    <div class="math-box">
+        z = a + bi
+    </div>
+    <ul>
+        <li><em>a</em> → Real part (Re(z))</li>
+        <li><em>b</em> → Imaginary part (Im(z))</li>
+        <li><em>i</em> → Imaginary unit (i² = –1)</li>
+    </ul>
+    <p class="note">
+        Think of <strong>a</strong> as your East–West coordinate, and <strong>b</strong> as your North–South coordinate.
+        Together, they locate your complex number in a 2D space.
+    </p>
+
+    <h2>Visualizing: The Complex Plane</h2>
+    <p>
+        Instead of a single number line, complex numbers live on a <strong>complex plane</strong>:
+    </p>
+    <ul>
+        <li>The horizontal axis represents the <em>real part</em>.</li>
+        <li>The vertical axis represents the <em>imaginary part</em>.</li>
+    </ul>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='image.png') }}" 
+     alt="Complex Numbers Intro" 
+     style="width: 300px; height: auto;">
+
+    </div>
+
+    <p>
+        The point (<em>a</em>, <em>b</em>) can also be drawn as a <strong>vector</strong> from the origin — a key idea for the next section.
+    </p>
+
+    <h2>Modulus and Argument</h2>
+    <p>
+        A complex number as a vector has two key measurements:
+    </p>
+    <ul>
+        <li><strong>Modulus</strong> (<em>r</em>) → the vector’s length</li>
+        <li><strong>Argument</strong> (<em>θ</em>) → the vector’s angle with the positive real axis</li>
+    </ul>
+    <div class="math-box">
+        r = |z| = √(a² + b²)  
+        θ = arg(z) = tan⁻¹(b / a)
+    </div>
+
+    <h2>From Rectangular to Polar Form</h2>
+    <p>
+        Using trigonometry:
+    </p>
+    <div class="math-box">
+        a = r cos θ  
+        b = r sin θ  
+        z = r (cos θ + i sin θ)
+    </div>
+    <p>
+        This <strong>polar form</strong> makes multiplication, division, and exponentiation much simpler.
+        In polar form, multiplying two complex numbers means multiplying their moduli and adding their arguments.
+    </p>
+
+    <h2>Why Complex Numbers Matter</h2>
+    <p>
+        Complex numbers are not just a theoretical invention — they are essential in:
+    </p>
+    <ul>
+        <li>Electrical engineering (AC circuits)</li>
+        <li>Signal processing</li>
+        <li>Quantum mechanics</li>
+        <li>Computer graphics and 3D transformations</li>
+    </ul>
+    <p>
+        They bridge <strong>algebra</strong> and <strong>geometry</strong>, giving us a complete system where every polynomial equation has a solution.
+    </p>
+
+    <div class="highlight-box">
+        All of this started with the simple yet radical thought:  
+        <em>“What if a number could have a square equal to –1?”</em>
+    </div>
+</section>
+<a href="/" class="exit-link">Exit</a>
+</body>
+</html>

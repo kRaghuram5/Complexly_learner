@@ -2,81 +2,147 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Roots of Unity Visualizer</title>
+  <title>The Magic Circle: Roots of Unity Explorer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            background: radial-gradient( rgba(26, 26, 46, 1) 40%);
-            color: #fff;
-            padding: 1rem 2rem;
-            min-height: 400px;
-            border-bottom: 1px solid #2a2a44;
+    :root {
+      --primary-color: #fde047; /* Bright Yellow */
+      --secondary-color: #facc15; /* Deeper Yellow */
+      --dark-bg: #1a1a2e;
+      --light-bg: #1d2b4a;
+      --text-color: #e0e0e0;
+      --card-bg: rgba(12, 20, 42, 0.7);
+      --card-border: rgba(255, 255, 255, 0.15);
+      --card-shadow: rgba(0, 0, 0, 0.3);
+      --heading-color: #0f3460;
     }
 
-    h1 {
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      margin: 0;
+      background-color: var(--dark-bg);
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+      background-size: 25px 25px;
+      color: var(--text-color);
+      padding: 2rem;
+    }
+
+    .main-title {
       text-align: center;
       font-weight: 800;
-      margin-bottom: 30px;
+      margin-bottom: 3rem;
+      color: var(--primary-color);
+      text-shadow: 0 0 15px rgba(253, 224, 71, 0.6);
+      font-size: 2.5rem;
     }
 
     .card {
-      background-color: #ffffffcc;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-      border: 2px solid black;
-      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.98);
+      border-radius: 15px;
+      padding: 25px;
       height: 100%;
+      color: #111;
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 0 6px 20px var(--card-shadow);
     }
-
-    h3, h4 {
-      font-weight: 800;
-    }
-
-    label {
-      font-weight: 600;
-    }
-
-    .form-control, .btn-primary {
-      border-radius: 12px;
-    }
-
+    
     .btn-primary {
-      background-color: #facc15;
+      background-color: var(--secondary-color);
       color: black;
       border: 2px solid black;
-      font-weight: 600;
+      font-weight: 700;
+      transition: all 0.2s ease-in-out;
+      padding: 10px;
     }
 
     .btn-primary:hover {
-      background-color: #fde047;
+      background-color: var(--primary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
     }
 
-    img {
+    img.plot-image {
       max-width: 100%;
-      margin-top: 20px;
+      margin-top: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
 
-    ul {
-      padding-left: 20px;
+    .main-layout { display: flex; gap: 25px; flex-wrap: wrap; }
+    .left-panel, .center-panel, .right-panel { flex: 1 1 30%; min-width: 300px; }
+
+    .explanation-card h4, .explanation-card h5 { font-weight: 700; color: var(--heading-color); }
+    .explanation-card ul { padding-left: 20px; }
+    .explanation-card li { margin-bottom: 8px; }
+    .explanation-card code {
+        background: #e9ecef;
+        padding: 4px 8px;
+        border-radius: 5px;
+        font-weight: 600;
+        color: #c7254e;
     }
 
-    /* Layout */
-    .main-layout {
+    .applications-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 40px 25px;
+      border-radius: 20px;
+      margin-top: 40px;
+      border: 1px solid var(--card-border);
+    }
+
+    .app-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: white;
+      padding: 25px;
+      border-radius: 15px;
+      height: 100%;
+      transition: transform 0.2s ease, background 0.2s ease;
       display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
-    .left-panel,
-    .center-panel,
-    .right-panel {
-      flex: 1 1 30%;
+    .app-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+    
+    .app-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 15px;
+        color: var(--primary-color);
     }
 
+    .app-card h5 { color: var(--primary-color); font-weight: bold; }
+    .app-card p { font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); }
+
+    .worked-example-card {
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      border: 1px solid var(--card-border);
+    }
+    
+    .worked-example-card .phase-calc {
+        background: rgba(0,0,0,0.3);
+        padding: 15px;
+        border-radius: 8px;
+        font-family: 'Courier New', Courier, monospace;
+        letter-spacing: 1px;
+        margin-top: 1rem;
+    }
+    .worked-example-card .phase-calc span {
+        color: #87CEEB; /* Sky Blue */
+    }
+
+    @media screen and (max-width: 1000px) {
+      .main-layout { flex-direction: column; }
+    }
     .exit-link {
       position: fixed;
       bottom: 20px;
@@ -92,78 +158,142 @@
       transition: background-color 0.3s ease;
       z-index: 999;
     }
-
     .exit-link:hover {
       background-color: #111827;
     }
-
-    @media screen and (max-width: 1000px) {
-      .main-layout {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .left-panel,
-      .center-panel,
-      .right-panel {
-        width: 100%;
-      }
-    }
   </style>
+  <script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(', '\\)']] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
 </head>
 <body>
 
-  <h1>Roots of Unity Visualizer</h1>
+  <h1 class="main-title">The Magic Circle: A Roots of Unity Explorer</h1>
 
   <div class="main-layout">
-    <!-- Left Panel - Input Form -->
     <div class="left-panel">
       <div class="card">
-        <h4 class="text-center mb-3">⚙️ Input</h4>
+        <h4 class="text-center mb-3 fw-bold">🧪 Start Your Experiment</h4>
         <form method="post">
-          <label for="n">Enter n:</label>
-          <input type="number" class="form-control mb-3" name="n" id="n" min="1" value="{{ n if n else 1 }}">
-          <button type="submit" class="btn btn-primary w-100">Visualize</button>
+          <label for="n" class="form-label">Enter 'n' (how many roots?):</label>
+          <input type="number" class="form-control mb-3" name="n" id="n" min="1" value="{{ n if n else 3 }}">
+          <button type="submit" class="btn btn-primary w-100">Visualize the Magic!</button>
         </form>
-      </div>
-    </div>
 
-    <!-- Center Panel - Graph -->
-    <div class="center-panel">
-      <div class="card text-center">
-        {% if plot_url %}
-          <h4>{{ n }}-th Roots of Unity</h4>
-          <img src="data:image/png;base64,{{ plot_url }}" alt="Roots of Unity Plot">
-        {% else %}
-          <p class="text-muted">Submit a value to see the plot.</p>
+        {% if roots_str %}
+          <h6 class="mt-4 fw-bold">The {{ n }} Roots Are:</h6>
+          <p style="font-size: 0.9rem; word-wrap: break-word;">{{ roots_str }}</p>
         {% endif %}
       </div>
     </div>
 
-    <!-- Right Panel - Explanation -->
+    <div class="center-panel">
+      <div class="card text-center">
+        {% if plot_url %}
+          <h4 class="fw-bold">Visualizing the {{ n }} solutions to <b>z<sup>{{ n }}</sup> = 1</b></h4>
+          <img src="data:image/png;base64,{{ plot_url }}" alt="Roots of Unity Plot" class="plot-image">
+        {% else %}
+          <h5 class="fw-bold">Welcome! ✨</h5>
+          <p class="text-muted mt-3">Enter a number 'n' on the left and hit 'Visualize' to see the solutions to <b>z<sup>n</sup> = 1</b> appear on the magic circle!</p>
+          <p>Try n=3 for a triangle, n=4 for a square, or n=8 for an octagon!</p>
+        {% endif %}
+      </div>
+    </div>
+
     <div class="right-panel">
-      <div class="card">
-        <h4>📘 Why Roots of Unity?</h4>
-        <p>Roots of Unity are complex numbers that, when raised to the power n, give 1. They lie symmetrically on the unit circle and help understand rotational symmetry, trigonometry, and polynomial roots.</p>
+        <div class="card explanation-card">
+            {% if n and roots_str %}
+                <h4>📘 Understanding the Plot</h4>
+                <p>We’re solving <b>z<sup>{{ n }}</sup> = 1</b>, which gives exactly <b>{{ n }}</b> unique solutions. These solutions lie on a circle of radius 1 in the complex plane.</p>
+                <p>The red arc in the plot shows the angle separating any two consecutive roots: <b>{{ "%.2f"|format(360/n) }}°</b>.</p>
 
-        <h5>📊 What the graph shows:</h5>
-        <p>The n points represent the solutions to zⁿ = 1. Each is evenly spaced by 360°/n around a circle centered at the origin.</p>
+                <h5 class="mt-3">🧮 How to Interpret</h5>
+                <ul>
+                    <li>The first root (for <b>k=0</b>) is always at <code>1 + 0i</code>, the point (1,0).</li>
+                    <li>Each subsequent root is found by rotating by an additional <b>{{ "%.2f"|format(360/n) }}°</b> counter-clockwise.</li>
+                    <li>Connecting the points forms a perfect regular polygon with <b>{{ n }}</b> sides.</li>
+                </ul>
 
-        <h5>🔍 Where it's useful:</h5>
-        <ul>
-          <li>Solving equations like zⁿ = 1</li>
-          <li>Signal processing and Fourier analysis</li>
-          <li>Understanding symmetry and periodicity</li>
-        </ul>
+                {% if formula %}
+                    <hr>
+                    <h6>The Magic Formula:</h6>
+                    <p>The roots are found using De Moivre's formula:</p>
+                    <p>\( {{ formula }} \)</p>
+                    <small class="d-block mt-1 text-muted">for k = 0, 1, 2, ... , {{ n - 1 }}</small>
+                {% endif %}
+            {% else %}
+                 <h4>📘 What Are Roots of Unity?</h4>
+                 <p>In mathematics, the "nth roots of unity" are the complex numbers that result in <b>1</b> when raised to the power of <b>n</b>.</p>
+                 <p>They are the solutions to the deceptively simple equation:</p>
+                 <h5 class="text-center my-3"><b>z<sup>n</sup> = 1</b></h5>
+                 <p>When plotted, these roots form the vertices of a regular polygon on the "unit circle" — a circle with a radius of 1. Explore them yourself to see the beautiful symmetry!</p>
+            {% endif %}
+        </div>
+    </div>
+  </div>
 
-        <h5>🧭 How to interpret:</h5>
-        <p>The circle has radius 1. Each blue dot is a root, and their order (0 to n-1) shows rotation angle (2πk/n). Together they form a regular polygon.</p>
+<div class="applications-section">
+  <h4 class="text-center mb-4 text-white">🔍 Real-World Applications</h4>
+  <div class="row g-4">
+    <div class="col-lg-4 col-md-6">
+      <div class="app-card">
+        <div class="app-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/></svg></div>
+        <h5>AC Circuits & Power</h5>
+        <p>Engineers analyze polyphase systems (like 3-phase power) by treating voltages as phasors rotated by angles corresponding to roots of unity.</p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <div class="app-card">
+        <div class="app-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M0 7.5a.5.5 0 0 1 .5-.5h2.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m5.5 0a.5.5 0 0 1 .5-.5h2.5a.5.5 0 0 1 0 1H10a.5.5 0 0 1-.5-.5M.779 9.32a.5.5 0 0 1 .64.258l.515.93a.5.5 0 0 1-.838.484l-.516-.93a.5.5 0 0 1 .197-.742zm3.373.132a.5.5 0 0 1 .64.258l.515.93a.5.5 0 0 1-.838.484l-.516-.93a.5.5 0 0 1 .197-.742zm3.443.132a.5.5 0 0 1 .64.258l.515.93a.5.5 0 0 1-.838.484l-.516-.93a.5.5 0 0 1 .197-.742zm3.373.132a.5.5 0 0 1 .64.258l.515.93a.5.5 0 0 1-.838.484l-.516-.93a.5.5 0 0 1 .197-.742zm-6.889 2.133a.5.5 0 0 1 .64.258l.515.93a.5.5 0 0 1-.838.484l-.516-.93a.5.5 0 0 1 .197-.742zm3.373.132a.5.5 0 0 1 .64.258l.515.93a.5.5 0 0 1-.838.484l-.516-.93a.5.5 0 0 1 .197-.742zm3.443.132a.5.5 0 0 1 .64.258l.515.93a.5.5 0 0 1-.838.484l-.516-.93a.5.5 0 0 1 .197-.742z"/></svg></div>
+        <h5>Signal Processing (FFT)</h5>
+        <p>The Fast Fourier Transform, vital for digital audio and image processing, uses roots of unity as core coefficients to break signals into frequencies.</p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <div class="app-card">
+        <div class="app-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8.5 10a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m-3 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m6 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m-9 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5"/><path d="M4.146 4.146a.5.5 0 0 1 .708 0L8 7.293l3.146-3.147a.5.5 0 0 1 .708.708L8.707 8l3.147 3.146a.5.5 0 0 1-.708.708L8 8.707l-3.146 3.147a.5.5 0 0 1-.708-.708L7.293 8 4.146 4.854a.5.5 0 0 1 0-.708z"/><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2v12h12V2H2z"/></svg></div>
+        <h5>Cryptography</h5>
+        <p>Number-theoretic transforms, which are used in modern cryptography and large number multiplication, are built upon the properties of roots of unity.</p>
       </div>
     </div>
   </div>
 
-  <!-- Exit Link -->
-  <a href="/home" class="exit-link">Exit</a>
+  <hr class="my-5" style="border-color: var(--card-border);">
 
+  <div class="card mt-4 p-4 worked-example-card">
+    <h5 class="fw-bold text-center">💡 Worked Example: The Balance of 3-Phase Power</h5>
+    <p class="text-center mt-2">
+A 3-phase AC system is efficient because the power delivery is constant. 
+This is a direct consequence of the properties of the 3rd roots of unity: 
+\(\mathbf{1}, \mathbf{e^{i \frac{2\pi}{3}}}, \mathbf{e^{i \frac{4\pi}{3}}}\). 
+These correspond to phase shifts of 0°, 120°, and 240°.
+    </p>
+    
+    <div class="phase-calc">
+      <div><strong>Step 1:</strong> Define Phase 1 Voltage (V₁) at 0°</div>
+      <div class="ps-3">V₁ = 230 &times; e<sup>i0°</sup> &nbsp; = <span>230.0 + 0.0i</span></div>
+      <br>
+      <div><strong>Step 2:</strong> Rotate by 120° for Phase 2 (V₂)</div>
+      <div class="ps-3">V₂ = 230 &times; e<sup>i120°</sup> = <span>-115.0 + 199.2i</span></div>
+      <br>
+      <div><strong>Step 3:</strong> Rotate by 240° for Phase 3 (V₃)</div>
+      <div class="ps-3">V₃ = 230 &times; e<sup>i240°</sup> = <span>-115.0 - 199.2i</span></div>
+    </div>
+    
+    <div>
+    <p class="mt-4 text-center">
+        <strong>The Magic Result:</strong> When we sum the voltages at any instant, the real and imaginary parts cancel out perfectly.
+    <br>
+        V₁ + V₂ + V₃ = (230 - 115 - 115) + (0 + 199.2 - 199.2)i = 0
+        </p>
+    </div>
+    <p class="mt-3 text-center text-white-50">This perfect balance means no return wire is needed for the net current, making the system incredibly efficient.</p>
+  </div>
+</div>
+<a href="/" class="exit-link">Exit</a>
 </body>
 </html>

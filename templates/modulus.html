@@ -1,81 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Modulus & Argument Explorer</title>
+  <meta charset="UTF-8">
+  <title>The Argand Lens: Modulus & Argument Explorer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      background: radial-gradient(rgba(26, 26, 46, 1) 40%);
-      color: black;
-      padding: 1rem 2rem;
-      min-height: 400px;
-      border-bottom: 1px solid #2a2a44;
+    :root {
+      --primary-color: #fde047; /* Bright Yellow */
+      --secondary-color: #facc15; /* Deeper Yellow */
+      --dark-bg: #1a1a2e;
+      --light-bg: #1d2b4a;
+      --text-color: #e0e0e0;
+      --card-bg: rgba(12, 20, 42, 0.7);
+      --card-border: rgba(255, 255, 255, 0.15);
+      --card-shadow: rgba(0, 0, 0, 0.3);
+      --heading-color: #0f3460;
     }
 
-    h1 {
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      margin: 0;
+      background-color: var(--dark-bg);
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+      background-size: 25px 25px;
+      color: var(--text-color);
+      padding: 2rem;
+    }
+
+    .main-title {
       text-align: center;
       font-weight: 800;
-      margin-bottom: 30px;
-      color:white;
+      margin-bottom: 3rem;
+      color: var(--primary-color);
+      text-shadow: 0 0 15px rgba(253, 224, 71, 0.6);
+      font-size: 2.5rem;
     }
 
     .card {
-      background-color: #ffffffcc;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-      border: 2px solid black;
-      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.98);
+      border-radius: 15px;
+      padding: 25px;
       height: 100%;
-    }
-
-    h3, h4 {
-      font-weight: 800;
-    }
-
-    label {
-      font-weight: 600;
+      color: #111;
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 0 6px 20px var(--card-shadow);
     }
 
     .btn-primary {
-      border-radius: 12px;
-      background-color: #facc15;
+      background-color: var(--secondary-color);
       color: black;
       border: 2px solid black;
-      font-weight: 600;
-      padding: 6px 12px;
-      cursor: pointer;
+      font-weight: 700;
+      transition: all 0.2s ease-in-out;
+      padding: 10px;
     }
-
     .btn-primary:hover {
-      background-color: #fde047;
+      background-color: var(--primary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
     }
 
-    img {
+    img.plot-image {
       max-width: 100%;
-      margin-top: 20px;
+      margin-top: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
 
-    ul {
-      padding-left: 20px;
+    .main-layout { display: flex; gap: 25px; flex-wrap: wrap; }
+    .left-panel, .center-panel, .right-panel { flex: 1 1 30%; min-width: 300px; }
+
+    .explanation-card h4, .explanation-card h5 { font-weight: 700; color: var(--heading-color); }
+    .explanation-card ul { padding-left: 20px; }
+    .explanation-card li { margin-bottom: 8px; }
+    .explanation-card code {
+      background: #e9ecef;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-weight: 600;
+      color: #c7254e;
     }
 
-    /* Three-partition layout like root_unity */
-    .main-layout {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
+    .applications-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 40px 25px;
+      border-radius: 20px;
+      margin-top: 40px;
+      border: 1px solid var(--card-border);
     }
 
-    .left-panel,
-    .center-panel,
-    .right-panel {
-      flex: 1 1 30%;
+    .app-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: white;
+      padding: 25px;
+      border-radius: 15px;
+      height: 100%;
+      transition: transform 0.2s ease, background 0.2s ease;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
+    .app-card:hover { transform: translateY(-8px); background: rgba(255, 255, 255, 0.12); }
+    .app-icon { width: 50px; height: 50px; margin-bottom: 15px; color: var(--primary-color); }
+    .app-card h5 { color: var(--primary-color); font-weight: bold; }
+    .app-card p { font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); }
 
+    .worked-example-card {
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      border: 1px solid var(--card-border);
+    }
+    .worked-example-card .calc {
+      background: rgba(0,0,0,0.3);
+      padding: 15px;
+      border-radius: 8px;
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: 0.5px;
+      margin-top: 1rem;
+      overflow-x: auto;
+    }
+    .worked-example-card .calc span { color: #87CEEB; }
+    .worked-example-card .result {
+      background: var(--secondary-color);
+      color: black;
+      font-weight: 700;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      margin-top: 1rem;
+    }
     .exit-link {
       position: fixed;
       bottom: 20px;
@@ -91,77 +149,178 @@
       transition: background-color 0.3s ease;
       z-index: 999;
     }
-
     .exit-link:hover {
       background-color: #111827;
     }
 
-    @media screen and (max-width: 1000px) {
-      .main-layout {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .left-panel,
-      .center-panel,
-      .right-panel {
-        width: 100%;
-      }
-    }
+    @media screen and (max-width: 1000px) { .main-layout { flex-direction: column; } }
   </style>
 </head>
 <body>
-  <h1>Modulus and Argument of Complex Number</h1>
+
+  <h1 class="main-title">The Argand Lens: A Modulus & Argument Explorer</h1>
 
   <div class="main-layout">
-    <!-- Box 1: Input -->
+    <!-- LEFT: Input & Results -->
     <div class="left-panel">
       <div class="card">
-        <h3>🔢 Enter Complex Number</h3>
-         <form method="post">
-          
-          <label>Real part (a):</label><br>
-          <input type="text" name="real" value="{{ a }}"><br>
-          <label>Imaginary part (b):</label><br>
-          <input type="text" name="imag" value="{{ b }}"><br><br>
-          <button type="submit" class="btn-primary">Explore</button>
+        <h4 class="text-center mb-3 fw-bold">🧪 Start Your Experiment</h4>
+        <form method="post">
+          <label for="real" class="form-label">Real part (a):</label>
+          <input type="number" step="any" class="form-control mb-3" name="real" id="real" value="{{ a if a is not none else '' }}">
+
+          <label for="imag" class="form-label">Imaginary part (b):</label>
+          <input type="number" step="any" class="form-control mb-3" name="imag" id="imag" value="{{ b if b is not none else '' }}">
+
+          <button type="submit" class="btn btn-primary w-100">Visualize the Vector</button> 
         </form>
-        {% if modulus %}
+        <a href="/modulus" class="btn btn-primary w-100">Refresh</a>
+        {% if modulus is not none and argument_deg is not none %}
           <hr>
-          <h4>🧮 Results</h4>
-          <p><strong>Modulus |z|:</strong> {{ modulus }}</p>
-          <p><strong>Argument θ:</strong> {{ argument }}°</p>
+          <h6 class="fw-bold">🧮 Results</h6>
+          <p class="mb-1"><strong>Complex number z:</strong> {{ a }} + {{ b }}i</p>
+          <p class="mb-1"><strong>Modulus |z|:</strong> {{ "%.6g"|format(modulus) }}</p>
+          <p class="mb-1"><strong>Argument θ:</strong> {{ "%.6g"|format(argument_deg) }}° ({{ "%.6g"|format(argument_rad) }} rad)</p>
+          <p class="mb-1"><strong>Principal Arg( z ):</strong> {{ "%.6g"|format(principal_arg_deg) }}° in (−180°, 180°]</p>
+          <p class="mb-1"><strong>General Argument:</strong> θ + 360°·k, k ∈ ℤ</p>
+          <p class="mb-1"><strong>Polar Form:</strong> <code>{{ "|z| = %.6g, θ = %.6g°"|format(modulus, argument_deg) }}</code></p>
+          <p class="mb-0"><strong>Euler/Trigonometric Form:</strong> <code>z = {{ "%.6g"|format(modulus) }}(cos&nbsp;{{ "%.6g"|format(argument_rad) }} + i&nbsp;sin&nbsp;{{ "%.6g"|format(argument_rad) }})</code></p>
         {% endif %}
       </div>
+      
     </div>
-
-    <!-- Box 2: Graph -->
+    
+    <!-- CENTER: Visualization -->
     <div class="center-panel">
-      <div class="card">
-        <h3>📈 Visual Representation</h3>
-        {% if plot_html %}
-          <img src="data:image/png;base64,{{ plot_html }}" alt="Complex Plot"/>
+      <div class="card text-center">
+        {% set plot_b64 = plot_url or plot_html %}
+        {% if plot_b64 %}
+          <h4 class="fw-bold">📈 Vector for z = a + ib</h4>
+          <img src="data:image/png;base64,{{ plot_b64 }}" alt="Modulus & Argument Plot" class="plot-image">
+          {% if quadrant %}
+            <p class="mt-3 mb-0"><strong>Quadrant:</strong> {{ quadrant }}</p>
+          {% endif %}
         {% else %}
-          <p style="color: gray;">Submit values to see graph here.</p>
+          <h5 class="fw-bold">Welcome! ✨</h5>
+          <p class="text-muted mt-3">Enter the real and imaginary parts on the left, then click <b>Visualize</b> to see the vector, its length (modulus), and angle (argument).</p>
+          <p class="mb-0">Try <code>a = -3</code>, <code>b = 4</code> to test quadrant handling.</p>
         {% endif %}
       </div>
     </div>
 
-    <!-- Box 3: Explanation -->
+    <!-- RIGHT: Concepts & Guidance -->
     <div class="right-panel">
-      <div class="card">
-        <h3>📘 Learn</h3>
-        <p>
-          <strong>Modulus</strong> is the distance of a complex number from the origin, calculated as:<br>
-          <code>|z| = √(a² + b²)</code><br><br>
-          <strong>Argument</strong> is the angle (θ) the complex number makes with the positive real axis:<br>
-          <code>θ = atan2(b, a)</code><br><br>
-          In the graph, you're seeing the vector (a, b) as an arrow from origin (0, 0) to the point (a, b).
-        </p>
+      <div class="card explanation-card">
+        {% if modulus is not none %}
+          <h4>📘 Understanding the Plot</h4>
+          <ul>
+            <li><b>Modulus</b> (<code>|z|</code>) is the distance from the origin to the point <code>(a, b)</code> on the Argand plane. It is calculated as <code>|z| = √(a² + b²)</code>.</li>
+            <li><b>Argument</b> (<code>arg(z)</code> or <code>θ</code>) is the angle measured counterclockwise from the positive real axis to the vector representing <code>z</code>. Use <code>θ = atan2(b, a)</code> for correct quadrant.</li>
+            <li><b>Principal Argument</b> (<code>Arg(z)</code>) is the unique value of <code>θ</code> in the interval (−π, π] or (−180°, 180°].</li>
+            <li><b>General Argument</b> is <code>θ + 2π·k</code> (or <code>θ + 360°·k</code>), where <code>k</code> is any integer.</li>
+            <li><b>Polar Form</b>: <code>z = r (cos θ + i sin θ)</code>, where <code>r = |z|</code> and <code>θ = arg(z)</code>.</li>
+            <li><b>Euler's Form</b>: <code>z = r e^{iθ}</code>. This compact form is fundamental in complex analysis and physics.</li>
+            </li>
+            <li><b>Quadrant Rules (via atan2)</b>:
+              <ul>
+                <li>I (a&gt;0, b≥0): θ in (0, π/2)</li>
+                <li>II (a&lt;0, b≥0): θ in (π/2, π)</li>
+                <li>III (a&lt;0, b&lt;0): θ in (−π, −π/2) or (π, −π)</li>
+                <li>IV (a&gt;0, b&lt;0): θ in (−π/2, 0)</li>
+                <li>Axes: handle b=0 or a=0 as special cases.</li>
+              </ul>
+            </li>
+            <li><b>Geometric Interpretation</b>: The modulus is the length of the vector, and the argument is its direction. Rotating <code>z</code> by multiplying by <code>e^{iφ}</code> adds <code>φ</code> to its argument.</li>
+          </ul>
+        {% else %}
+          <h4>📘 What Are Modulus & Argument?</h4>
+          <p>For <b>z = a + ib</b>, the modulus <code>|z|</code> is its length, and the argument <code>θ</code> is the counter-clockwise angle from the positive real axis. Together they give the polar form.</p>
+          <h5 class="mt-3">🧮 Core Formulas</h5>
+          <ul>
+            <li><code>|z| = √(a² + b²)</code> &nbsp; and &nbsp; <code>θ = atan2(b, a)</code></li>
+            <li>Polar form: <code>z = r (cos θ + i sin θ)</code></li>
+            <li>Euler's form: <code>z = r e^{iθ}</code></li>
+            <li>Principal argument: <code>Arg(z)</code> in (−π, π] or (−180°, 180°]</li>
+            <li>General argument: <code>θ + 2π·k</code>, <code>k ∈ ℤ</code></li>
+            <li>Quadrant rules: <code>atan2</code> picks the correct quadrant automatically</li>
+          </ul>
+          <h5 class="mt-3">🔎 Why Use Euler's Form?</h5>
+          <ul>
+            <li>Compact representation for multiplication, division, powers, and roots</li>
+            <li>Rotation: multiplying by <code>e^{iφ}</code> rotates by <code>φ</code></li>
+            <li>Widely used in physics, engineering, and mathematics</li>
+          </ul>
+          <h5 class="mt-3">🧭 Quadrant Rules (via atan2)</h5>
+          <ul>
+            <li>I (a&gt;0, b≥0): θ in (0, π/2)</li>
+            <li>II (a&lt;0, b≥0): θ in (π/2, π)</li>
+            <li>III (a&lt;0, b&lt;0): θ in (−π, −π/2) or (π, −π)</li>
+            <li>IV (a&gt;0, b&lt;0): θ in (−π/2, 0)</li>
+            <li>Axes: handle b=0 or a=0 as special cases.</li>
+          </ul>
+        {% endif %}
       </div>
     </div>
   </div>
 
-  <a href="/home" class="exit-link">Exit</a>
+  <!-- Applications -->
+  <div class="applications-section">
+    <h4 class="text-center mb-4 text-white">🔍 Real-World Applications</h4>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="app-card">
+          <div class="app-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/></svg>
+          </div>
+          <h5>Phasors in AC Circuits</h5>
+          <p>Voltages/currents are rotating vectors; magnitude is RMS value, angle is phase shift for timing analysis and power flow.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="app-card">
+          <div class="app-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M0 7.5a.5.5 0 0 1 .5-.5h2.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m5.5 0a.5.5 0 0 1 .5-.5h2.5a.5.5 0 0 1 0 1H10a.5.5 0 0 1-.5-.5M.779 9.32a.5.5 0 0 1 .64.258l.515.93a.5.5 0 0 1-.838.484l-.516-.93a.5.5 0 0 1 .197-.742zm3.373.132a.5.5 0 0 1 .64.258l.515.93a.5.5 0 0 1-.838.484l-.516-.93a.5.5 0 0 1 .197-.742zm3.443.132a.5.5 0 0 1 .64.258l.515.93a.5.5 0 0 1-.838.484l-.516-.93a.5.5 0 0 1 .197-.742zm3.373.132a.5.5 0 0 1 .64.258l.515.93a.5.5 0 0 1-.838.484l-.516-.93a.5.5 0 0 1 .197-.742zm-6.889 2.133a.5.5 0 0 1 .64.258l.515.93a.5.5 0 0 1-.838.484l-.516-.93a.5.5 0 0 1 .197-.742zm3.373.132a.5.5 0 0 1 .64.258l.515.93a.5.5 0 0 1-.838.484l-.516-.93a.5.5 0 0 1 .197-.742zm3.443.132a.5.5 0 0 1 .64.258l.515.93a.5.5 0 0 1-.838.484l-.516-.93a.5.5 0 0 1 .197-.742z"/></svg>
+          </div>
+          <h5>Signal Processing</h5>
+          <p>Complex exponentials model sinusoids; amplitude is modulus, phase offset is argument — key for filtering and FFT insights.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="app-card">
+          <div class="app-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8.5 10a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m-3 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m6 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m-9 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5"/><path d="M4.146 4.146a.5.5 0 0 1 .708 0L8 7.293l3.146-3.147a.5.5 0 0 1 .708.708L8.707 8l3.147 3.146a.5.5 0 0 1-.708.708L8 8.707l-3.146 3.147a.5.5 0 0 1-.708-.708L7.293 8 4.146 4.854a.5.5 0 0 1 0-.708z"/><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2v12h12V2H2z"/></svg>
+          </div>
+          <h5>Rotations & Geometry</h5>
+          <p>Multiplying by <code>e^{iθ}</code> rotates vectors by θ with unchanged modulus — the building block for 2D transforms.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-5" style="border-color: var(--card-border);">
+
+    <!-- Worked Example -->
+    <div class="card mt-4 p-4 worked-example-card">
+      <h5 class="fw-bold text-center">💡 Worked Example: z = −3 + 4i</h5>
+      <p class="text-center mt-2">
+        This example demonstrates quadrant handling and the difference between raw <code>atan</code> and <code>atan2</code>.
+      </p>
+      <div class="calc">
+        <div><strong>Step 1:</strong> Modulus</div>
+        <div class="ps-3">|z| = √( (−3)² + 4² ) = √(9 + 16) = <span>5</span></div>
+        <br>
+        <div><strong>Step 2:</strong> Argument via atan2</div>
+        <div class="ps-3">θ = atan2(4, −3) ≈ <span>126.87°</span> (Quadrant II)</div>
+        <br>
+        <div><strong>Step 3:</strong> Polar/Euler Form</div>
+        <div class="ps-3">z = 5( cos 126.87° + i sin 126.87° ) = 5 e^{i·2.2143}</div>
+      </div>
+      <div class="result">Summary: |z| = 5, Arg(z) ≈ 126.87° (principal), General Arg = 126.87° + 360°·k</div>
+      <p class="mt-3 text-center text-white-50">Using <code>atan2(b,a)</code> ensures the correct quadrant automatically.</p>
+    </div>
+  </div>
+
+</div>
+  <!-- EXIT LINK -->
+  <a href="/" class="exit-link">Exit</a>
 </body>
 </html>

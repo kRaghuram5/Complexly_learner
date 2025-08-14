@@ -103,6 +103,45 @@
       gap: 2.5rem;
       right: 20px;
     }
+/* Quick Formula Sheet Cards */
+.cheatsheet-block .card {
+    background-color: rgba(255, 255, 255, 0.03); /* Slightly transparent like the example */
+    border-radius: 16px; /* Same rounded corners */
+    border: none; /* Remove borders */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Soft shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cheatsheet-block .card:hover {
+    transform: translateY(-5px); /* Slight hover lift */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.cheatsheet-block .card-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #FFD700; /* Golden yellow to match icons */
+    margin-bottom: 10px;
+}
+
+.cheatsheet-block pre {
+    background: none; /* Transparent background like in example */
+    color: #ffffff;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.cheatsheet-block h2 {
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+/* Ensure 3 cards per row */
+.cheatsheet-block .row > div {
+    display: flex;
+}
 
     .content-section pre {
       background: none !important;
@@ -359,33 +398,46 @@
 
 
 <!-- Intro Section -->
- <section class="intro-section">
-        <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
-            <h1 class="mb-0">The Complex Numbers</h1>
-        </div>
-        <p>Have you ever wondered why mathematicians invented a whole new kind of number?</p>
-        <p>It all starts with equations. In earlier classes, you solved linear equations (straightforward) and quadratic equations (a bit trickier). Most had real number solutions — until one day, a strange case appeared.</p>
-        <p>Consider the quadratic equation <strong>ax² + bx + c = 0</strong>. The nature of its solutions depends on the discriminant <strong>D = b² – 4ac</strong>.</p>
-        <ul>
-            <li>If D > 0, there are two real roots.</li>
-            <li>If D = 0, there’s one real root.</li>
-            <li>If D < 0, there are no real roots.</li>
-        </ul>
-        <p>Let’s take an example: <strong>x² + 1 = 0</strong>.<br>
-        Here, a = 1, b = 0, c = 1, so D = 0² – 4(1)(1) = –4, which is less than zero.<br>
-        Solving gives x² = –1 — a dead end in the real number system, because no real number squared gives a negative result.</p>
-        <p>So mathematicians asked: What if we create a new number whose square is –1?<br>
-        They called it <strong>i</strong>, where <strong>i² = –1</strong>.</p>
-        <p>With this, numbers like a + ib became possible — a combination of a real part (a) and an imaginary part (b).<br>
-        Examples: 2 + 3i, –1 + √3 i, 4 – (1/11) i.</p>
-        <p>This simple invention unlocked solutions for every quadratic equation — and gave rise to a powerful number system that appears in engineering, physics, and even digital technology.</p>
-        <p><strong>Welcome to the world of complex numbers</strong> — born from the question: How do we solve the unsolvable?</p>
-        <div class="text-center mt-4">
-  <a href="#Further" class="down-arrow">
-    ↓
-  </a>
-</div>
-    </section>
+<section class="intro-section">
+    <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+        <h1 class="mb-0">The Complex Numbers</h1>
+    </div>
+
+    <!-- Mathematical Definition -->
+    <p>
+        <strong>Mathematical Definition:</strong> 
+        </p>
+        <p>
+        A complex number is an element of the set 
+        <strong>ℂ = { a + bi | a, b ∈ ℝ, i² = –1 }</strong>, 
+        where <em>a</em> is the real part, <em>b</em> is the imaginary part, 
+        and <em>i</em> is the imaginary unit satisfying <em>i² = –1</em>.
+    </p>
+
+    <!-- General Explanation (Trailer) -->
+    <p>
+        A <strong>complex number</strong> is a number of the form 
+        <strong>a + bi</strong>, where <em>a</em> and <em>b</em> are real numbers,
+        and <em>i</em> is the imaginary unit with <em>i² = –1</em>.
+        They emerged from equations like <strong>x² + 1 = 0</strong> 
+        (where a = c = 1, b = 0) that have no solution in real numbers, 
+        since no real number squared equals –1.
+        By introducing <em>i</em>, mathematicians created a number system 
+        that solves the unsolvable.
+    </p>
+
+    <!-- Learn More Link -->
+    <p>
+        Curious how this ‘imaginary’ concept became one of the most powerful tools in mathematics?  
+        <a href="{{ url_for('intro_page') }}">Learn More →</a>
+    </p>
+
+    <!-- Down Arrow -->
+    <div class="text-center mt-4">
+        <a href="#Further" class="down-arrow">↓</a>
+    </div>
+</section>
+
 
 
     <div class="container content-container">
@@ -417,46 +469,129 @@
     <div class="cheatsheet-block">
         <section class="mb-4">
             <h2>Quick Formula Sheet</h2>
-            <pre>
+            <div class="row">
 
-1. Standard Form:
-   z = a + ib
-   Real part: Re(z) = a      Imaginary part: Im(z) = b
-2. Equality:
-   a + ib = c + id  =>  [a = c] and [b = d]
-3. Addition & Subtraction:
-   z1 ± z2 = (a ± c) + i(b ± d)
-4. Multiplication:
-   z1 * z2 = (ac - bd) + i(ad + bc)
-5. Division:
-   (a + ib) / (c + id) = [(ac + bd) + i(bc - ad)] / (c² + d²)
-6. Conjugate:
-   z̄ = a - ib
-   z * z̄ = a² + b²
-7. Modulus & Argument:
-   r = |z| = √(a² + b²)
-   θ = arg(z) = tan⁻¹(b / a)   [adjust for quadrant]
-8. Polar (Trigonometric) Form:
-   z = r(cosθ + i sinθ)
-   Euler's form: z = r e^(iθ)
-9. Conversion:
-   Rectangular → Polar: r = √(a² + b²), θ = arg(z)
-   Polar → Rectangular: a = r cosθ, b = r sinθ
-10. Multiplication in Polar Form:
-    r1(cosθ1 + i sinθ1) × r2(cosθ2 + i sinθ2) =
-    r1 r2 [cos(θ1 + θ2) + i sin(θ1 + θ2)]
-11. Division in Polar Form:
-    (r1 / r2) [cos(θ1 - θ2) + i sin(θ1 - θ2)]
-12. Powers (De Moivre’s Theorem):
-    zⁿ = rⁿ [cos(nθ) + i sin(nθ)]
-13. Roots of Complex Numbers:
-    z_k = r^(1/n)[cos((θ + 2kπ)/n) + i sin((θ + 2kπ)/n)],k=0,1,...,n-1
-14. Inverse (Reciprocal):
-    z⁻¹ = z̄ / |z|² = a/(a²+b²) - i b/(a²+b²)
-15. Special Powers of i:
-    i⁰ = 1, i¹ = i, i² = -1, i³ = -i, i⁴ = 1 (repeat every 4)
-                </pre>
-        </section>
+                <!-- 1. Standard Form -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Standard formulae</h5>
+<pre>z = a + ib     
+Re(z) = a     Im(z) = b
+z̄ = a - ib
+a + ib = c + id 
+where ⇒ a = c, b = d</pre>
+                        </div>
+                    </div>
+                </div>
+                <!-- 3. Addition & Subtraction -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Addition & Subtraction</h5>
+<pre>z₁ ± z₂ =
+(a₁ ± a₂) + i(b₁ ± b₂)</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Multiplication -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Multiplication</h5>
+<pre>z₁ × z₂ =
+(a₁a₂ - b₁b₂)
++ i(a₁b₂ + a₂b₁)</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Division -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Division</h5>
+<pre>(a₁ + ib₁) / (a₂ + ib₂) =
+[(a₁a₂ + b₁b₂) + i(a₂b₁ - a₁b₂)]
+/ (a₂² + b₂²)</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Modulus & Argument -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Modulus & Argument</h5>
+<pre>|z| = √(a² + b²)
+arg(z) = tan⁻¹(b/a)
+[adjust for quadrant]</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Important Properties -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Properties</h5>
+<pre>z̄̄ = z
+|z₁z₂| = |z₁||z₂|
+arg(z₁z₂) = arg(z₁)+arg(z₂)
+arg(z₁/z₂) = arg(z₁)-arg(z₂)</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Polar & Euler Forms -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Polar & Euler</h5>
+<pre>z = r(cosθ + i sinθ)
+z = r e^(iθ)
+</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. De Moivre’s Theorem -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">De Moivre's Theorem</h5>
+<pre>zⁿ = rⁿ[cos(nθ) + i sin(nθ)]</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11. Shortcuts -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Quick Shortcuts</h5>
+<pre>Multiply moduli, add arguments
+Purely real: z = z̄
+Purely imag: z = -z̄</pre>
+                        </div>
+                    </div>
+                </div>
+                <!-- 10. Roots -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Roots</h5>
+<pre>zₖ = r^(1/n)[cos((θ+2kπ)/n)
++ i sin((θ+2kπ)/n)]  k = 0..n-1
+
+<h6>Cube roots of unity:</h6>
+ω · ω2 = ω3 = 1
+1 + ω + ω2 = 0
+</pre>
+                        </div>
+                    </div>
+                </div>
 
         <section class="mb-4" id="key-properties">
             <h2>Key Properties</h2>
@@ -472,16 +607,6 @@
                     <li><strong>Modulus:</strong> |z| = √(a² + b²) — distance from origin in Argand plane.</li>
                     <li><strong>Conjugate:</strong> z = a + ib ⇒ ȳ = a − ib; used in division and |z|² = zȳ.</li>
                     <li><strong>Quadratic Roots:</strong> Solve negative discriminants using i.</li>
-                </ul>
-        </section>
-
-        <section class="mb-4" id="uses-complex">
-            <h2>Uses of Complex Numbers</h2>
-            <ul>
-                    <li><strong>Engineering & Electronics:</strong> AC circuits, control systems, signal processing.</li>
-                    <li><strong>Physics:</strong> Quantum mechanics, wave theory, fluid dynamics.</li>
-                    <li><strong>Computer Science:</strong> Image processing, simulations, graphics.</li>
-                    <li><strong>Music & Audio:</strong> Waveform analysis, sound synthesis.</li>
                 </ul>
         </section>
     </div>

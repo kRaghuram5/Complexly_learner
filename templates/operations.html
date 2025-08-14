@@ -2,81 +2,144 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Complex Number Visualizer</title>
+  <title>Complex Number Operations & Visualization</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            background: radial-gradient( rgba(26, 26, 46, 1) 40%);
-            color: #fff;
-            padding: 1rem 2rem;
-            min-height: 400px;
-            border-bottom: 1px solid #2a2a44;
+    :root {
+      --primary-color: #fde047; /* Bright Yellow */
+      --secondary-color: #facc15; /* Deeper Yellow */
+      --dark-bg: #1a1a2e;
+      --text-color: #e0e0e0;
+      --card-bg: rgba(12, 20, 42, 0.7);
+      --card-border: rgba(255, 255, 255, 0.15);
+      --card-shadow: rgba(0, 0, 0, 0.3);
+      --heading-color: #0f3460;
     }
 
-    h1 {
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      margin: 0;
+      background-color: var(--dark-bg);
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+      background-size: 25px 25px;
+      color: var(--text-color);
+      padding: 2rem;
+    }
+
+    .main-title {
       text-align: center;
       font-weight: 800;
-      margin-bottom: 30px;
+      margin-bottom: 3rem;
+      color: var(--primary-color);
+      text-shadow: 0 0 15px rgba(253, 224, 71, 0.6);
+      font-size: 2.5rem;
     }
 
     .card {
-      background-color: #ffffffcc;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-      border: 2px solid black;
-      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.98);
+      border-radius: 15px;
+      padding: 25px;
       height: 100%;
-    }
-
-    h3, h4 {
-      font-weight: 800;
-    }
-
-    label {
-      font-weight: 600;
-    }
-
-    .form-control, .btn-primary {
-      border-radius: 12px;
+      color: #111;
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 0 6px 20px var(--card-shadow);
     }
 
     .btn-primary {
-      background-color: #facc15;
+      background-color: var(--secondary-color);
       color: black;
       border: 2px solid black;
-      font-weight: 600;
+      font-weight: 700;
+      transition: all 0.2s ease-in-out;
+      padding: 10px;
     }
 
     .btn-primary:hover {
-      background-color: #fde047;
+      background-color: var(--primary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
     }
 
-    img {
+    img.plot-image {
       max-width: 100%;
-      margin-top: 20px;
+      margin-top: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
 
-    ul {
-      padding-left: 20px;
+    .main-layout { display: flex; gap: 25px; flex-wrap: wrap; }
+    .left-panel, .center-panel, .right-panel { flex: 1 1 30%; min-width: 300px; }
+
+    .explanation-card h4, .explanation-card h5 { font-weight: 700; color: var(--heading-color); }
+    .explanation-card ul { padding-left: 20px; }
+    .explanation-card li { margin-bottom: 8px; }
+    .explanation-card code {
+      background: #e9ecef;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-weight: 600;
+      color: #c7254e;
     }
 
-    /* Layout */
-    .main-layout {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
+    /* Applications Section */
+    .applications-section {
+      background-color: #0d0f24;
+      padding: 2rem;
+      border-radius: 15px;
+    }
+    .app-card {
+      background-color: #14172d;
+      border-radius: 12px;
+      padding: 2rem;
+      height: 100%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .app-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+    }
+    .app-icon {
+      font-size: 2rem;
+      color: #ffd54f;
+      margin-bottom: 1rem;
+    }
+    .app-title {
+      color: #ffd54f;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .app-card p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.95rem;
+      line-height: 1.5;
     }
 
-    .left-panel,
-    .center-panel,
-    .right-panel {
-      flex: 1 1 30%;
+    /* Worked Example */
+    .worked-example {
+      background-color: #14172d;
+      border-radius: 12px;
+      margin-top: 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      color: rgba(255, 255, 255, 0.85);
+      padding: 1.5rem;
+    }
+    .calc-step {
+      margin-top: 0.5rem;
+      font-family: monospace;
+    }
+    .result {
+      background-color: #ffd54f;
+      color: #0d0f24;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: inline-block;
+      margin-top: 1rem;
     }
 
+    /* Exit Link */
     .exit-link {
       position: fixed;
       bottom: 20px;
@@ -92,129 +155,186 @@
       transition: background-color 0.3s ease;
       z-index: 999;
     }
-
     .exit-link:hover {
       background-color: #111827;
     }
 
     @media screen and (max-width: 1000px) {
-      .main-layout {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .left-panel,
-      .center-panel,
-      .right-panel {
-        width: 100%;
-      }
+      .main-layout { flex-direction: column; }
     }
   </style>
 </head>
 <body>
-<h1>Complex Number Operation</h1>
-<div class="container vh-100-center">
-  <div class="row w-100 g-4">
-    <div class="col-lg-4">
-      <div class="card p-4">
-        <h3 class="text-center mb-4">Enter Numbers</h3>
-        <form method="post">
-          <div class="mb-3">
-            <label class="form-label">z₁ = a + bi</label>
-            <input type="number" name="a" placeholder="Real (a)" step="any" class="form-control" required>
-            <input type="number" name="b" placeholder="Imaginary (b)" step="any" class="form-control mt-2" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">z₂ = c + di</label>
-            <input type="number" name="c" placeholder="Real (c)" step="any" class="form-control" required>
-            <input type="number" name="d" placeholder="Imaginary (d)" step="any" class="form-control mt-2" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Operation</label>
-            <select name="operation" class="form-select">
-              <option value="add">Addition (+)</option>
-              <option value="subtract">Subtraction (−)</option>
-              <option value="multiply">Multiplication (×)</option>
-              <option value="divide">Division (÷)</option>
-            </select>
-          </div>
-          <div class="text-center mt-3">
-            <button type="submit" class="btn btn-primary w-100">Compute & Visualize</button>
-          </div>
-        </form>
 
-        {% if result_str %}
-        <div class="output-box mt-4">
-          <strong>Result:</strong><br>{{ result_str }}
-        </div>
-        {% endif %}
+<h1 class="main-title">Complex Number Operations</h1>
+
+<div class="main-layout">
+  <!-- LEFT PANEL -->
+  <div class="left-panel">
+    <div class="card">
+      <h4 class="text-center mb-3 fw-bold">📝 Enter Complex Numbers</h4>
+      <form method="post">
+        <label class="form-label">z₁ = a + bi</label>
+        <input type="number" name="a" placeholder="Real (a)" step="any" class="form-control mb-2" value="{{ a }}" required>
+        <input type="number" name="b" placeholder="Imaginary (b)" step="any" class="form-control mb-3" value="{{ b }}" required>
+
+        <label class="form-label">z₂ = c + di</label>
+        <input type="number" name="c" placeholder="Real (c)" step="any" class="form-control mb-2" required>
+        <input type="number" name="d" placeholder="Imaginary (d)" step="any" class="form-control mb-3" required>
+
+        <label class="form-label">Operation</label>
+        <select name="operation" class="form-select mb-3">
+          <option value="add">Addition (+)</option>
+          <option value="subtract">Subtraction (−)</option>
+          <option value="multiply">Multiplication (×)</option>
+          <option value="divide">Division (÷)</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary w-100">Compute & Visualize</button>
+      </form>
+
+      {% if result_str %}
+      <div class="alert alert-info mt-4">
+        <strong>Result:</strong> {{ result_str }}
       </div>
+      {% endif %}
     </div>
+  </div>
 
-    <div class="col-lg-4">
-      <div class="card p-4">
-        <h4 class="text-center mb-3">Argand Plot</h4>
-        {% if plot_url %}
-        <div class="text-center">
-          <img src="data:image/png;base64,{{ plot_url }}" alt="Argand Diagram" class="img-fluid" data-bs-toggle="modal" data-bs-target="#plotModal" style="cursor: zoom-in;" />
-        </div>
-
-        <div class="modal fade" id="plotModal" tabindex="-1" aria-labelledby="plotModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="plotModalLabel">Full View of Argand Diagram</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body text-center">
-                <img src="data:image/png;base64,{{ plot_url }}" alt="Full Argand Diagram" class="img-fluid" />
-              </div>
-            </div>
-          </div>
-        </div>
-        {% else %}
-          <p class="text-muted text-center">Submit values to see the plot.</p>
-        {% endif %}
-      </div>
+  <!-- CENTER PANEL -->
+  <div class="center-panel">
+    <div class="card text-center">
+      <h4 class="fw-bold">📈 Argand Diagram</h4>
+      {% if plot_url %}
+        <img src="data:image/png;base64,{{ plot_url }}" alt="Argand Diagram" class="plot-image">
+      {% else %}
+        <p class="text-muted mt-3">Submit values to see the plot.</p>
+      {% endif %}
     </div>
+  </div>
 
-    <div class="col-lg-4">
-      <div class="card p-4">
-        <h4 class="text-center mb-3">Learn</h4>
-        <ul>
-          <li><strong>Complex Number:</strong> In the form a + bi</li>
-          <li><strong>Argand Diagram:</strong> A graphical representation on the complex plane</li>
-          <li><strong>Modulus:</strong> |z| = √(a² + b²)</li>
-          <li><strong>Argument:</strong> Angle θ from the real axis</li>
-          <li><strong>Conjugate:</strong> Reflects z across the real axis: a − bi</li>
-        </ul>
-        <small class="text-muted">Understanding these will help in vector interpretation and transformations.</small>
-      </div>
+  <!-- RIGHT PANEL -->
+  <div class="right-panel">
+    <div class="card explanation-card">
+      <h4>📘 Understanding Complex Number Operations</h4>
+      <p><b>Complex Number:</b> <code>z = a + bi</code></p>
+      <ul>
+        <li><b>a</b> → real part</li>
+        <li><b>b</b> → imaginary part</li>
+        <li>Plotted as point (a, b) on the Argand plane</li>
+      </ul>
+
+      <h5>➕ Addition</h5>
+      <p>Add real parts, add imaginary parts:<br><code>(a + bi) + (c + di) = (a+c) + (b+d)i</code></p>
+
+      <h5>➖ Subtraction</h5>
+      <p>Subtract real parts, subtract imaginary parts:<br><code>(a + bi) − (c + di) = (a−c) + (b−d)i</code></p>
+
+      <h5>✖ Multiplication</h5>
+      <p>Use distributive property:<br><code>(a + bi)(c + di) = (ac − bd) + (ad + bc)i</code></p>
+
+      <h5>➗ Division</h5>
+      <p>Multiply numerator & denominator by conjugate of denominator:<br>
+      <code>(a + bi) / (c + di) = [(a+bi)(c−di)] / (c² + d²)</code></p>
+
+      <h5 class="mt-3">💡 Quick Tips</h5>
+      <ul>
+        <li>Plotting helps visualize magnitude & direction</li>
+        <li>Use modulus & argument for multiplication/division</li>
+        <li>Conjugates reflect across the real axis</li>
+      </ul>
     </div>
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<a href="/home" class="exit-link">Exit</a>
-<style>
-  .exit-link {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    font-size: 13px;
-    background-color: #1f2937;
-    color: white;
-    padding: 8px 14px;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 500;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    transition: background-color 0.3s ease;
-    z-index: 999;
-  }
-  .exit-link:hover {
-    background-color: #111827;
-  }
-</style>
+<!-- APPLICATIONS + EXAMPLE -->
+<section class="applications-section mt-5">
+  <h4 class="text-center mb-5">🔍 Applications & Worked Example</h4>
+  <div class="row g-4 justify-content-center mb-5">
+    <div class="col-lg-4 col-md-6">
+      <div class="app-card text-center">
+        <div class="app-icon">🔌</div>
+        <h5 class="app-title">Electrical Engineering</h5>
+        <p>Used in AC circuit analysis, phasor diagrams, and impedance calculations.</p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <div class="app-card text-center">
+        <div class="app-icon">🌊</div>
+        <h5 class="app-title">Wave Mechanics</h5>
+        <p>Represents oscillations and wave equations compactly using exponential form.</p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <div class="app-card text-center">
+        <div class="app-icon">📡</div>
+        <h5 class="app-title">Signal Processing</h5>
+        <p>Fourier transforms use complex exponentials to represent signals in frequency domain.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="worked-example">
+  <h5 class="fw-bold text-center">💡 Worked Examples</h5>
+
+  <!-- Addition -->
+  <p class="text-center fw-bold mt-3">➕ Addition: z₁ = 3 + 2i, z₂ = 1 + 4i</p>
+  <div class="calc-step">
+    Step 1: Real part = 3 + 1 = <b>4</b>
+  </div>
+  <div class="calc-step">
+    Step 2: Imag part = 2 + 4 = <b>6</b>
+  </div>
+  <div class="result">
+    Sum: 4 + 6i
+  </div>
+
+  <!-- Subtraction -->
+  <p class="text-center fw-bold mt-4">➖ Subtraction: z₁ = 5 + 7i, z₂ = 2 + 3i</p>
+  <div class="calc-step">
+    Step 1: Real part = 5 − 2 = <b>3</b>
+  </div>
+  <div class="calc-step">
+    Step 2: Imag part = 7 − 3 = <b>4</b>
+  </div>
+  <div class="result">
+    Difference: 3 + 4i
+  </div>
+
+  <!-- Multiplication -->
+  <p class="text-center fw-bold mt-4">✖ Multiplication: z₁ = 2 + 3i, z₂ = 1 − 4i</p>
+  <div class="calc-step">
+    Step 1: (2 × 1) − (3 × −4) = 2 + 12 = <b>14</b> (real part)
+  </div>
+  <div class="calc-step">
+    Step 2: (2 × −4) + (3 × 1) = −8 + 3 = <b>−5</b> (imag part)
+  </div>
+  <div class="result">
+    Product: 14 − 5i
+  </div>
+
+  <!-- Division -->
+  <p class="text-center fw-bold mt-4">➗ Division: z₁ = 4 + 6i, z₂ = 1 − 2i</p>
+  <div class="calc-step">
+    Step 1: Denominator = (1)² + (−2)² = 1 + 4 = <b>5</b>
+  </div>
+  <div class="calc-step">
+    Step 2: Numerator real = (4 × 1) + (6 × 2) = 4 + 12 = <b>16</b>
+  </div>
+  <div class="calc-step">
+    Step 3: Numerator imag = (6 × 1) − (4 × 2) = 6 − 8 = <b>−2</b>
+  </div>
+  <div class="calc-step">
+    Step 4: Divide each by 5 → real = 16/5, imag = −2/5
+  </div>
+  <div class="result">
+    Quotient: 3.2 − 0.4i
+  </div>
+</div>
+
+</section>
+
+<a href="/" class="exit-link">Exit</a>
+
 </body>
 </html>

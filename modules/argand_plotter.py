@@ -40,12 +40,13 @@ def generate_argand_plot(a, b, show_conj, show_modulus, show_arg):
             ax.plot([a, a], [0, b], color='purple', linestyle='--', label='Imaginary Part')   # Imaginary part line
 
         # Optional: Show argument (angle between positive x-axis and z)
-        if show_arg and a != 0:
+        if show_arg and (a != 0 or b != 0):
             arc_theta = np.linspace(0, argument_rad, 100)   # Create arc from 0 to argument
-            arc_radius = 0.7 * modulus                      # Scale arc size for aesthetics
-            arc_x = arc_radius * np.cos(arc_theta)          # X-coordinates of arc
-            arc_y = arc_radius * np.sin(arc_theta)          # Y-coordinates of arc
+            arc_radius = 0.2*modulus # Smaller fixed fraction so it fits inside
+            arc_x = arc_radius * np.cos(arc_theta)  # X coordinates
+            arc_y = arc_radius * np.sin(arc_theta)  # Y coordinates
             ax.plot(arc_x, arc_y, color='orange', linewidth=2, label='Argument ∠')
+
 
         # Add legend to distinguish components
         ax.legend(loc='upper left', fontsize=8)

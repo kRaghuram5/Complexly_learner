@@ -1,1508 +1,525 @@
 {
-    "PU": [
-        {
-            "question": "Simplify: (8 + 10i) + (9 + 1i)",
-            "correct_answer": "17.0 + 11.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 7 + 4i",
-            "correct_answer": "Modulus: 8.06, Argument: 30\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Plot the complex number 10 + 3i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "I",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the modulus and argument of 2 + 5i",
-            "correct_answer": "Modulus: 5.39, Argument: 68\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Plot the complex number -3 + -10i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "III",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Plot the complex number -4 + 9i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "II",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Simplify: (10 + 3i) + (3 + 9i)",
-            "correct_answer": "13.0 + 12.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Convert to polar: 3 + 4i",
-            "correct_answer": "5.0(cos(53\u00b0) + i\u00b7sin(53\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Find the modulus and argument of 9 + 10i",
-            "correct_answer": "Modulus: 13.45, Argument: 48\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find the 3th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, -0.5 + 0.87i, -0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find z^2 where z = 3(cos(30\u00b0) + i\u00b7sin(30\u00b0))",
-            "correct_answer": "4.5 + 7.79i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find z^2 where z = 2(cos(120\u00b0) + i\u00b7sin(120\u00b0))",
-            "correct_answer": "-2.0 + -3.46i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find z^2 where z = 3(cos(60\u00b0) + i\u00b7sin(60\u00b0))",
-            "correct_answer": "-4.5 + 7.79i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Plot the complex number -10 + 8i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "II",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the 8th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.71 + 0.71i, 0.0 + 1.0i, -0.71 + 0.71i, -1.0 + 0.0i, -0.71 + -0.71i, -0.0 + -1.0i, 0.71 + -0.71i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the 4th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.0 + 1.0i, -1.0 + 0.0i, -0.0 + -1.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the modulus and argument of 10 + 1i",
-            "correct_answer": "Modulus: 10.05, Argument: 6\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Plot the complex number -9 + 8i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "II",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Simplify: (5 + 3i) + (1 + 9i)",
-            "correct_answer": "6.0 + 12.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Convert to cartesian: 4.34(cos(60\u00b0) + i\u00b7sin(60\u00b0))",
-            "correct_answer": "2.17 + 3.76i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Simplify: (8 + 10i) / (6 + 9i)",
-            "correct_answer": "1.18 + -0.1i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 8 + 4i",
-            "correct_answer": "Modulus: 8.94, Argument: 27\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find the modulus and argument of 3 + 3i",
-            "correct_answer": "Modulus: 4.24, Argument: 45\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find the modulus and argument of 7 + 3i",
-            "correct_answer": "Modulus: 7.62, Argument: 23\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find the 4th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.0 + 1.0i, -1.0 + 0.0i, -0.0 + -1.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the 4th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.0 + 1.0i, -1.0 + 0.0i, -0.0 + -1.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the 2th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, -1.0 + 0.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Simplify: (4 + 1i) * (5 + 7i)",
-            "correct_answer": "13.0 + 33.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 4 + 8i",
-            "correct_answer": "Modulus: 8.94, Argument: 63\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find z^4 where z = 2(cos(60\u00b0) + i\u00b7sin(60\u00b0))",
-            "correct_answer": "-8.0 + -13.86i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Simplify: (6 + 9i) + (10 + 1i)",
-            "correct_answer": "16.0 + 10.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find z^2 where z = 1(cos(45\u00b0) + i\u00b7sin(45\u00b0))",
-            "correct_answer": "0.0 + 1.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 6th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.5 + 0.87i, -0.5 + 0.87i, -1.0 + 0.0i, -0.5 + -0.87i, 0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the 6th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.5 + 0.87i, -0.5 + 0.87i, -1.0 + 0.0i, -0.5 + -0.87i, 0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Simplify: (8 + 6i) - (10 + 9i)",
-            "correct_answer": "-2.0 + -3.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 7 + 7i",
-            "correct_answer": "Modulus: 9.9, Argument: 45\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find z^2 where z = 2(cos(30\u00b0) + i\u00b7sin(30\u00b0))",
-            "correct_answer": "2.0 + 3.46i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find z^2 where z = 2(cos(60\u00b0) + i\u00b7sin(60\u00b0))",
-            "correct_answer": "-2.0 + 3.46i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Convert to cartesian: 4.1(cos(60\u00b0) + i\u00b7sin(60\u00b0))",
-            "correct_answer": "2.05 + 3.55i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Plot the complex number -4 + -7i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "III",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find z^2 where z = 2(cos(60\u00b0) + i\u00b7sin(60\u00b0))",
-            "correct_answer": "-2.0 + 3.46i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 6th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.5 + 0.87i, -0.5 + 0.87i, -1.0 + 0.0i, -0.5 + -0.87i, 0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the 8th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.71 + 0.71i, 0.0 + 1.0i, -0.71 + 0.71i, -1.0 + 0.0i, -0.71 + -0.71i, -0.0 + -1.0i, 0.71 + -0.71i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Convert to polar: 7 + 9i",
-            "correct_answer": "11.4(cos(52\u00b0) + i\u00b7sin(52\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Simplify: (8 + 10i) + (3 + 4i)",
-            "correct_answer": "11.0 + 14.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Convert to cartesian: 1.33(cos(90\u00b0) + i\u00b7sin(90\u00b0))",
-            "correct_answer": "0.0 + 1.33i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Plot the complex number -3 + 7i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "II",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the 4th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.0 + 1.0i, -1.0 + 0.0i, -0.0 + -1.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Plot the complex number -2 + 10i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "II",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Plot the complex number -3 + -4i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "III",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find z^3 where z = 4(cos(60\u00b0) + i\u00b7sin(60\u00b0))",
-            "correct_answer": "-64.0 + 0.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Simplify: (4 + 5i) / (4 + 10i)",
-            "correct_answer": "0.57 + -0.17i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find z^5 where z = 5(cos(45\u00b0) + i\u00b7sin(45\u00b0))",
-            "correct_answer": "-2209.71 + -2209.71i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 3th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, -0.5 + 0.87i, -0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the modulus and argument of 3 + 6i",
-            "correct_answer": "Modulus: 6.71, Argument: 63\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Simplify: (1 + 1i) + (8 + 3i)",
-            "correct_answer": "9.0 + 4.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find z^5 where z = 2(cos(30\u00b0) + i\u00b7sin(30\u00b0))",
-            "correct_answer": "-27.71 + 16.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 6 + 1i",
-            "correct_answer": "Modulus: 6.08, Argument: 9\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find the 3th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, -0.5 + 0.87i, -0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the 3th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, -0.5 + 0.87i, -0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find z^4 where z = 1(cos(45\u00b0) + i\u00b7sin(45\u00b0))",
-            "correct_answer": "-1.0 + 0.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 2th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, -1.0 + 0.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find z^3 where z = 2(cos(30\u00b0) + i\u00b7sin(30\u00b0))",
-            "correct_answer": "0.0 + 8.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find z^2 where z = 2(cos(120\u00b0) + i\u00b7sin(120\u00b0))",
-            "correct_answer": "-2.0 + -3.46i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Simplify: (1 + 4i) - (3 + 5i)",
-            "correct_answer": "-2.0 + -1.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 8th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.71 + 0.71i, 0.0 + 1.0i, -0.71 + 0.71i, -1.0 + 0.0i, -0.71 + -0.71i, -0.0 + -1.0i, 0.71 + -0.71i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the modulus and argument of 1 + 9i",
-            "correct_answer": "Modulus: 9.06, Argument: 84\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Plot the complex number 4 + -8i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "IV",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find z^5 where z = 3(cos(45\u00b0) + i\u00b7sin(45\u00b0))",
-            "correct_answer": "-171.83 + -171.83i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 8 + 10i",
-            "correct_answer": "Modulus: 12.81, Argument: 51\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Simplify: (2 + 10i) * (1 + 7i)",
-            "correct_answer": "-68.0 + 24.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 8th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.71 + 0.71i, 0.0 + 1.0i, -0.71 + 0.71i, -1.0 + 0.0i, -0.71 + -0.71i, -0.0 + -1.0i, 0.71 + -0.71i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the 8th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.71 + 0.71i, 0.0 + 1.0i, -0.71 + 0.71i, -1.0 + 0.0i, -0.71 + -0.71i, -0.0 + -1.0i, 0.71 + -0.71i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find z^5 where z = 4(cos(90\u00b0) + i\u00b7sin(90\u00b0))",
-            "correct_answer": "0.0 + 1024.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Convert to polar: 5 + 8i",
-            "correct_answer": "9.43(cos(58\u00b0) + i\u00b7sin(58\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Convert to polar: 10 + 8i",
-            "correct_answer": "12.81(cos(39\u00b0) + i\u00b7sin(39\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Find z^2 where z = 4(cos(60\u00b0) + i\u00b7sin(60\u00b0))",
-            "correct_answer": "-8.0 + 13.86i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 2 + 10i",
-            "correct_answer": "Modulus: 10.2, Argument: 79\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Plot the complex number 5 + 10i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "I",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Plot the complex number 7 + 4i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "I",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Plot the complex number -2 + 10i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "II",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Simplify: (1 + 4i) / (5 + 8i)",
-            "correct_answer": "0.42 + 0.13i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 2th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, -1.0 + 0.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the 4th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.0 + 1.0i, -1.0 + 0.0i, -0.0 + -1.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Simplify: (10 + 4i) / (6 + 10i)",
-            "correct_answer": "0.74 + -0.56i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find z^2 where z = 3(cos(120\u00b0) + i\u00b7sin(120\u00b0))",
-            "correct_answer": "-4.5 + -7.79i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Simplify: (1 + 5i) * (2 + 5i)",
-            "correct_answer": "-23.0 + 15.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Plot the complex number -8 + 7i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "II",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the modulus and argument of 9 + 10i",
-            "correct_answer": "Modulus: 13.45, Argument: 48\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Convert to cartesian: 2.45(cos(90\u00b0) + i\u00b7sin(90\u00b0))",
-            "correct_answer": "0.0 + 2.45i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Plot the complex number 5 + 2i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "I",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Plot the complex number -5 + -1i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "III",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Plot the complex number 10 + -4i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "IV",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Plot the complex number -2 + 8i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "II",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Convert to cartesian: 4.88(cos(120\u00b0) + i\u00b7sin(120\u00b0))",
-            "correct_answer": "-2.44 + 4.23i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Find the modulus and argument of 6 + 10i",
-            "correct_answer": "Modulus: 11.66, Argument: 59\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find the modulus and argument of 6 + 6i",
-            "correct_answer": "Modulus: 8.49, Argument: 45\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Convert to cartesian: 1.3(cos(120\u00b0) + i\u00b7sin(120\u00b0))",
-            "correct_answer": "-0.65 + 1.13i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Simplify: (6 + 1i) / (10 + 2i)",
-            "correct_answer": "0.6 + -0.02i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 5 + 2i",
-            "correct_answer": "Modulus: 5.39, Argument: 22\u00b0",
-            "topic": "Modulus and Argument"
-        }
+  "Operation": [
+    {
+      "id": 3,
+      "question": "Find the real values of x and y, if $(3x - 7) + 2iy = -5y + (5 + x)i$.",
+      "options": [
+        "(a) $-1, 2$",
+        "(b) $1, 2$",
+        "(c) $1, -2$",
+        "(d) $-1, -2$"
+      ],
+      "answer": "(a)"
+    },
+    {
+      "id": 4,
+      "question": "Let $z_1 = (1 + i)y^2 + (6 + i)$ and $z_2 = (2 + i)x$. Find the values of x and y so that $z_1 = z_2$.",
+      "options": [
+        "(a) $(5, 2)$",
+        "(b) $(5, -2)$",
+        "(c) Both (a) and (b)",
+        "(d) Neither (a) nor (b)"
+      ],
+      "answer": "(c)"
+    },
+    {
+      "id": 5,
+      "question": "If $z_1 = 3 + iy$ and $z_2 = x + 4i$ are equal, then find the sum of x and y.",
+      "options": [
+        "(a) $3$",
+        "(b) $4$",
+        "(c) $1$",
+        "(d) $7$"
+      ],
+      "answer": "(d)"
+    },
+    {
+      "id": 6,
+      "question": "Find x and y if $(3x - 2iy)(2 + i)^2 = 10(1 + i)$.",
+      "options": [
+        "(a) $-\\frac{14}{15}, \\frac{1}{5}$",
+        "(b) $\\frac{14}{15}, -\\frac{1}{5}$",
+        "(c) $\\frac{14}{15}, \\frac{1}{5}$",
+        "(d) $-\\frac{14}{15}, -\\frac{1}{5}$"
+      ],
+      "answer": "(c)"
+    },
+    {
+      "id": 7,
+      "question": "If $(1 + 2i)(2 + 3i)(3 + 4i) = x + iy$, then $x^2 + y^2 = $",
+      "options": [
+        "(a) $1600$",
+        "(b) $1627$",
+        "(c) $1625$",
+        "(d) $1725$"
+      ],
+      "answer": "(c)"
+    },
+    {
+      "id": 8,
+      "question": "If $z = x - iy$ and $z^{1/3} = p + iq$ then $\\frac{x}{p} + \\frac{y}{q} \\div (p^2 + q^2) = $",
+      "options": [
+        "(a) $1$",
+        "(b) $-2$",
+        "(c) $2$",
+        "(d) $-1$"
+      ],
+      "answer": "(b)"
+    },
+    {
+      "id": 9,
+      "question": "If $\\frac{(1 + i)^3}{(1 - i)^3} - \\frac{(1 - i)^3}{(1 + i)^3} = x + iy$, then",
+      "options": [
+        "(a) $x = 0, y = -2$",
+        "(b) $x = -2, y = 0$",
+        "(c) $x = 1, y = 1$",
+        "(d) $x = -1, y = 1$"
+      ],
+      "answer": "(a)"
+    },
+    {
+      "id": 10,
+      "question": "If $\\frac{(1 + i)^2}{(2 - i)^2} = x + iy$, then $x + y = $",
+      "options": [
+        "(a) $-\\frac{2}{5}$",
+        "(b) $\\frac{6}{5}$",
+        "(c) $\\frac{2}{5}$",
+        "(d) $-\\frac{6}{5}$"
+      ],
+      "answer": "(c)"
+    },
+    {
+    "id": 11,
+    "question": "The real part of $\\frac{(1+i)^2}{(3-i)}$ is",
+    "options": [
+      "(a) $\\frac{1}{3}$",
+      "(b) $\\frac{1}{5}$",
+      "(c) $-\\frac{1}{3}$",
+      "(d) $-\\frac{1}{5}$"
     ],
-    "CET": [
-        {
-            "question": "Convert to cartesian: 1.98(cos(90\u00b0) + i\u00b7sin(90\u00b0))",
-            "correct_answer": "0.0 + 1.98i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Plot the complex number 7 + 5i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "I",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Simplify: (1 + 5i) + (7 + 4i)",
-            "correct_answer": "8.0 + 9.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 3 + 7i",
-            "correct_answer": "Modulus: 7.62, Argument: 67\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Plot the complex number 10 + -1i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "IV",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Plot the complex number 8 + 2i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "I",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Convert to cartesian: 4.02(cos(45\u00b0) + i\u00b7sin(45\u00b0))",
-            "correct_answer": "2.84 + 2.84i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Find the modulus and argument of 2 + 4i",
-            "correct_answer": "Modulus: 4.47, Argument: 63\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Plot the complex number 7 + 0i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "Axis",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the 6th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.5 + 0.87i, -0.5 + 0.87i, -1.0 + 0.0i, -0.5 + -0.87i, 0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find z^5 where z = 1(cos(120\u00b0) + i\u00b7sin(120\u00b0))",
-            "correct_answer": "-0.5 + -0.87i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 6th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.5 + 0.87i, -0.5 + 0.87i, -1.0 + 0.0i, -0.5 + -0.87i, 0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Convert to polar: 2 + 5i",
-            "correct_answer": "5.39(cos(68\u00b0) + i\u00b7sin(68\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Simplify: (10 + 9i) / (6 + 8i)",
-            "correct_answer": "1.32 + -0.26i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 9 + 3i",
-            "correct_answer": "Modulus: 9.49, Argument: 18\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Convert to polar: 1 + 7i",
-            "correct_answer": "7.07(cos(82\u00b0) + i\u00b7sin(82\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Find the modulus and argument of 3 + 6i",
-            "correct_answer": "Modulus: 6.71, Argument: 63\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find the 6th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.5 + 0.87i, -0.5 + 0.87i, -1.0 + 0.0i, -0.5 + -0.87i, 0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the modulus and argument of 4 + 1i",
-            "correct_answer": "Modulus: 4.12, Argument: 14\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find the modulus and argument of 7 + 9i",
-            "correct_answer": "Modulus: 11.4, Argument: 52\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Convert to polar: 3 + 4i",
-            "correct_answer": "5.0(cos(53\u00b0) + i\u00b7sin(53\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Find the modulus and argument of 6 + 9i",
-            "correct_answer": "Modulus: 10.82, Argument: 56\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Simplify: (5 + 2i) - (9 + 9i)",
-            "correct_answer": "-4.0 + -7.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Convert to cartesian: 1.56(cos(45\u00b0) + i\u00b7sin(45\u00b0))",
-            "correct_answer": "1.1 + 1.1i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Find the modulus and argument of 4 + 8i",
-            "correct_answer": "Modulus: 8.94, Argument: 63\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find the modulus and argument of 10 + 10i",
-            "correct_answer": "Modulus: 14.14, Argument: 45\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Plot the complex number -5 + 0i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "Axis",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the modulus and argument of 2 + 8i",
-            "correct_answer": "Modulus: 8.25, Argument: 76\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Convert to polar: 8 + 8i",
-            "correct_answer": "11.31(cos(45\u00b0) + i\u00b7sin(45\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Simplify: (9 + 5i) - (9 + 1i)",
-            "correct_answer": "0.0 + 4.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Convert to polar: 7 + 7i",
-            "correct_answer": "9.9(cos(45\u00b0) + i\u00b7sin(45\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Convert to cartesian: 3.29(cos(30\u00b0) + i\u00b7sin(30\u00b0))",
-            "correct_answer": "2.85 + 1.64i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Convert to cartesian: 3.92(cos(120\u00b0) + i\u00b7sin(120\u00b0))",
-            "correct_answer": "-1.96 + 3.39i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Convert to polar: 8 + 3i",
-            "correct_answer": "8.54(cos(21\u00b0) + i\u00b7sin(21\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Simplify: (5 + 8i) / (6 + 10i)",
-            "correct_answer": "0.81 + -0.01i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 3th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, -0.5 + 0.87i, -0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Convert to cartesian: 2.0(cos(30\u00b0) + i\u00b7sin(30\u00b0))",
-            "correct_answer": "1.73 + 1.0i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Find z^4 where z = 2(cos(30\u00b0) + i\u00b7sin(30\u00b0))",
-            "correct_answer": "-8.0 + 13.86i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 7 + 2i",
-            "correct_answer": "Modulus: 7.28, Argument: 16\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find z^2 where z = 1(cos(60\u00b0) + i\u00b7sin(60\u00b0))",
-            "correct_answer": "-0.5 + 0.87i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Simplify: (6 + 3i) / (6 + 8i)",
-            "correct_answer": "0.6 + -0.3i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Plot the complex number 6 + 10i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "I",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Plot the complex number 3 + -8i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "IV",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Plot the complex number 1 + 8i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "I",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find z^3 where z = 5(cos(120\u00b0) + i\u00b7sin(120\u00b0))",
-            "correct_answer": "125.0 + -0.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Plot the complex number 0 + 2i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "Axis",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Convert to polar: 10 + 8i",
-            "correct_answer": "12.81(cos(39\u00b0) + i\u00b7sin(39\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Find z^3 where z = 5(cos(45\u00b0) + i\u00b7sin(45\u00b0))",
-            "correct_answer": "-88.39 + 88.39i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 3th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, -0.5 + 0.87i, -0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Plot the complex number -5 + -5i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "III",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the modulus and argument of 8 + 1i",
-            "correct_answer": "Modulus: 8.06, Argument: 7\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find z^2 where z = 2(cos(120\u00b0) + i\u00b7sin(120\u00b0))",
-            "correct_answer": "-2.0 + -3.46i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Convert to cartesian: 2.45(cos(120\u00b0) + i\u00b7sin(120\u00b0))",
-            "correct_answer": "-1.22 + 2.12i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Plot the complex number 6 + -2i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "IV",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Plot the complex number 6 + 4i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "I",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the 6th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.5 + 0.87i, -0.5 + 0.87i, -1.0 + 0.0i, -0.5 + -0.87i, 0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Plot the complex number -3 + 2i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "II",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the 4th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.0 + 1.0i, -1.0 + 0.0i, -0.0 + -1.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Plot the complex number -5 + -8i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "III",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the 6th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.5 + 0.87i, -0.5 + 0.87i, -1.0 + 0.0i, -0.5 + -0.87i, 0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find z^4 where z = 3(cos(30\u00b0) + i\u00b7sin(30\u00b0))",
-            "correct_answer": "-40.5 + 70.15i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 9 + 10i",
-            "correct_answer": "Modulus: 13.45, Argument: 48\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Simplify: (7 + 7i) / (10 + 2i)",
-            "correct_answer": "0.81 + 0.54i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Simplify: (5 + 8i) / (6 + 6i)",
-            "correct_answer": "1.08 + 0.25i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 5 + 7i",
-            "correct_answer": "Modulus: 8.6, Argument: 54\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Simplify: (6 + 10i) * (3 + 4i)",
-            "correct_answer": "-22.0 + 54.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Simplify: (5 + 7i) / (5 + 5i)",
-            "correct_answer": "1.2 + 0.2i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Plot the complex number 2 + 6i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "I",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Plot the complex number -9 + -7i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "III",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the 6th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.5 + 0.87i, -0.5 + 0.87i, -1.0 + 0.0i, -0.5 + -0.87i, 0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the modulus and argument of 8 + 2i",
-            "correct_answer": "Modulus: 8.25, Argument: 14\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Plot the complex number 6 + 0i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "Axis",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the modulus and argument of 5 + 6i",
-            "correct_answer": "Modulus: 7.81, Argument: 50\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find the modulus and argument of 1 + 10i",
-            "correct_answer": "Modulus: 10.05, Argument: 84\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find z^2 where z = 3(cos(45\u00b0) + i\u00b7sin(45\u00b0))",
-            "correct_answer": "0.0 + 9.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 2th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, -1.0 + 0.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Plot the complex number 9 + 4i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "I",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the 2th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, -1.0 + 0.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the 8th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.71 + 0.71i, 0.0 + 1.0i, -0.71 + 0.71i, -1.0 + 0.0i, -0.71 + -0.71i, -0.0 + -1.0i, 0.71 + -0.71i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the modulus and argument of 7 + 2i",
-            "correct_answer": "Modulus: 7.28, Argument: 16\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Simplify: (9 + 10i) * (3 + 4i)",
-            "correct_answer": "-13.0 + 66.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Simplify: (4 + 9i) + (8 + 8i)",
-            "correct_answer": "12.0 + 17.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 4th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.0 + 1.0i, -1.0 + 0.0i, -0.0 + -1.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find z^2 where z = 4(cos(45\u00b0) + i\u00b7sin(45\u00b0))",
-            "correct_answer": "0.0 + 16.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Simplify: (9 + 4i) - (7 + 2i)",
-            "correct_answer": "2.0 + 2.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Simplify: (6 + 7i) * (10 + 10i)",
-            "correct_answer": "-10.0 + 130.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Simplify: (7 + 5i) * (7 + 4i)",
-            "correct_answer": "29.0 + 63.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 7 + 8i",
-            "correct_answer": "Modulus: 10.63, Argument: 49\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Plot the complex number 2 + -3i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "IV",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the modulus and argument of 10 + 6i",
-            "correct_answer": "Modulus: 11.66, Argument: 31\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find the modulus and argument of 2 + 10i",
-            "correct_answer": "Modulus: 10.2, Argument: 79\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Simplify: (7 + 1i) * (6 + 8i)",
-            "correct_answer": "34.0 + 62.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find z^5 where z = 4(cos(90\u00b0) + i\u00b7sin(90\u00b0))",
-            "correct_answer": "0.0 + 1024.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Plot the complex number 2 + 4i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "I",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Plot the complex number -2 + -6i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "III",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find z^5 where z = 4(cos(45\u00b0) + i\u00b7sin(45\u00b0))",
-            "correct_answer": "-724.08 + -724.08i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Convert to cartesian: 2.08(cos(90\u00b0) + i\u00b7sin(90\u00b0))",
-            "correct_answer": "0.0 + 2.08i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Find z^5 where z = 3(cos(90\u00b0) + i\u00b7sin(90\u00b0))",
-            "correct_answer": "0.0 + 243.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Simplify: (10 + 2i) - (4 + 7i)",
-            "correct_answer": "6.0 + -5.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Convert to cartesian: 3.23(cos(60\u00b0) + i\u00b7sin(60\u00b0))",
-            "correct_answer": "1.62 + 2.8i",
-            "topic": "Polar-Cartesian Conversion"
-        }
+    "answer": "(a)"
+  },
+  {
+    "id": 12,
+    "question": "The least positive integer $n$, for which $\\frac{(1+i)^n}{(1-i)^{n-2}}$ is positive is",
+    "options": [
+      "(a) 4",
+      "(b) 3",
+      "(c) 2",
+      "(d) 1"
     ],
-    "JEE": [
-        {
-            "question": "Find z^3 where z = 4(cos(30\u00b0) + i\u00b7sin(30\u00b0))",
-            "correct_answer": "0.0 + 64.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Simplify: (10 + 7i) * (3 + 8i)",
-            "correct_answer": "-26.0 + 101.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find z^4 where z = 4(cos(120\u00b0) + i\u00b7sin(120\u00b0))",
-            "correct_answer": "-128.0 + 221.7i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find z^2 where z = 5(cos(60\u00b0) + i\u00b7sin(60\u00b0))",
-            "correct_answer": "-12.5 + 21.65i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 6th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.5 + 0.87i, -0.5 + 0.87i, -1.0 + 0.0i, -0.5 + -0.87i, 0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the 2th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, -1.0 + 0.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Convert to polar: 10 + 2i",
-            "correct_answer": "10.2(cos(11\u00b0) + i\u00b7sin(11\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Find the modulus and argument of 6 + 5i",
-            "correct_answer": "Modulus: 7.81, Argument: 40\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Plot the complex number -3 + -7i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "III",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find z^3 where z = 3(cos(90\u00b0) + i\u00b7sin(90\u00b0))",
-            "correct_answer": "-0.0 + -27.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 9 + 5i",
-            "correct_answer": "Modulus: 10.3, Argument: 29\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Plot the complex number -5 + 3i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "II",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Plot the complex number 0 + -10i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "Axis",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the modulus and argument of 4 + 3i",
-            "correct_answer": "Modulus: 5.0, Argument: 37\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Plot the complex number -6 + 6i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "II",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Simplify: (4 + 5i) + (9 + 2i)",
-            "correct_answer": "13.0 + 7.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Convert to cartesian: 1.29(cos(60\u00b0) + i\u00b7sin(60\u00b0))",
-            "correct_answer": "0.65 + 1.12i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Convert to polar: 3 + 1i",
-            "correct_answer": "3.16(cos(18\u00b0) + i\u00b7sin(18\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Find the 3th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, -0.5 + 0.87i, -0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the modulus and argument of 5 + 8i",
-            "correct_answer": "Modulus: 9.43, Argument: 58\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Simplify: (10 + 3i) + (7 + 1i)",
-            "correct_answer": "17.0 + 4.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Plot the complex number 3 + 7i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "I",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find z^4 where z = 5(cos(30\u00b0) + i\u00b7sin(30\u00b0))",
-            "correct_answer": "-312.5 + 541.27i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 4 + 5i",
-            "correct_answer": "Modulus: 6.4, Argument: 51\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Simplify: (3 + 1i) * (6 + 2i)",
-            "correct_answer": "16.0 + 12.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Plot the complex number 4 + -3i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "IV",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Plot the complex number 2 + -5i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "IV",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find z^4 where z = 3(cos(90\u00b0) + i\u00b7sin(90\u00b0))",
-            "correct_answer": "81.0 + -0.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 7 + 7i",
-            "correct_answer": "Modulus: 9.9, Argument: 45\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Plot the complex number 6 + 8i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "I",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the 4th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.0 + 1.0i, -1.0 + 0.0i, -0.0 + -1.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Plot the complex number -1 + -6i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "III",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the 8th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.71 + 0.71i, 0.0 + 1.0i, -0.71 + 0.71i, -1.0 + 0.0i, -0.71 + -0.71i, -0.0 + -1.0i, 0.71 + -0.71i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Simplify: (9 + 8i) + (4 + 4i)",
-            "correct_answer": "13.0 + 12.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Convert to cartesian: 4.87(cos(45\u00b0) + i\u00b7sin(45\u00b0))",
-            "correct_answer": "3.44 + 3.44i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Find the 3th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, -0.5 + 0.87i, -0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find the 8th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.71 + 0.71i, 0.0 + 1.0i, -0.71 + 0.71i, -1.0 + 0.0i, -0.71 + -0.71i, -0.0 + -1.0i, 0.71 + -0.71i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find z^4 where z = 4(cos(90\u00b0) + i\u00b7sin(90\u00b0))",
-            "correct_answer": "256.0 + -0.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Convert to polar: 10 + 2i",
-            "correct_answer": "10.2(cos(11\u00b0) + i\u00b7sin(11\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Convert to cartesian: 1.18(cos(60\u00b0) + i\u00b7sin(60\u00b0))",
-            "correct_answer": "0.59 + 1.02i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Find z^3 where z = 4(cos(45\u00b0) + i\u00b7sin(45\u00b0))",
-            "correct_answer": "-45.25 + 45.25i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Plot the complex number -10 + -3i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "III",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Plot the complex number -1 + 4i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "II",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find z^4 where z = 3(cos(60\u00b0) + i\u00b7sin(60\u00b0))",
-            "correct_answer": "-40.5 + -70.15i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 6th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.5 + 0.87i, -0.5 + 0.87i, -1.0 + 0.0i, -0.5 + -0.87i, 0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Simplify: (2 + 1i) / (5 + 7i)",
-            "correct_answer": "0.23 + -0.12i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 2th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, -1.0 + 0.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Simplify: (1 + 8i) + (4 + 4i)",
-            "correct_answer": "5.0 + 12.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 6 + 2i",
-            "correct_answer": "Modulus: 6.32, Argument: 18\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find the 6th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.5 + 0.87i, -0.5 + 0.87i, -1.0 + 0.0i, -0.5 + -0.87i, 0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Plot the complex number -1 + -2i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "III",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the 6th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.5 + 0.87i, -0.5 + 0.87i, -1.0 + 0.0i, -0.5 + -0.87i, 0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Simplify: (4 + 8i) / (8 + 7i)",
-            "correct_answer": "0.78 + 0.32i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Simplify: (8 + 6i) * (9 + 9i)",
-            "correct_answer": "18.0 + 126.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 2 + 3i",
-            "correct_answer": "Modulus: 3.61, Argument: 56\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find the modulus and argument of 5 + 5i",
-            "correct_answer": "Modulus: 7.07, Argument: 45\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Simplify: (4 + 6i) / (8 + 3i)",
-            "correct_answer": "0.68 + 0.49i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 5 + 7i",
-            "correct_answer": "Modulus: 8.6, Argument: 54\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Simplify: (6 + 10i) / (9 + 8i)",
-            "correct_answer": "0.92 + 0.29i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 3 + 9i",
-            "correct_answer": "Modulus: 9.49, Argument: 72\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find the modulus and argument of 2 + 6i",
-            "correct_answer": "Modulus: 6.32, Argument: 72\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Find the 2th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, -1.0 + 0.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Convert to polar: 8 + 3i",
-            "correct_answer": "8.54(cos(21\u00b0) + i\u00b7sin(21\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Find the modulus and argument of 5 + 3i",
-            "correct_answer": "Modulus: 5.83, Argument: 31\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Convert to cartesian: 3.2(cos(120\u00b0) + i\u00b7sin(120\u00b0))",
-            "correct_answer": "-1.6 + 2.77i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Convert to polar: 9 + 6i",
-            "correct_answer": "10.82(cos(34\u00b0) + i\u00b7sin(34\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Simplify: (9 + 1i) + (2 + 8i)",
-            "correct_answer": "11.0 + 9.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find z^3 where z = 5(cos(120\u00b0) + i\u00b7sin(120\u00b0))",
-            "correct_answer": "125.0 + -0.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 4th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.0 + 1.0i, -1.0 + 0.0i, -0.0 + -1.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Find z^3 where z = 5(cos(90\u00b0) + i\u00b7sin(90\u00b0))",
-            "correct_answer": "-0.0 + -125.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Simplify: (2 + 10i) / (4 + 2i)",
-            "correct_answer": "1.4 + 1.8i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Simplify: (1 + 7i) + (10 + 9i)",
-            "correct_answer": "11.0 + 16.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find z^4 where z = 2(cos(30\u00b0) + i\u00b7sin(30\u00b0))",
-            "correct_answer": "-8.0 + 13.86i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Plot the complex number 4 + -3i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "IV",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the modulus and argument of 9 + 4i",
-            "correct_answer": "Modulus: 9.85, Argument: 24\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Simplify: (1 + 2i) - (5 + 2i)",
-            "correct_answer": "-4.0 + 0.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Simplify: (3 + 7i) - (4 + 3i)",
-            "correct_answer": "-1.0 + 4.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 6th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.5 + 0.87i, -0.5 + 0.87i, -1.0 + 0.0i, -0.5 + -0.87i, 0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Simplify: (10 + 5i) * (6 + 8i)",
-            "correct_answer": "20.0 + 110.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the modulus and argument of 5 + 2i",
-            "correct_answer": "Modulus: 5.39, Argument: 22\u00b0",
-            "topic": "Modulus and Argument"
-        },
-        {
-            "question": "Simplify: (9 + 2i) + (8 + 5i)",
-            "correct_answer": "17.0 + 7.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 4th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.0 + 1.0i, -1.0 + 0.0i, -0.0 + -1.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Convert to polar: 3 + 6i",
-            "correct_answer": "6.71(cos(63\u00b0) + i\u00b7sin(63\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Simplify: (7 + 9i) * (7 + 3i)",
-            "correct_answer": "22.0 + 84.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 8th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.71 + 0.71i, 0.0 + 1.0i, -0.71 + 0.71i, -1.0 + 0.0i, -0.71 + -0.71i, -0.0 + -1.0i, 0.71 + -0.71i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Plot the complex number -2 + 0i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "Axis",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Plot the complex number 6 + 5i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "I",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find the 3th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, -0.5 + 0.87i, -0.5 + -0.87i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Convert to cartesian: 1.03(cos(90\u00b0) + i\u00b7sin(90\u00b0))",
-            "correct_answer": "0.0 + 1.03i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Find z^3 where z = 1(cos(45\u00b0) + i\u00b7sin(45\u00b0))",
-            "correct_answer": "-0.71 + 0.71i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Convert to polar: 3 + 3i",
-            "correct_answer": "4.24(cos(45\u00b0) + i\u00b7sin(45\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Simplify: (8 + 3i) / (10 + 6i)",
-            "correct_answer": "0.72 + -0.13i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 8th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.71 + 0.71i, 0.0 + 1.0i, -0.71 + 0.71i, -1.0 + 0.0i, -0.71 + -0.71i, -0.0 + -1.0i, 0.71 + -0.71i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Convert to polar: 8 + 4i",
-            "correct_answer": "8.94(cos(27\u00b0) + i\u00b7sin(27\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Plot the complex number -9 + -8i on the Argand plane. Which quadrant does it lie in?",
-            "correct_answer": "III",
-            "topic": "Argand Plane"
-        },
-        {
-            "question": "Find z^5 where z = 4(cos(30\u00b0) + i\u00b7sin(30\u00b0))",
-            "correct_answer": "-886.81 + 512.0i",
-            "topic": "Miscellaneous"
-        },
-        {
-            "question": "Find the 4th roots of unity.",
-            "correct_answer": "1.0 + 0.0i, 0.0 + 1.0i, -1.0 + 0.0i, -0.0 + -1.0i",
-            "topic": "Roots of Unity"
-        },
-        {
-            "question": "Convert to cartesian: 4.57(cos(90\u00b0) + i\u00b7sin(90\u00b0))",
-            "correct_answer": "0.0 + 4.57i",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Convert to polar: 9 + 1i",
-            "correct_answer": "9.06(cos(6\u00b0) + i\u00b7sin(6\u00b0))",
-            "topic": "Polar-Cartesian Conversion"
-        },
-        {
-            "question": "Simplify: (4 + 3i) / (8 + 1i)",
-            "correct_answer": "0.54 + 0.31i",
-            "topic": "Miscellaneous"
-        }
-    ]
+    "answer": "(a)"
+  }
+  ],
+  "Modulus": [
+    {
+      "id": 13,
+      "question": "On multiplying $3 - 2i$ by its conjugate, we get",
+      "options": [
+        "(a) $10$",
+        "(b) $11$",
+        "(c) $12$",
+        "(d) $13$"
+      ],
+      "answer": "(d)"
+    },
+    {
+      "id": 14,
+      "question": "Find the multiplicative inverse of $2 - 3i$.",
+      "options": [
+        "(a) $\\frac{2}{13} - \\frac{3}{13}i$",
+        "(b) $\\frac{2}{13} + \\frac{3}{13}i$",
+        "(c) $-\\frac{2}{13} - \\frac{3}{13}i$",
+        "(d) $-\\frac{2}{13} + \\frac{3}{13}i$"
+      ],
+      "answer": "(b)"
+    },
+    {
+      "id": 15,
+      "question": "The conjugate of a complex number is $\\frac{1}{1-i}$. Then, the complex number is",
+      "options": [
+        "(a) $\\frac{1}{1-i}$",
+        "(b) $\\frac{-1}{1-i}$",
+        "(c) $\\frac{1}{1+i}$",
+        "(d) $\\frac{-1}{1+i}$"
+      ],
+      "answer": "(d)"
+    },
+    {
+      "id": 16,
+      "question": "The modulus of $\\frac{1-3i}{4+5i} + i$ is",
+      "options": [
+        "(a) $5$ units",
+        "(b) $\\frac{11}{5}$ units",
+        "(c) $\\frac{\\sqrt{5}}{5}$ units",
+        "(d) $\\frac{12}{5}$ units"
+      ],
+      "answer": "(b)"
+    },
+    {
+    "id": 17,
+    "question": "Find the multiplicative inverse of $\\frac{4 + 5i}{3 - 4i}$.",
+    "options": [
+      "(a) $\\frac{-8}{25} + \\frac{31i}{25}$",
+      "(b) $\\frac{-8}{41} + \\frac{31i}{41}$",
+      "(c) $\\frac{8}{25} + \\frac{31i}{25}$",
+      "(d) $\\frac{8}{41} + \\frac{31i}{41}$"
+    ],
+    "answer": "(b)"
+  },
+  {
+    "id": 18,
+    "question": "If $z - \\frac{\\sqrt{2}}{z + \\sqrt{2}}$ is purely imaginary, then",
+    "options": [
+      "(a) $|z| = 1$",
+      "(b) $|z| = \\sqrt{2}$",
+      "(c) $|z| = 3$",
+      "(d) $|z| = \\frac{1}{\\sqrt{2}}$"
+    ],
+    "answer": "(a)"
+  },
+  {
+    "id": 19,
+    "question": "If $z = \\frac{8 + i}{\\sqrt{2} - 1}$, then $z \\bar{z}$ is",
+    "options": [
+      "(a) $\\frac{60}{11}$",
+      "(b) $\\frac{61}{3}$",
+      "(c) $\\frac{64}{3}$",
+      "(d) $\\frac{65}{3}$"
+    ],
+    "answer": "(c)"
+  },
+  {
+    "id": 20,
+    "question": "If $z + \\frac{1}{z} = 1 + i$, then find the value of $\\left| z^3 + \\frac{1}{z^3} \\right|$.",
+    "options": [
+      "(a) $20$",
+      "(b) $\\sqrt{24}$",
+      "(c) $\\sqrt{26}$",
+      "(d) $\\sqrt{22}$"
+    ],
+    "answer": "(a)"
+  },
+{
+    "id": 21,
+    "question": "If $z = \\frac{5 - 4i}{3 + 2i}$, If $\\beta$ is a real number such that $|z - i\\beta|$ is $3\\sqrt{5}$, then the value $13\\beta^2 + 44\\beta$ is",
+    "options": [
+      "(a) $510$",
+      "(b) $-584$",
+      "(c) $544$",
+      "(d) $-544$"
+    ],
+    "answer": "(d)"
+  },
+  {
+    "id": 22,
+    "question": "If $z_1 = 1 + i$, $z_2 = 2 - 2i$ and $z_3 = -3 + i$, then the value of $(z_1^3 + z_2^3 + z_3^3)$ is",
+    "options": [
+      "(a) $-12 + 36i$",
+      "(b) $36 + 12i$",
+      "(c) $-36 + 12i$",
+      "(d) $-36 - 12i$"
+    ],
+    "answer": "(c)"
+  }
+  ],
+  "Argand": [
+    {
+      "id": 23,
+      "question": "If $z = -1 + i$, then z lies in",
+      "options": [
+        "(a) I quadrant",
+        "(b) II quadrant",
+        "(c) III quadrant",
+        "(d) IV quadrant"
+      ],
+      "answer": "(b)"
+    },
+    {
+      "id": 24,
+      "question": "If a complex number lies in the III quadrant, then find the quadrant in which its conjugate lies.",
+      "options": [
+        "(a) I quadrant",
+        "(b) II quadrant",
+        "(c) III quadrant",
+        "(d) IV quadrant"
+      ],
+      "answer": "(b)"
+    },
+    {
+      "id": 25,
+      "question": "If $z = x + iy$ lies in the third quadrant, then $\\frac{\\bar{z}}{z}$ also lies in the third quadrant, if",
+      "options": [
+        "(a) $x > y > 0$",
+        "(b) $x < y < 0$",
+        "(c) $y < x < 0$",
+        "(d) $y > x > 0$"
+      ],
+      "answer": "(b)"
+    },
+    {
+      "id": 26,
+      "question": "On an argand plane, a cube root of unity is represented by",
+      "options": [
+        "(a) a vertex of an equilateral triangle",
+        "(b) a vertex of an isosceles triangle",
+        "(c) a vertex of a right angled triangle",
+        "(d) None of these"
+      ],
+      "answer": "(a)"
+    },
+    {
+    "id": 27,
+    "question": "If $Z_1 = a + ib$ and $Z_2 = c + id$ are two complex numbers where $a, b, c, d$ are all real numbers, then",
+    "options": [
+      "(a) $Z_1 Z_2$ is always a complex number",
+      "(b) $Z_1 Z_2$ is always an imaginary number",
+      "(c) $Z_1 - Z_2$ is always an imaginary number",
+      "(d) $Z_1 Z_2$ is always a real number"
+    ],
+    "answer": "(a)"
+  },
+  {
+    "id": 28,
+    "question": "Let $z = 1 + iy$ be a complex number and let $\\omega = x + iy, y \\neq 0$. If $\\frac{1 - 0.6i}{1 - x}$ is purely real, then $|\\omega|$ is equal to",
+    "options": [
+      "(a) 0",
+      "(b) $10^{1/2}$",
+      "(c) 10",
+      "(d) 1"
+    ],
+    "answer": "(b)"
+  }
+  ],
+  "Roots": [
+    {
+      "id": 29,
+      "question": "Find the values of x and y which satisfy the following equations $(x, y \\in \\mathbb{R})$. $(x + 2y) + (2x - 3y)i + 4i = 5$",
+      "options": [
+        "(a) $x = 1, y = 2$",
+        "(b) $x = 2, y = 1$",
+        "(c) $x = -1, y = 2$",
+        "(d) $x = -2, y = -1$"
+      ],
+      "answer": "(a)"
+    },
+    {
+      "id": 30,
+      "question": "If $4x + i(3x - y) = 3 + i(-6)$, where x and y are real numbers, then find the values of x and y respectively.",
+      "options": [
+        "(a) $\\frac{1}{4}, \\frac{3}{4}$",
+        "(b) $\\frac{3}{4}, \\frac{33}{4}$",
+        "(c) $\\frac{33}{4}, -\\frac{3}{4}$",
+        "(d) $-\\frac{3}{4}, -\\frac{33}{4}$"
+      ],
+      "answer": "(b)"
+    },
+    {
+      "id": 31,
+      "question": "If $(x + iy)^{1/3} = 2 + 3i$, then $3x + 2y$ is equal to",
+      "options": [
+        "(a) $-20$",
+        "(b) $-60$",
+        "(c) $-120$",
+        "(d) $60$"
+      ],
+      "answer": "(c)"
+    },
+    {
+      "id": 32,
+      "question": "The value of $(1 + i)^3 + (1 - i)^3 = $",
+      "options": [
+        "(a) $1$",
+        "(b) $-2$",
+        "(c) $0$",
+        "(d) $-4$"
+      ],
+      "answer": "(d)"
+    },
+    {
+      "id": 33,
+      "question": "If $|z_1| = |z_2| = 4$, then $|x_1z_1 - y_1z_2|^2 + |y_1z_1 + x_1z_2|^2 = $",
+      "options": [
+        "(a) $32(x_1^2 + y_1^2)$",
+        "(b) $16(x_1^2 + y_1^2)$",
+        "(c) $4(x_1^2 + y_1^2)$",
+        "(d) $32$"
+      ],
+      "answer": "(a)"
+    },
+    {
+      "id": 34,
+      "question": "If $\\frac{z-1}{z+1}$ is purely imaginary, then",
+      "options": [
+        "(a) $|z| = \\frac{1}{2}$",
+        "(b) $|z| = 1$",
+        "(c) $|z| = 2$",
+        "(d) $|z| = 3$"
+      ],
+      "answer": "(b)"
+    },
+    {
+    "id": 35,
+    "question": "If $\\omega$ is a complex cube root of unity, then $(1 - \\omega + \\omega^2) \\cdot \\frac{(1 - \\omega^2 + \\omega^4)(1 - \\omega^9 + \\omega^{15})}{(1 - \\omega^8 + \\omega^{16})}$ is equal to",
+    "options": [
+      "(a) 12",
+      "(b) 14",
+      "(c) 16",
+      "(d) none of these"
+    ],
+    "answer": "(c)"
+  },
+  {
+    "id": 36,
+    "question": "If $\\omega$ is an imaginary cube root of unity then $(1 + \\omega - \\omega^2)^7$ equals",
+    "options": [
+      "(a) $128 \\omega$",
+      "(b) $-128 \\omega$",
+      "(c) $128 \\omega^2$",
+      "(d) $-128 \\omega^2$"
+    ],
+    "answer": "(a)"
+  },
+  {
+    "id": 37,
+    "question": "$\\omega$ is an imaginary cube root of unity. If $(1 + \\omega)^w = (1 + \\omega)^m$, then least positive integral value of $m$ is",
+    "options": [
+      "(a) 6",
+      "(b) 5",
+      "(c) 4",
+      "(d) 3"
+    ],
+    "answer": "(d)"
+  },
+  {
+    "id": 38,
+    "question": "What is $\\sqrt{\\frac{1 + \\omega^2}{1 + \\omega}}$ equal to, where $\\omega$ is the cube root of unity?",
+    "options": [
+      "(a) 1",
+      "(b) $\\omega$",
+      "(c) $\\omega^2$",
+      "(d) $i\\omega$, where $i = \\sqrt{-1}$"
+    ],
+    "answer": "(c)"
+  }
+  ],
+  "DeMoivre": [
+{
+  "id": 39,
+  "question": "If $(\\cos \\theta + i \\sin \\theta)^8 = \\cos 8\\theta + i \\sin 8\\theta$, then the value of $\\cos \\frac{\\pi}{8}$ using De Moivre’s theorem is",
+  "options": [
+    "(a) $\\frac{\\sqrt{2 + \\sqrt{2}}}{2}$",
+    "(b) $\\frac{\\sqrt{2 - \\sqrt{2}}}{2}$",
+    "(c) $\\frac{\\sqrt{3}}{2}$",
+    "(d) $\\frac{1}{\\sqrt{2}}$"
+  ],
+  "answer": "(a)"
+},
+    {
+      "id": 40,
+      "question": "If $z = \\frac{(3+3i)(4+3i)^2}{(8+6i)^2}$, then $|z|$ is equal to",
+      "options": [
+        "(a) $1$",
+        "(b) $3$",
+        "(c) $0$",
+        "(d) $2$"
+      ],
+      "answer": "(d)",
+      "year": "2015"
+    },
+    {
+      "id": 41,
+      "question": "The simplified form of $i^n + i^{n+1} + i^{n+2} + i^{n+3}$ is",
+      "options": [
+        "(a) $0$",
+        "(b) $1$",
+        "(c) $-1$",
+        "(d) $i$"
+      ],
+      "answer": "(a)",
+      "year": "2016"
+    },
+    {
+      "id": 42,
+      "question": "If $\\left(\\frac{1+i}{1-i}\\right)^m = 1$, then the least positive integral value of m is",
+      "options": [
+        "(a) $4$",
+        "(b) $1$",
+        "(c) $2$",
+        "(d) $3$"
+      ],
+      "answer": "(a)",
+      "year": "2017"
+    },
+    {
+      "id": 43,
+      "question": "If $\\left(\\frac{1-i}{1+i}\\right)^{96} = a + ib$, then $(a, b)$ is",
+      "options": [
+        "(a) $(1, 1)$",
+        "(b) $(1, 0)$",
+        "(c) $(0, 1)$",
+        "(d) $(0, -1)$"
+      ],
+      "answer": "(b)",
+      "year": "2018"
+    },
+    {
+      "id": 44,
+      "question": "If $\\left(\\frac{1+i}{1-i}\\right)^x = 1$ then",
+      "options": [
+        "(a) $x = 4n + 1; n \\in \\mathbb{N}$",
+        "(b) $x = 2n + 1; n \\in \\mathbb{N}$",
+        "(c) $x = 2n; n \\in \\mathbb{N}$",
+        "(d) $x = 4n; n \\in \\mathbb{N}$"
+      ],
+      "answer": "(d)",
+      "year": "2021"
+    },
+    {
+      "id": 45,
+      "question": "If $3x + i(4x - y) = 6 - i$ where x and y are real numbers, then the values of x and y are respectively,",
+      "options": [
+        "(a) $3, 9$",
+        "(b) $2, 9$",
+        "(c) $2, 4$",
+        "(d) $3, 4$"
+      ],
+      "answer": "(b)",
+      "year": "2022"
+    },
+    {
+      "id": 46,
+      "question": "The modulus of the complex number $\\frac{(1+i)(1+i)^3}{(2-6i)(2-2i)^2}$ is",
+      "options": [
+        "(a) $\\frac{1}{2}$",
+        "(b) $\\frac{4}{\\sqrt{2}}$",
+        "(c) $\\frac{\\sqrt{2}}{4}$",
+        "(d) $\\frac{\\sqrt{2}}{2}$"
+      ],
+      "answer": "(c)",
+      "year": "2023"
+    },
+    {
+    "id": 47,
+    "question": "If $\\theta = \\frac{2\\pi}{7}$, then the value of $\\cos \\theta + \\cos 2\\theta + \\cos 3\\theta$ using De Moivre’s theorem is",
+    "options": [
+      "(a) $-\\frac{1}{2}$",
+      "(b) $0$",
+      "(c) $\\frac{1}{2}$",
+      "(d) $1$"
+    ],
+    "answer": "(a)"
+  },
+  {
+    "id": 48,
+    "question": "Using De Moivre’s theorem, the value of $\\cos^5 \\theta - 10\\cos^3 \\theta \\sin^2 \\theta + 5\\cos \\theta \\sin^4 \\theta$ is",
+    "options": [
+      "(a) $\\cos 5\\theta$",
+      "(b) $-\\cos 5\\theta$",
+      "(c) $\\sin 5\\theta$",
+      "(d) $-\\sin 5\\theta$"
+    ],
+    "answer": "(a)"
+  }
+  ]
 }

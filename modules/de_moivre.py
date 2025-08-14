@@ -1,80 +1,81 @@
-# Force matplotlib to use a non-interactive backend suitable for web rendering
+# Force matplotlib to use a backend suitable for Flask / headless environments
 import matplotlib
-matplotlib.use('Agg')  # Must come before importing pyplot for Flask or headless environments
+matplotlib.use('Agg')
 
-import matplotlib.pyplot as plt        # For plotting
-import numpy as np                    # For math operations (angles, trigonometry)
-import io                             # To store image in-memory
-import base64                         # To encode image to base64 for HTML embedding
+import numpy as np
+import matplotlib.pyplot as plt
+import io
+import base64
 
-# Function to visualize De Moivre's Theorem
-# Parameters:
-#   r         : magnitude of the complex number
-#   theta_deg : angle in degrees
-#   n         : exponent to raise the complex number to
 def visualize_de_moivre(r, theta_deg, n):
-    theta_rad = np.deg2rad(theta_deg)  # Convert angle from degrees to radians
-    colors = ['green', 'orange', 'red', 'purple', 'blue', 'cyan']  # Cycle colors for different powers
+    theta_rad = np.deg2rad(theta_deg)
 
-    # Set up plot
+    # Colors for steps (cyclic if n is large)
+    colors = plt.cm.tab10(np.linspace(0, 1, min(n, 10)))
+
+    # Create a single Argand diagram
     fig, ax = plt.subplots(figsize=(7, 7))
-    ax.set_title("De Moivre’s Theorem Visualization: zⁿ = [r cis(θ)]ⁿ", fontsize=13)
+    ax.set_title(f"De Moivre's Theorem: Raising to Power {n}", fontsize=14, pad=15)
     ax.set_xlabel("Real Axis")
     ax.set_ylabel("Imaginary Axis")
-    ax.grid(True, linestyle='--', alpha=0.5)
     ax.axhline(0, color='black', lw=0.5)
     ax.axvline(0, color='black', lw=0.5)
-    ax.set_aspect('equal')  # Keep scale of x and y same (important for Argand plane)
+    ax.grid(True, linestyle='--', alpha=0.5)
+    ax.set_aspect('equal')
 
-    # Loop through powers from 1 to n
+    # Plot each step from z^1 to z^n
+    max_radius = 0
     for k in range(1, n + 1):
-        # Compute z^k using De Moivre's formula: z^k = r^k * cis(kθ)
-        z_k = r ** k * (np.cos(k * theta_rad) + 1j * np.sin(k * theta_rad))
+        # De Moivre's formula
+        z_k = r**k * (np.cos(k * theta_rad) + 1j * np.sin(k * theta_rad))
 
-        # Draw line from origin to z^k on complex plane
+        # Vector from origin to z^k
         ax.plot([0, z_k.real], [0, z_k.imag],
-                color=colors[k % len(colors)],    # Cycle through color list
-                linestyle='-',
+                color=colors[(k - 1) % len(colors)],
                 linewidth=2,
                 marker='o',
-                label=f'z^{k} = {z_k.real:.2f} + {z_k.imag:.2f}i')
-        
-        # Annotate the power on the plot
-        ax.text(z_k.real, z_k.imag, f' z^{k}', fontsize=10, ha='left', va='bottom')
+                label=f"$z^{k}$ = {z_k.real:.2f} + {z_k.imag:.2f}i")
 
-        # Optional: Draw dashed arc to show angle visually
-        arc_theta = np.linspace(0, k * theta_rad, 100)
-        arc_r = r ** k
-        arc_x = arc_r * np.cos(arc_theta)
-        arc_y = arc_r * np.sin(arc_theta)
-        ax.plot(arc_x, arc_y, linestyle='dashed', color='gray', alpha=0.3)
+        # Dashed arc showing rotation
+        arc_theta = np.linspace(0, k * theta_rad, 200)
+        arc_x = r**k * np.cos(arc_theta)
+        arc_y = r**k * np.sin(arc_theta)
+        ax.plot(arc_x, arc_y, linestyle='--',
+                color=colors[(k - 1) % len(colors)], alpha=0.4)
 
-    # Set axis limits dynamically based on maximum radius
-    lim = r ** n + 2  # Padding to prevent clipping
+        max_radius = max(max_radius, abs(r**k))
+
+    # Adjust limits dynamically
+    lim = max_radius * 1.2 if max_radius > 0 else 1.5
     ax.set_xlim(-lim, lim)
     ax.set_ylim(-lim, lim)
-    plt.legend(loc='upper left', fontsize=9)
+    ax.legend(fontsize=8, loc='upper left')
 
-    # Save plot to memory (not to disk) so it can be embedded in HTML
+    # Save image to base64
     buf = io.BytesIO()
     plt.tight_layout()
-    plt.savefig(buf, format='png')         # Save plot to memory as PNG
-    buf.seek(0)                            # Rewind buffer to the beginning
-    plot_data = base64.b64encode(buf.read()).decode('utf8')  # Convert to base64 string
+    plt.savefig(buf, format='png', dpi=120)
+    buf.seek(0)
+    plot_data = base64.b64encode(buf.read()).decode('utf8')
     buf.close()
     plt.close()
 
-    # Final computed result z^n
-    z_n = r ** n * (np.cos(n * theta_rad) + 1j * np.sin(n * theta_rad))
-    result = f"{z_n.real:.2f} + {z_n.imag:.2f}i"  # Convert to readable form
+    # Final result z^n
+    z_n = r**n * (np.cos(n * theta_rad) + 1j * np.sin(n * theta_rad))
+    result = f"{z_n.real:.2f} + {z_n.imag:.2f}i"
 
-    # Explanation for educational display on webpage
+    # Explanation
     explanation = f"""
-        <p><strong>Magnitude (r):</strong> You entered <strong>{r}</strong>. This defines the distance from the origin. When raised to the power {n}, it becomes rⁿ = {r ** n:.2f}, increasing the vector's length accordingly.</p>
-        <p><strong>Angle (θ):</strong> You entered <strong>{theta_deg}°</strong>. This is the initial direction of the complex number. When raised to the power {n}, it becomes nθ = {n * theta_deg}°, rotating the point counterclockwise.</p>
-        <p><strong>Power (n):</strong> Raising the number to the power <strong>{n}</strong> multiplies the magnitude and rotates the angle by that factor. Each successive power shows this geometric transformation.</p>
-        <p>The final result is <strong>zⁿ = {result}</strong>, plotted in red in the graph.</p>
+    <h3>De Moivre's Theorem</h3>
+    <p>Starting from $z = r(\\cosθ + i\\sinθ)$ with r = {r:.2f} and θ = {theta_deg:.2f}°:</p>
+    <p>We apply De Moivre's Theorem: $z^n = r^n(\\cos(nθ) + i\\sin(nθ))$</p>
+    <ul>
+        <li><strong>Magnitude scaling:</strong> r → r<sup>n</sup> = {r**n:.2f}</li>
+        <li><strong>Angle rotation:</strong> θ → nθ = {n*theta_deg:.2f}°</li>
+    </ul>
+    <p>The plot shows each intermediate step from $z^1$ up to $z^{n}$, 
+    illustrating how the vector grows and rotates.</p>
+    <p><strong>Final result:</strong> {result}</p>
     """
 
-    # Return image, result string, and HTML explanation
     return plot_data, result, explanation
