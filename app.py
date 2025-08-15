@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, flash, url_for
 import json, random, time
 import numpy as np
+import re
 # --- Import module handlers ---
 from modules.roots_of_unity import get_plot_image
 from modules.modulus_argument import compute_mod_arg, create_complex_plot
@@ -193,8 +194,15 @@ def register_routes(app, session):
 
         if request.method == "POST":
             action = request.form.get("action")
-            answer = request.form.get("answer", "")
-            answers[current_index] = answer
+
+            # normalize - store only first alphabetic character as letter answer
+            raw_answer = request.form.get("answer", "")
+            user_letter = ""
+            for ch in raw_answer.strip().lower():
+                if ch.isalpha():
+                    user_letter = ch
+                    break
+            answers[current_index] = user_letter
             session['answers'] = answers
 
             if action == "next" and current_index < len(questions) - 1:
@@ -235,31 +243,41 @@ def register_routes(app, session):
         score = 0
         solutions = []
 
+        def extract_letter(s):
+            """Return first alphabetical character in s.lower(), or '' if none."""
+            if not s:
+                return ""
+            for ch in s:
+                if ch.isalpha():
+                    return ch.lower()
+            return ""
+
+        def pick_text(letter, options):
+            """Return full option string that matches letter (robust to '(a)', 'a)', 'a.' etc.)."""
+            if not letter:
+                return ""
+            target = letter.strip().lower()[0]
+            for opt in options:
+                if not opt:
+                    continue
+                # find first alphabetic char in option (covers '(a)', '(a) text', 'a) text', 'a. text', etc.)
+                m = re.search(r'[A-Za-z]', opt)
+                if m and m.group(0).lower() == target:
+                    return opt.strip()
+            return letter  # fallback: return letter if no option matched
+
         for i, q in enumerate(questions):
-            correct_letter = q.get('answer', "").strip().lower().replace("(", "").replace(")", "")
-            options = q.get('options', [])
+            correct_letter = extract_letter(q.get('answer', ""))
+            options = q.get('options', []) or []
 
-            # Get full text for a given letter
-            def pick_text(letter):
-                if not letter:
-                    return ""
-                letter_clean = letter.strip().lower().replace("(", "").replace(")", "")
-                for opt in options:
-                    if opt.strip().lower().startswith(letter_clean):  # match first letter
-                        return opt.strip()
-                return letter  # fallback if not found
+            user_letter = extract_letter(answers[i] or "")
+            user_text = pick_text(user_letter, options) if user_letter else "No answer"
+            correct_text = pick_text(correct_letter, options)
 
-            # Full text answers
-            user_letter = (answers[i] or "").strip().lower().replace("(", "").replace(")", "")
-            user_text = pick_text(user_letter) if user_letter else "No answer"
-            correct_text = pick_text(correct_letter)
-
-            # Compare by full text
-            is_correct = (user_text.strip().lower() == correct_text.strip().lower())
+            is_correct = (user_letter == correct_letter)
             if is_correct:
                 score += 1
 
-            # Save for results display
             solutions.append({
                 'question': q.get('question'),
                 'user_answer': user_text,
