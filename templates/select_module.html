@@ -71,6 +71,25 @@
             background-color: #0056b3;
             transform: scale(1.03);
         }
+        .exit-link {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 13px;
+      background-color: #1f2937;
+      color: white;
+      padding: 8px 14px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+      z-index: 999;
+    }
+
+    .exit-link:hover {
+      background-color: #111827;
+    }
     </style>
 </head>
 <body>
@@ -105,6 +124,6 @@
             introSection.style.background = `radial-gradient(circle at ${currentX * 100}% ${currentY * 100}%, rgba(255, 215, 0, 0.1) 0%, rgba(26, 26, 46, 1) 70%)`;
         });
     </script>
-
+<a href="/" class="exit-link">Exit</a>
 </body>
 </html>
